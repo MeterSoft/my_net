@@ -1,3 +1,6 @@
 <% @users.each do |u| %>
-    <span><%= u.email %></span><br>
+    <span>
+      <% if u.confirmed? %>
+        <%= u.email %></span><br>
+      <% end %>
 <% end %>
