@@ -12,7 +12,7 @@ body {
     padding: 50px;
 }
 
-#remember_label {
+.style_new_sessions {
     color: #a9a9a9;
 }
 
@@ -35,6 +35,10 @@ input[type='submit'] {
     border: none;
     margin-left: 150px;
     color: #a9a9a9;
+}
+
+#sign_up {
+    position: absolute;
 }
 
 

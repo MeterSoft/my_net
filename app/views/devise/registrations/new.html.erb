@@ -1,18 +1,13 @@
-<h2>Sign up</h2>
-
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <div><%= f.email_field :email, :placeholder => 'Email' %></div><br>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <div><%= f.password_field :password, :placeholder => 'Password' %></div><br>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <div><%= f.password_field :password_confirmation, :placeholder => 'Password' %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
+  <div>
+    <%= link_to "Sign in", new_session_path(resource_name), :class => 'style_new_sessions' %>
+    <%= f.submit "Sign up" %>
+  </div>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
