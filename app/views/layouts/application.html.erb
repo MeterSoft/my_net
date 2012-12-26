@@ -8,6 +8,13 @@
 </head>
 <body>
 <div>
+  <div class="user-profile">
+    <ul id="user-menu">
+      <li><%= link_to 'Profile', edit_user_profile_path(current_user.id) %></li>
+      <li>Friends</li>
+    </ul>
+  </div>
+
   <% if current_user %>
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   <% end %>

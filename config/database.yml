@@ -1,15 +1,15 @@
 development:
   adapter: mysql2
-  database: list
+  database: my_net
   user: root
-  password: "111"
+  password:
   pool: 5
   timeout: 5000
 
 test:
   adapter: mysql2
-  database: list_test
+  database: my_net_test
   user: root
-  password: "111"
+  password:
   pool: 5
   timeout: 5000

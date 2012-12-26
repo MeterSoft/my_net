@@ -1,7 +1,5 @@
 body {
-	background: url('2.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% auto;
+	background: #f0ffff;
 }
 
 #logdiv{

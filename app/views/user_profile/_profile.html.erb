@@ -1,0 +1,11 @@
+<%= form_for(@user,:url => user_profile_path) do |f| %>
+  <div><%= f.text_field :first_name, :placeholder => 'first_name' %></div>
+  <br>
+  <div><%= f.text_field :last_name, :placeholder => 'last_name' %></div>
+  <br>
+  <div><%= f.text_field :thread_name, :placeholder => 'thread_name' %></div>
+
+  <div>
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
