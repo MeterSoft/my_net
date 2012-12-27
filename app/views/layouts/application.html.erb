@@ -8,6 +8,16 @@
 </head>
 <body>
 <div class='main-div'>
+  <div class="top">
+    <div class="logo">
+      <%= link_to image_tag("logo.png")%>
+    </div>
+    <div class="logout">
+      <% if current_user %>
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <% end %>
+    </div>
+  </div>
   <div class='avatar'>
     <%= image_tag(current_user.avatar.url(:medium)) if current_user.avatar? %>
   </div>
@@ -18,11 +28,7 @@
     </ul>
   </div>
 
-  <div class="logout">
-    <% if current_user %>
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% end %>
-  </div>
+
 
   <div class="yield">
     <%= yield %>
