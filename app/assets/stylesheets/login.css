@@ -24,17 +24,6 @@ input[type='email'], input[type='password']{
     outline: none;
 }
 
-input[type='submit'] {
-    width: 99px;
-    height: 99px;
-    border-radius: 50%;
-    background: url('2.jpg');
-    background-position: -972px -853px;
-    border: none;
-    margin-left: 150px;
-    color: #a9a9a9;
-}
-
 #sign_up {
     position: absolute;
 }

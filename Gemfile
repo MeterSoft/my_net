@@ -6,6 +6,7 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise', '1.4.7'
+gem "paperclip"
 
 group :development, :test do
   gem 'mysql2'

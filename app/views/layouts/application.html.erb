@@ -7,7 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div>
+<div class='main-div'>
+  <div class='avatar'>
+    <%= image_tag(current_user.avatar.url(:medium)) if current_user.avatar? %>
+  </div>
   <div class="user-profile">
     <ul id="user-menu">
       <li><%= link_to 'Profile', edit_user_profile_path(current_user.id) %></li>
@@ -15,12 +18,18 @@
     </ul>
   </div>
 
-  <% if current_user %>
+  <div class="logout">
+    <% if current_user %>
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   <% end %>
+  </div>
+
+  <div class="yield">
+    <%= yield %>
+  </div>
 </div>
 
-<%= yield %>
+
 
 </body>
 </html>

@@ -22,3 +22,34 @@ a {
     margin: 0px;
     padding: 0px;
 }
+
+.avatar {
+    width: 300px;
+    height: 300px;
+    border: 1px solid blue;
+    float: left;
+}
+
+.avatar img {
+    height: 100%;
+    width: 100%;
+}
+
+.main-div {
+    width: 1100px;
+    margin: auto;
+}
+
+.logout {
+    float: right;
+    width: 100px;
+}
+.yield {
+    margin: 300px 0 0 100px;
+    float: left;
+}
+
+.user-profile {
+    float: left;
+
+}
