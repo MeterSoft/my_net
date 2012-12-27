@@ -1,31 +1,45 @@
 body {
-	background: #f0ffff;
+    background: #7dcbff;
+}
+
+a {
+    text-decoration: none;
 }
 
 #logdiv{
-    position: absolute;
     width: 200px;
     height: 100px;
-    margin:640px 0 0 180px;
+    margin: 0 0 0 600px;
     padding: 50px;
+    float: left;
+}
+
+.mlogo {
+    margin: 100px;
+    float: left;
 }
 
 .style_new_sessions {
-    color: #a9a9a9;
+    color: #ffffff;
 }
 
 input[type='email'], input[type='password']{
-    width:200px;
-    height:30px;
-    font-size:18px;
-    background: none;
+    width:250px;
+    height:40px;
+    font-size:26px;
     border-radius: 10px;
-    opacity: 0.5;
     outline: none;
 }
 
+input[type='submit'] {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+
+}
+
 #sign_up {
-    position: absolute;
+
 }
 
 
