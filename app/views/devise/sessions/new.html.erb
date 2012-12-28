@@ -2,14 +2,9 @@
   <div><%= f.email_field :email, :placeholder => 'Email' %></div>
   <br>
   <div><%= f.password_field :password, :placeholder => 'Password' %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me, :class => 'style_new_sessions' %></div>
-  <% end -%>
-
+  <br>
   <div>
-    <%= link_to "Sign up", new_registration_path(resource_name), :class => 'style_new_sessions' , :id => 'sign_up'%>
-    <%= f.submit "Go" %>
+    <%= f.submit "Sign in" %>
   </div>
 <% end %>
 

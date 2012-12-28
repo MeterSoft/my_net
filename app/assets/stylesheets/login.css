@@ -7,16 +7,16 @@ a {
 }
 
 #logdiv{
-    width: 200px;
-    height: 100px;
-    margin: 0 0 0 600px;
     padding: 50px;
-    float: left;
+    width: 250px;
+    height: 150px;
+    position: absolute;
+    margin: 300px 500px;
 }
 
 .mlogo {
+    position: absolute;
     margin: 100px;
-    float: left;
 }
 
 .style_new_sessions {
@@ -35,11 +35,12 @@ input[type='submit'] {
     width: 100px;
     height: 30px;
     border-radius: 5px;
-
 }
 
 #sign_up {
-
+    font-size: 36px;
+    margin-right: 50px;
+    float: right;
 }
 
 

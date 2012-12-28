@@ -10,6 +10,11 @@
 <div class="mlogo">
   <%= image_tag('mlogo.png') %>
 </div>
+<div>
+  <p class="sign_up">
+    <%= link_to "Sign up", new_registration_path(resource_name), :class => 'style_new_sessions' , :id => 'sign_up'%>
+  </p>
+</div>
 <div id="logdiv">
     	<%= yield %>
 </div>
