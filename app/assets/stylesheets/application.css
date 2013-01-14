@@ -36,6 +36,8 @@ a {
 .main-div {
     width: 1100px;
     margin: auto;
+    background: #ffffff;
+    background-color: #ff0000;
 }
 
 .logout {
@@ -63,3 +65,5 @@ a {
     margin: 0 0 0 20px;
     float: left;
 }
+
+/*registration*/

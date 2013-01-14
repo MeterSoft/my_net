@@ -1,12 +1,16 @@
-<h2>Resend confirmation instructions</h2>
+<p class="top_login">
+  Resend confirmation instructions
+</p>
+<div>
+  <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+    <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+    <div><%= f.label :email %><br />
+    <%= f.email_field :email %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+    <div><%= f.submit "Resend confirmation instructions" %></div>
+  <% end %>
+</div>
+<p class="futer-login">
+  <%= link_to "Sign in", new_session_path(resource_name)%>
+</p>
