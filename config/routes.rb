@@ -5,6 +5,8 @@ Net::Application.routes.draw do
 
   resources :user_profile
 
+  resources :users
+
   devise_scope :user do
     get "/" => "devise/sessions#new"
     get "/login" => "devise/sessions#new"

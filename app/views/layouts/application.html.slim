@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+html
+  head
+    title Net
+    = stylesheet_link_tag    "bootstrap.min"
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body
+    .container-fluid
+      .top
+        .row-fluid
+          .span3
+            | Jabber
+          .span3
+            .input-append
+              = form_tag users_path do
+                = text_field_tag("appendedInputButton","", :placeholder => "Search People")
+                = submit_tag("Go!", :class => "btn")
+          .span5
+          .span1
+            = link_to "Sign out", destroy_user_session_path, :method => :delete
+      .main
+        .row-fluid
+          .span2
+            .row-fluid
+              = image_tag(current_user.avatar.url(:medium), :class => "img-polaroid") if current_user.avatar?
+            .row-fluid
+              = link_to 'Profile', edit_user_profile_path(current_user.id)
+          .span8
+            = yield
+          .span2
+
+

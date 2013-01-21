@@ -7,6 +7,8 @@ gem 'rails', '3.2.8'
 
 gem 'devise', '1.4.7'
 gem "paperclip"
+gem 'less'
+gem 'slim'
 
 group :development, :test do
   gem 'mysql2'
@@ -24,8 +26,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
+   gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
 end
 
