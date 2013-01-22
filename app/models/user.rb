@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :friends
 
+  acts_as_messageable
+
   searchable do
     text :first_name, :last_name
   end

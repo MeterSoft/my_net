@@ -7,6 +7,10 @@ Net::Application.routes.draw do
 
   resources :users_searches
 
+  resources :messages, :except => 'show'
+
+  #match 'message/new/:recipient_id' => 'messages#new', :as => :new_message
+
   devise_scope :user do
     get "/" => "devise/sessions#new"
     get "/login" => "devise/sessions#new"

@@ -1,0 +1,9 @@
+= form_tag('/messages') do
+  .row-fluid
+    = text_field_tag "user_name", value=@user.full_name
+  .row-fluid
+    = text_field_tag "subject"
+  .row-fluid
+    = text_area_tag "body"
+  .row-fluid
+    = submit_tag "Send message"

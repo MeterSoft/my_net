@@ -3,7 +3,6 @@ class UsersSearchesController < ApplicationController
   def create
 
     users = User.search do
-
       fulltext params[:user_name]
     end
     @users = users.results

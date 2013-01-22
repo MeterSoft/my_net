@@ -28,6 +28,8 @@ html
               = image_tag(current_user.avatar.url(:medium), :class => "img-polaroid") if current_user.avatar?
             .row-fluid
               = link_to 'Profile', edit_user_profile_path(current_user.id)
+            .row-fluid
+              = link_to 'Messages', messages_path
           .span8
             = yield
           .span2
