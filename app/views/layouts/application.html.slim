@@ -15,8 +15,8 @@ html
             | Jabber
           .span3
             .input-append
-              = form_tag users_path do
-                = text_field_tag("appendedInputButton","", :placeholder => "Search People")
+              = form_tag("/users_searches") do
+                = text_field_tag("user_name", "", :placeholder => "Search People")
                 = submit_tag("Go!", :class => "btn")
           .span5
           .span1

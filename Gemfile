@@ -6,9 +6,14 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise', '1.4.7'
-gem "paperclip"
+gem 'paperclip'
 gem 'less'
 gem 'slim'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar'
+gem 'pry'
+gem 'mailboxer'
 
 group :development, :test do
   gem 'mysql2'

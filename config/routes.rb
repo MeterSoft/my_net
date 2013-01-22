@@ -5,7 +5,7 @@ Net::Application.routes.draw do
 
   resources :user_profile
 
-  resources :users
+  resources :users_searches
 
   devise_scope :user do
     get "/" => "devise/sessions#new"

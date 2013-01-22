@@ -1,0 +1,15 @@
+- if @users
+  .users_search
+    ul
+      - @users.each do |u|
+        li
+          .row-fluid
+            .span2
+              = image_tag(u.avatar.url(:thumb), :class => "img-polaroid") if u.avatar?
+            .span10
+              = u.full_name
+              .row-fluid
+                input type="button" class="btn btn-inverse" value="Add to friend"
+- else
+  span
+    | This user is not found
