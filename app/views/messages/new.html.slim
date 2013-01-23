@@ -1,6 +1,7 @@
 = form_tag('/messages') do
   .row-fluid
     = text_field_tag "user_name", value=@user.full_name
+    = hidden_field_tag "user_id", value=@user.id
   .row-fluid
     = text_field_tag "subject"
   .row-fluid

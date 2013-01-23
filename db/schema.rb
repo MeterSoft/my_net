@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122115458) do
+ActiveRecord::Schema.define(:version => 20130123093623) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20130122115458) do
     t.integer  "receiver_id"
     t.string   "receiver_type"
     t.integer  "notification_id",                                  :null => false
-    t.boolean  "read",                          :default => false
+    t.boolean  "is_read",                       :default => false
     t.boolean  "trashed",                       :default => false
     t.boolean  "deleted",                       :default => false
     t.string   "mailbox_type",    :limit => 25

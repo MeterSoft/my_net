@@ -1,8 +1,7 @@
 class MessagesController < ApplicationController
 
   def index
-    @messages = current_user.mailbox.conversations
-    binding.pry
+    @messages = current_user.mailbox.inbox
   end
 
   def new
@@ -10,10 +9,8 @@ class MessagesController < ApplicationController
   end
 
   def create
-    #raise params.inspect
-    user = User.search do
-      fulltext params[:user_name]
-    end
-    current_user.send_message(user.results, params[:body], params[:subject])
+    @user = User.find(params[:user_id])
+    current_user.send_message(@user, params[:body], params[:subject])
+    redirect_to messages_path
   end
 end

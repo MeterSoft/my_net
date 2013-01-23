@@ -1,0 +1,8 @@
+ul
+  - @messages.each do |m|
+    li
+      .row-fluid
+        .span2
+          = image_tag User.find(m.messages.first.sender_id).avatar.url(:thumb) if User.find(m.messages.first.sender_id).avatar?
+        .span10
+          = m.messages.first.body

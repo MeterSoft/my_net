@@ -13,7 +13,7 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'progress_bar'
 gem 'pry'
-gem 'mailboxer'
+gem "mailboxer", "~> 0.9.0"
 
 group :development, :test do
   gem 'mysql2'
