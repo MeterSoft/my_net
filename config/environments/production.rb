@@ -79,5 +79,4 @@ Net::Application.configure do
       :authentication => :plain,
       :enable_starttls_auto => true
   }
-  Sunspot.config.solr.url = ENV['WEBSOLR_URL']
 end
