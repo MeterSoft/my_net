@@ -22,8 +22,6 @@ end
 
 group :production do
   gem 'pg'
-  gem 'activerecord-mysql2-adapter'
-  gem 'activerecord-jdbc-adapter'
 end
 
 
