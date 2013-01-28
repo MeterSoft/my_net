@@ -14,6 +14,7 @@ gem 'sunspot_solr'
 gem 'progress_bar'
 gem 'pry'
 gem "mailboxer", "~> 0.9.0"
+gem 'mysql2'
 
 group :development, :test do
   gem 'mysql2'
@@ -21,6 +22,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'activerecord-mysql2-adapter'
 end
 
 
