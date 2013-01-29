@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "50x50>" }
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "50x50>", :msg => "15x15" },
+                    :default_url => 'default_large.png'
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,

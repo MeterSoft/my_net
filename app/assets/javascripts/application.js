@@ -17,4 +17,7 @@
 
 $(function() {
     $("#logdiv").modal();
+    $(".collapse").collapse({
+      toggle: false
+    })
 });
