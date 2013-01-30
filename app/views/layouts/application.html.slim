@@ -29,7 +29,8 @@ html
             .row-fluid
               = link_to 'Profile', edit_user_profile_path(current_user.id)
             .row-fluid
-              = link_to 'Messages', messages_path
+              = link_to "Messages", messages_path
+              span class="badge" id="msg_count" #{@count}
           .span8
             = yield
           .span2

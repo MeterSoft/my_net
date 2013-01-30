@@ -20,4 +20,11 @@ $(function() {
     $(".collapse").collapse({
       toggle: false
     })
+    setInterval(function() {
+        $.ajax({
+            type: "GET",
+            url: "messages_counts#index"
+            })
+        }
+    , 10000);
 });

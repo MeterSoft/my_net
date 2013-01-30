@@ -18,4 +18,10 @@ class MessagesController < ApplicationController
     end
     redirect_to messages_path
   end
+
+  def show
+    @conversation = current_user.mailbox.inbox.find(params[:id])
+    current_user.mark_as_read(@conversation)
+  end
+
 end

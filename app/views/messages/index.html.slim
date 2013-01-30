@@ -5,23 +5,10 @@ ul
         #accordion2.accordion
           .accordion-group
             .accordion-heading
-              a.accordion-toggle data-parent="#accordion2" data-toggle="collapse" href="#collapse#{i}"
+              a.accordion-toggle#conversation data-parent="#accordion2" data-toggle="collapse"
                 = image_tag(m.messages.last.sender.avatar.url(:thumb))
                 | &nbsp
                 = m.messages.last.body
-            .accordion-body.collapse id="collapse#{i}"
-              .accordion-inner
-                ul
-                  - m.messages.each do |mes|
-                    li.row-fluid.message
-                      .span2
-                        = image_tag(mes.sender.avatar.url(:thumb))
-                      .span10
-                        = mes.body
+              = link_to 'show', message_path(m.id)
 
-                = form_tag('/messages') do
-                  = hidden_field_tag "conversation", value=m.id
-                  .row-fluid
-                    = text_area_tag "body"
-                  .row-fluid
-                    = submit_tag "Reply"
+
