@@ -25,4 +25,9 @@ class MessagesController < ApplicationController
     messages_count
   end
 
+  def destroy
+    raise params.inspect
+    current_user.mailbox.inbox
+  end
+
 end

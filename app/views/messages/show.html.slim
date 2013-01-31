@@ -1,13 +1,15 @@
 ul.scrolling
-  - @conversation.messages.each do |mes|
+  - @conversation.messages.each_with_index do |mes, i|
     li.border
       .row-fluid
         .span2
           = image_tag(mes.sender.avatar.url(:thumb))
           p
             = mes.created_at.to_time
-        .span10
+        .span9
           = mes.body
+        .span1
+          = link_to '&times;'.html_safe , mes , :class => "close", :conversation => "#{@conversation.id}", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true
   .row-fluid
     = form_tag('/messages') do
       = hidden_field_tag "conversation", value=@conversation.id
