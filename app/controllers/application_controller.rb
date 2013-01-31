@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :authenticate_user!
+  before_filter :messages_count
 
   layout :layout_by_resource
 
@@ -22,4 +23,9 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
+
+  def messages_count
+    @count = current_user.receipts.where(is_read: false).count
+  end
+
 end

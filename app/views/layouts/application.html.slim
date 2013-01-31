@@ -16,8 +16,7 @@ html
           .span3
             .input-append
               = form_tag("/users_searches") do
-                = text_field_tag("user_name", "", :placeholder => "Search People")
-                = submit_tag("Go!", :class => "btn")
+                = text_field_tag("user_name", "", :placeholder => "Search People", :class => "input-medium search-query")
           .span5
           .span1
             = link_to "Sign out", destroy_user_session_path, :method => :delete
@@ -27,10 +26,12 @@ html
             .row-fluid
               = image_tag(current_user.avatar.url(:medium), :class => "img-polaroid")
             .row-fluid
-              = link_to 'Profile', edit_user_profile_path(current_user.id)
-            .row-fluid
-              = link_to "Messages", messages_path
-              span class="badge" id="msg_count" #{@count}
+              ul.right-menu
+                li
+                  = link_to 'Profile', edit_user_profile_path(current_user.id)
+                li
+                  = link_to "Messages", messages_path
+                  span class="badge" id="msg_count" data-url="#{messages_counts_path}" #{@count}
           .span8
             = yield
           .span2

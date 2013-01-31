@@ -17,13 +17,10 @@
 
 $(function() {
     $("#logdiv").modal();
-    $(".collapse").collapse({
-      toggle: false
-    })
     setInterval(function() {
         $.ajax({
             type: "GET",
-            url: "messages_counts#index"
+            url: "/messages_counts"
             })
         }
     , 10000);

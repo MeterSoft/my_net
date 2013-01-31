@@ -1,14 +1,9 @@
-ul
+ul.scrolling
   - @messages.each_with_index do |m, i|
     li
       .row-fluid
-        #accordion2.accordion
-          .accordion-group
-            .accordion-heading
-              a.accordion-toggle#conversation data-parent="#accordion2" data-toggle="collapse"
-                = image_tag(m.messages.last.sender.avatar.url(:thumb))
-                | &nbsp
-                = m.messages.last.body
-              = link_to 'show', message_path(m.id)
-
-
+        .span12
+          a.message#conversation href="#{message_path(m.id)}"
+            = image_tag(m.messages.last.sender.avatar.url(:thumb))
+            | &nbsp
+            = m.messages.last.body
