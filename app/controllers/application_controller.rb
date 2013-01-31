@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def messages_count
-    @count = current_user.receipts.where(is_read: false).count
+    @count = current_user.receipts.where(is_read: false).count if current_user
   end
 
 end
