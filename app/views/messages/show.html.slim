@@ -1,14 +1,15 @@
 ul.scrolling
-  - @conversation.messages.each do |mes|
-    li.row-fluid.message
-      .span2
-        = image_tag(mes.sender.avatar.url(:thumb))
-      .span10
-        = mes.body
-
-  = form_tag('/messages') do
-    = hidden_field_tag "conversation", value=@conversation.id
-    .row-fluid
-      = text_area_tag "body"
-    .row-fluid
-      = submit_tag "Reply"
+  .span12
+    - @conversation.messages.each do |mes|
+      li.row-fluid.border
+        .span2
+          = image_tag(mes.sender.avatar.url(:thumb))
+        .span10
+          = mes.body
+  .row-fluid
+    = form_tag('/messages') do
+      = hidden_field_tag "conversation", value=@conversation.id
+      .row-fluid
+        = text_area_tag "body" ,"", :class => "full-area"
+      .row-fluid
+        = submit_tag "Reply", :class => "btn"
