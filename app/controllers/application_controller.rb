@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
 
   def messages_count
     @count = current_user.receipts.where(is_read: false).count if current_user
+    @count = nil if @count == 0
   end
 
 end

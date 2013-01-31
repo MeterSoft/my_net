@@ -22,6 +22,7 @@ class MessagesController < ApplicationController
   def show
     @conversation = current_user.mailbox.inbox.find(params[:id])
     current_user.mark_as_read(@conversation)
+    messages_count
   end
 
 end
