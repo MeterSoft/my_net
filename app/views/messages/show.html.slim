@@ -1,9 +1,11 @@
 ul.scrolling
-  .span12
-    - @conversation.messages.each do |mes|
-      li.row-fluid.border
+  - @conversation.messages.each do |mes|
+    li.border
+      .row-fluid
         .span2
           = image_tag(mes.sender.avatar.url(:thumb))
+          p
+            = mes.created_at.to_time
         .span10
           = mes.body
   .row-fluid
