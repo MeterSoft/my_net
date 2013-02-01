@@ -8,32 +8,35 @@ html
     = csrf_meta_tags
 
   body
-    .container-fluid
-      .top
-        .row-fluid
-          .span3
-            | Jabber
-          .span3
-            .input-append
-              = form_tag("/users_searches") do
-                = text_field_tag("user_name", "", :placeholder => "Search People", :class => "input-medium search-query")
-          .span5
-          .span1
-            = link_to "Sign out", destroy_user_session_path, :method => :delete
+    #wrapper
+      .nav-header.header
+        .container-fluid
+          .row-fluid
+            .span3
+              p Jabber
+            .span3
+              .input-append
+                = form_tag("/users_searches") do
+                  = text_field_tag("user_name", "", :placeholder => "Search People", :class => "input-medium search-query")
+            .span4
+            .span2
+              = link_to "Sign out", destroy_user_session_path, :method => :delete
+
       .main
-        .row-fluid
-          .span2
-            .row-fluid
-              = image_tag(current_user.avatar.url(:medium), :class => "img-polaroid")
-            .row-fluid
-              ul.right-menu
-                li
-                  = link_to 'Profile', edit_user_profile_path(current_user.id)
-                li
-                  = link_to "Messages", messages_path
-                  span class="badge" id="msg_count" data-url="#{messages_counts_path}" #{@count}
-          .span8
-            = yield
-          .span2
+        .container-fluid
+          .row-fluid
+            .span2
+              .row-fluid
+                = image_tag(current_user.avatar.url(:medium), :class => "img-polaroid")
+              .row-fluid
+                ul.right-menu
+                  li
+                    = link_to 'Profile', edit_user_profile_path(current_user.id)
+                  li
+                    = link_to "Messages", messages_path
+                    span class="badge" id="msg_count" data-url="#{messages_counts_path}" #{@count}
+            .span8
+              = yield
+            .span2
 
 

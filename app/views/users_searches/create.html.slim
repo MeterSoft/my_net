@@ -1,16 +1,15 @@
 - if @users
-  .users_search
-    ul
-      - @users.each do |u|
-        li
-          .row-fluid
-            .span2
-              = image_tag(u.avatar.url(:thumb), :class => "img-polaroid")
-            .span10
-              = u.full_name
-              .row-fluid
-                input type="button" class="btn btn-inverse" value="Add to friend"
-                = link_to "Send message", new_message_path(:user_id => u.id),  :class => "btn btn-inverse"
+  ul.scrolling
+    - @users.each do |u|
+      li.message
+        .row-fluid
+          .span2
+            = image_tag(u.avatar.url(:thumb), :class => "img-polaroid")
+          .span7
+            = u.full_name
+          .span3
+            input type="button" class="btn btn-inverse" value="Add to friend"
+            = link_to "Send message", new_message_path(:user_id => u.id),  :class => "btn btn-inverse"
 - else
   span
     | This user is not found

@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
       @user = User.find(params[:user_id])
       current_user.send_message(@user, params[:body], params[:subject])
     end
-    redirect_to messages_path
+    redirect_to message_path(conversation)
   end
 
   def show
@@ -25,9 +25,9 @@ class MessagesController < ApplicationController
     messages_count
   end
 
-  def destroy
-    raise params.inspect
-    current_user.mailbox.inbox
-  end
+  #def destroy
+  #  current_user.mailbox.inbox.find(params[:conversation]).messages.find(params[:id]).destroy
+  #  render :nothing => true
+  #end
 
 end
