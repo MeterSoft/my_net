@@ -12,11 +12,12 @@ class MessagesController < ApplicationController
     if params[:conversation]
       conversation = current_user.mailbox.conversations.find(params[:conversation])
       current_user.reply_to_conversation(conversation, params[:body])
+      redirect_to message_path(conversation)
     else
       @user = User.find(params[:user_id])
       current_user.send_message(@user, params[:body], params[:subject])
+      redirect_to message_path
     end
-    redirect_to message_path(conversation)
   end
 
   def show
