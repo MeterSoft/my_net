@@ -9,15 +9,14 @@ html
 
   body
     #wrapper
-      .nav-header.header
+      .header
         .container-fluid
           .row-fluid
             .span3
               p Jabber
             .span3
-              .input-append
-                = form_tag("/users_searches") do
-                  = text_field_tag("user_name", "", :placeholder => "Search People", :class => "input-medium search-query")
+              = form_tag("/users_searches") do
+                = text_field_tag("user_name", "", :placeholder => "Search People", :class => "search-query")
             .span4
             .span2
               = link_to "Sign out", destroy_user_session_path, :method => :delete

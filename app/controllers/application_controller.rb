@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
   before_filter :messages_count
+  before_filter :user_status
 
   layout :layout_by_resource
 
@@ -27,6 +28,16 @@ class ApplicationController < ActionController::Base
   def messages_count
     @count = current_user.receipts.where(is_read: false).count if current_user
     @count = nil if @count == 0
+  end
+
+  def user_status
+    if current_user.ping
+      if (Time.now - current_user.ping > 30) && current_user
+        current_user.status = 'offline'
+      else
+        current_user.status = 'online'
+      end
+    end
   end
 
 end
