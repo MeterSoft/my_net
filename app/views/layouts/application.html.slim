@@ -30,10 +30,16 @@ html
               .row-fluid
                 ul.right-menu
                   li
+                    = link_to 'MyPage', '#'
+                  li
                     = link_to 'Profile', edit_user_profile_path(current_user.id)
                   li
-                    = link_to "Messages", messages_path
+                    = link_to 'Messages', messages_path
                     span class="badge" id="msg_count" data-url="#{messages_counts_path}" #{@count}
+                  li
+                    = link_to 'Friend', '#'
+                  li
+                    = link_to 'Setting', '#'
             .span8
               = yield
             .span2

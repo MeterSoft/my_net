@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123093623) do
+ActiveRecord::Schema.define(:version => 20130201101819) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(:version => 20130123093623) do
   add_index "receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",        :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",        :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(:version => 20130123093623) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authentication_token"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "thread_name"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(:version => 20130123093623) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "status",                                :default => "offline"
+    t.time     "ping"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
