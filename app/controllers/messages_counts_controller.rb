@@ -5,15 +5,15 @@ class MessagesCountsController < ApplicationController
   end
 
   def user_status
-      if current_user
-        if current_user.ping
-          if (Time.now - current_user.ping > 30)
-            current_user.status = 'offline'
-          else
-            current_user.status = 'online'
-          end
+    User.all.each do |u|
+      if u.ping
+        if (Time.now - u.ping > 30)
+          u.status = 'offline'
+        else
+          u.status = 'online'
         end
       end
     end
+  end
 
 end
