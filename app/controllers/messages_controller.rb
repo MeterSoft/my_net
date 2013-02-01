@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
     else
       @user = User.find(params[:user_id])
       current_user.send_message(@user, params[:body], params[:subject])
-      redirect_to message_path
+      redirect_to messages_path
     end
   end
 
