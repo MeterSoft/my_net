@@ -1,16 +1,17 @@
 class MessagesCountsController < ApplicationController
 
   def index
-    current_user.ping = Time.now
+    current_user.update_attributes(:time => Time.now)
+    user_status
   end
 
   def user_status
     User.all.each do |u|
-      if u.ping
-        if (Time.now - u.ping > 30)
-          u.status = 'offline'
+      if u.time
+        if (Time.now - u.time < 30)
+          u.update_attributes(:status => "online")
         else
-          u.status = 'online'
+          u.update_attributes(:status => "offline")
         end
       end
     end

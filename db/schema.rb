@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201101819) do
+ActiveRecord::Schema.define(:version => 20130204074657) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20130201101819) do
     t.datetime "avatar_updated_at"
     t.string   "status",                                :default => "offline"
     t.time     "ping"
+    t.datetime "time"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
