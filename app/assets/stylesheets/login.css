@@ -1,5 +1,5 @@
 body {
-    background: url("chat.gif");
+    background: #313131 url(bg-main.jpg) repeat-x center top;
 }
 
 a {
