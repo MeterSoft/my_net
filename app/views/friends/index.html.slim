@@ -12,34 +12,50 @@ ul.nav.nav-tabs#myTab
         li.message
           .row-fluid
             .span2
-                = image_tag(f.user.avatar.url(:thumb), :class => "img-polaroid")
+                = image_tag(f.friend.avatar.url(:thumb), :class => "img-polaroid")
             .span7
               p
-                = f.user.full_name
-              - if f.user.status == 'online'
+                = f.friend.full_name
+              - if f.friend.status == 'online'
                 p.online
-                  = f.user.status
+                  = f.friend.status
               - else
                 p.offline
-                    = f.user.status
+                    = f.friend.status
             .span3
-              = link_to "Send message", new_message_path(:user_id => f.user.id),  :class => "btn btn-inverse"
+              = link_to "Send message", new_message_path(:user_id => f.friend.id),  :class => "btn btn-inverse"
+      - @inverse_friends.each do |f|
+        li.message
+          .row-fluid
+            .span2
+                = image_tag(f.inverse_friend.avatar.url(:thumb), :class => "img-polaroid")
+            .span7
+              p
+                = f.inverse_friend.full_name
+              - if f.inverse_friend.status == 'online'
+                p.online
+                  = f.inverse_friend.status
+              - else
+                p.offline
+                    = f.inverse_friend.status
+            .span3
+              = link_to "Send message", new_message_path(:user_id => f.inverse_friend.id),  :class => "btn btn-inverse"
   .tab-pane#invite
     ul.scrolling
       - @friends_invite.each do |fi|
         li.message
           .row-fluid
             .span2
-                = image_tag(fi.user.avatar.url(:thumb), :class => "img-polaroid")
+                = image_tag(fi.friend.avatar.url(:thumb), :class => "img-polaroid")
             .span7
               p
-                = fi.user.full_name
-              - if fi.user.status == 'online'
+                = fi.friend.full_name
+              - if fi.friend.status == 'online'
                 p.online
-                  = fi.user.status
+                  = fi.friend.status
               - else
                 p.offline
-                    = fi.user.status
+                    = fi.friend.status
             .span3
               = form_tag(friends_path) do
                 = hidden_field_tag :user_confirmed_id, value=fi.id

@@ -11,7 +11,13 @@ class User < ActiveRecord::Base
                   :first_name, :last_name, :thread_name, :avatar, :time, :status
 
   has_many :friends, :foreign_key => "user_id", :class_name => "Friend"
-  has_many :friends, :foreign_key => "user_friend_id", :class_name => "Friend"
+  has_many :inverse_friends, :foreign_key => "user_friend_id", :class_name => "Friend"
+
+  def all_friends
+    friends + inverse_friends
+  end
+
+  scope :friend_status, -> { where(:status => "confirmed") }
 
   acts_as_messageable
 

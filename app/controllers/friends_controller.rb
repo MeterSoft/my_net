@@ -2,7 +2,10 @@ class FriendsController < ApplicationController
 
   def index
     @friends = current_user.friends.where(:status => 'confirmed')
-    @friends_invite = current_user.friends.where(:status => 'invite')
+    @inverse_friends = current_user.inverse_friends.where(:status => 'confirmed')
+
+    @friends_invite = current_user.inverse_friends.where(:status => 'invite')
+
   end
 
   def create
