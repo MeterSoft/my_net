@@ -11,6 +11,8 @@ Net::Application.routes.draw do
 
   resources :messages_counts
 
+  resources :friends
+
   devise_scope :user do
     get "/" => "devise/sessions#new"
     get "/login" => "devise/sessions#new"

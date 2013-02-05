@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :thread_name, :avatar, :time, :status
 
-  has_many :friends
+  has_many :friends, :foreign_key => "user_id", :class_name => "Friend"
+  has_many :friends, :foreign_key => "user_friend_id", :class_name => "Friend"
 
   acts_as_messageable
 

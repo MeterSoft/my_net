@@ -25,8 +25,22 @@ class ApplicationController < ActionController::Base
   end
 
   def messages_count
+    user_status if current_user
     @count = current_user.receipts.where(is_read: false).count if current_user
     @count = nil if @count == 0
+  end
+
+  def user_status
+    current_user.update_attributes(:time => Time.now)
+    User.all.each do |u|
+      if u.time
+        if (Time.now - u.time < 30)
+          u.update_attributes(:status => "online")
+        else
+          u.update_attributes(:status => "offline")
+        end
+      end
+    end
   end
 
 end
