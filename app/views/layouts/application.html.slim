@@ -38,6 +38,7 @@ html
                     span class="badge" id="msg_count" data-url="#{messages_counts_path}" #{@count}
                   li
                     = link_to 'Friend', friends_path
+                    span class="badge" id="invite_count" data-url="#{messages_counts_path}" #{@invite}
                   li
                     = link_to 'Setting', '#'
             .span8

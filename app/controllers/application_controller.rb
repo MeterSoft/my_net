@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
 
   def messages_count
     user_status if current_user
+    friend_invite if current_user
     @count = current_user.receipts.where(is_read: false).count if current_user
     @count = nil if @count == 0
   end
@@ -41,6 +42,11 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+  end
+
+  def friend_invite
+    @invite = current_user.inverse_friends.where(:status => 'invite').count
+    @invite = nil if @invite == 1
   end
 
 end
