@@ -16,7 +16,7 @@
                 = u.status
 
           .span3
-            - if u.friend?
+            - if u.friend?(current_user)
               p
                 | Already your friend
             - else

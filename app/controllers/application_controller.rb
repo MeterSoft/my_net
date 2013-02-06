@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
 
   def friend_invite
     @invite = current_user.inverse_friends.where(:status => 'invite').count
-    @invite = nil if @invite == 1
+    @invite = nil if @invite == 0
   end
 
 end

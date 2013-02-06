@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
     [first_name, last_name].compact.join(' ')
   end
 
-  def friend?
-    Friend.find_by_user_friend_id(id) || Friend.find_by_user_id(id)
+  def friend?(current_user)
+    Friend.find_by_user_id_and_user_friend_id_and_status(self, current_user, 'confirmed') ||
+    Friend.find_by_user_id_and_user_friend_id_and_status(current_user, self, 'confirmed')
   end
 end
