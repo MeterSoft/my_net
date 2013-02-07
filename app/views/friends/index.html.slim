@@ -12,7 +12,7 @@ ul.nav.nav-tabs#myTab
         li.message
           .row-fluid
             .span2
-                = image_tag(f.friend.avatar.url(:thumb), :class => "img-polaroid")
+                = image_tag(f.friend.avatar.url(:small), :class => "img-polaroid")
             .span7
               p
                 = f.friend.full_name
@@ -28,7 +28,7 @@ ul.nav.nav-tabs#myTab
         li.message
           .row-fluid
             .span2
-                = image_tag(f.inverse_friend.avatar.url(:thumb), :class => "img-polaroid")
+                = image_tag(f.inverse_friend.avatar.url(:small), :class => "img-polaroid")
             .span7
               p
                 = f.inverse_friend.full_name
@@ -46,7 +46,7 @@ ul.nav.nav-tabs#myTab
         li.message
           .row-fluid
             .span2
-                = image_tag(fi.friend.avatar.url(:thumb), :class => "img-polaroid")
+                = image_tag(fi.friend.avatar.url(:small), :class => "img-polaroid")
             .span7
               p
                 = fi.friend.full_name

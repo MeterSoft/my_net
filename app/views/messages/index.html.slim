@@ -4,7 +4,7 @@ ul.scrolling
       a.message#conversation href="#{message_path(m.id)}"
         .row-fluid
           .span11
-            = image_tag(m.messages.last.sender.avatar.url(:thumb))
+            = image_tag(m.messages.last.sender.avatar.url(:small))
             | &nbsp
             = m.messages.last.body
           .span1

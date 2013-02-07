@@ -3,7 +3,7 @@ ul.scrolling
     li.border
       .row-fluid
         .span2
-          = image_tag(mes.sender.avatar.url(:thumb))
+          = image_tag(mes.sender.avatar.url(:small))
           p
             = mes.created_at.to_time
         .span9

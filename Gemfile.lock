@@ -34,7 +34,10 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    cocaine (0.4.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.1)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -74,18 +77,17 @@ GEM
       foreigner (>= 0.9.1)
       rails (> 3.0.0)
     method_source (0.8.1)
-    mime-types (1.19)
+    mime-types (1.20.1)
     multi_json (1.5.0)
     mysql2 (0.3.11)
     nokogiri (1.5.6)
     options (2.3.0)
       fattr
     orm_adapter (0.0.7)
-    paperclip (3.4.0)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.4.0)
+    paperclip (2.8.0)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
       mime-types
     pg (0.14.1)
     polyglot (0.3.3)
@@ -100,7 +102,7 @@ GEM
     rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-ssl (1.3.2)
+    rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -120,7 +122,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.3)
-    rdoc (3.12)
+    rdoc (3.12.1)
       json (~> 1.4)
     ref (1.0.2)
     rsolr (1.0.8)
@@ -171,7 +173,7 @@ DEPENDENCIES
   less
   mailboxer (~> 0.9.0)
   mysql2
-  paperclip
+  paperclip (~> 2.7)
   pg
   progress_bar
   pry
