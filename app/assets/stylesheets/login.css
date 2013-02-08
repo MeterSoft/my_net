@@ -20,6 +20,7 @@ a {
     font-size: 24px;
     text-align: center;
     color: #666666;
+    padding: 10px;
 }
 
 .futer-login {
@@ -80,20 +81,6 @@ a {
     color: #ffffff;
 }
 
-input[type='email'], input[type='password']{
-    width:250px;
-    height:40px;
-    font-size:26px;
-    border-radius: 10px;
-    outline: none;
-}
-
-input[type='submit'] {
-    width: 100px;
-    height: 25px;
-    border-radius: 5px;
-    background: #ffffff;
-}
 
 
 

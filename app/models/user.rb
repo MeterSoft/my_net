@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
 
   acts_as_messageable
 
+  validates_presence_of :first_name, :last_name
+
   searchable do
     text :first_name, :last_name
     integer :id
