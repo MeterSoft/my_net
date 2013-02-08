@@ -1,65 +1,66 @@
-ul.nav.nav-tabs#myTab
-  li.active
-    a href="#friend" Friends
-  li
-    a href="#invite" Invite
+.friend-menu
+  ul.nav.nav-tabs#myTab
+    li.active
+      a href="#friend" Friends
+    li
+      a href="#invite" Invite
 
 
-.tab-content
-  .tab-pane.active#friend
-    ul.scrolling
-      - @inverse_friends.each do |f|
-        li.message
-          .row-fluid
-            .span2
-                = image_tag(f.friend.avatar.url(:small), :class => "img-polaroid")
-            .span7
-              p
-                = f.friend.full_name
-              - if f.friend.status == 'online'
-                p.online
-                  = f.friend.status
-              - else
-                p.offline
+  .tab-content
+    .tab-pane.active#friend
+      ul.scrolling
+        - @inverse_friends.each do |f|
+          li.message
+            .row-fluid
+              .span2
+                  = image_tag(f.friend.avatar.url(:small), :class => "img-polaroid")
+              .span7
+                p.name
+                  = f.friend.full_name
+                - if f.friend.status == 'online'
+                  p.online
                     = f.friend.status
-            .span3
-              = link_to "Send message", new_message_path(:user_id => f.friend.id),  :class => "btn btn-inverse"
-      - @friends.each do |f|
-        li.message
-          .row-fluid
-            .span2
-                = image_tag(f.inverse_friend.avatar.url(:small), :class => "img-polaroid")
-            .span7
-              p
-                = f.inverse_friend.full_name
-              - if f.inverse_friend.status == 'online'
-                p.online
-                  = f.inverse_friend.status
-              - else
-                p.offline
+                - else
+                  p.offline
+                      = f.friend.status
+              .span3
+                = link_to "Send message", new_message_path(:user_id => f.friend.id),  :class => "btn btn-inverse"
+        - @friends.each do |f|
+          li.message
+            .row-fluid
+              .span2
+                  = image_tag(f.inverse_friend.avatar.url(:small), :class => "img-polaroid")
+              .span7
+                p.name
+                  = f.inverse_friend.full_name
+                - if f.inverse_friend.status == 'online'
+                  p.online
                     = f.inverse_friend.status
-            .span3
-              = link_to "Send message", new_message_path(:user_id => f.inverse_friend.id),  :class => "btn btn-inverse"
-  .tab-pane#invite
-    ul.scrolling
-      - @friends_invite.each do |fi|
-        li.message
-          .row-fluid
-            .span2
-                = image_tag(fi.friend.avatar.url(:small), :class => "img-polaroid")
-            .span7
-              p
-                = fi.friend.full_name
-              - if fi.friend.status == 'online'
-                p.online
-                  = fi.friend.status
-              - else
-                p.offline
+                - else
+                  p.offline
+                      = f.inverse_friend.status
+              .span3
+                = link_to "Send message", new_message_path(:user_id => f.inverse_friend.id),  :class => "btn btn-inverse"
+    .tab-pane#invite
+      ul.scrolling
+        - @friends_invite.each do |fi|
+          li.message
+            .row-fluid
+              .span2
+                  = image_tag(fi.friend.avatar.url(:small), :class => "img-polaroid")
+              .span7
+                p.name
+                  = fi.friend.full_name
+                - if fi.friend.status == 'online'
+                  p.online
                     = fi.friend.status
-            .span3
-              = form_tag(friends_path) do
-                = hidden_field_tag :user_confirmed_id, value=fi.id
-                = submit_tag 'Add to friend', :class => "btn btn-inverse"
+                - else
+                  p.offline
+                      = fi.friend.status
+              .span3
+                = form_tag(friends_path) do
+                  = hidden_field_tag :user_confirmed_id, value=fi.id
+                  = submit_tag 'Add to friend', :class => "btn btn-inverse"
 javascript:
   $(function() {
     $('#myTab a').click(function (e) {

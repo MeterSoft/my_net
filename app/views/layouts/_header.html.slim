@@ -1,0 +1,10 @@
+.container-fluid
+  .row-fluid
+    .span3
+      p Jabber
+    .span4
+    .span3
+      = form_tag("/users_searches") do
+        = text_field_tag("user_name", "", :placeholder => "Search People", :class => "search-query")
+    .span2
+      = link_to "Sign out", destroy_user_session_path, :method => :delete

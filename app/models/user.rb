@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_attached_file :avatar,
-                    :styles => { :medium => {:geometry => "300x300>" },
-                                 :small => {:geometry => "100x100#", :processors => [:cropper]},
+                    :styles => { :medium => {:geometry => "300x300#" },
+                                 :small => {:geometry => "50x50#", :processors => [:cropper]},
                                  :large => {:geometry => "600x600>" } },
                     :default_url => 'default_large.png'
 

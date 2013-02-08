@@ -24,6 +24,7 @@ class MessagesController < ApplicationController
     @conversation = current_user.mailbox.inbox.find(params[:id])
     current_user.mark_as_read(@conversation)
     messages_count
+    @messages = current_user.mailbox.inbox
   end
 
   #def destroy

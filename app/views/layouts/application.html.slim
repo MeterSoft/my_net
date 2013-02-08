@@ -11,39 +11,42 @@ html
   body
     #wrapper
       .header
-        .container-fluid
-          .row-fluid
-            .span3
-              p Jabber
-            .span3
-              = form_tag("/users_searches") do
-                = text_field_tag("user_name", "", :placeholder => "Search People", :class => "search-query")
-            .span4
-            .span2
-              = link_to "Sign out", destroy_user_session_path, :method => :delete
-
+        = render :partial => "layouts/header"
       .main
         .container-fluid
           .row-fluid
-            .span2
-              .row-fluid
+            .span3
+              ul.right-menu
+                li
+                  i.icon-chevron-right
+                  = link_to 'MyPage', '#'
+                li
+                  i.icon-chevron-right
+                  = link_to 'Profile', edit_user_profile_path(current_user.id)
+                li
+                  i.icon-chevron-right
+                  i class="badge" id="msg_count" data-url="#{messages_counts_path}" #{@count}
+                  = link_to 'Messages', messages_path
+                li
+                  i.icon-chevron-right
+                  i class="badge" id="invite_count" data-url="#{messages_counts_path}" #{@invite}
+                  = link_to 'Friend', friends_path
+                li
+                  i.icon-chevron-right
+                  = link_to 'Setting', '#'
+            .span3
+              .user-avatar
                 = image_tag(current_user.avatar.url(:medium), :class => "img-polaroid")
-              .row-fluid
-                ul.right-menu
+            .span6
+              .user-info
+                ul
                   li
-                    = link_to 'MyPage', '#'
+                    = current_user.full_name
                   li
-                    = link_to 'Profile', edit_user_profile_path(current_user.id)
-                  li
-                    = link_to 'Messages', messages_path
-                    span class="badge" id="msg_count" data-url="#{messages_counts_path}" #{@count}
-                  li
-                    = link_to 'Friend', friends_path
-                    span class="badge" id="invite_count" data-url="#{messages_counts_path}" #{@invite}
-                  li
-                    = link_to 'Setting', '#'
-            .span8
+                    = current_user.status
+          br
+          .row-fluid
+            .span12
               = yield
-            .span2
 
 
