@@ -1,6 +1,4 @@
-body {
-    background: #313131 url(bg-main.jpg) repeat-x center top;
-}
+body { background: #313131 url(bg-main.jpg) repeat-x center top; color: #d4d4d4;}
 
 a {
     text-decoration: none;
