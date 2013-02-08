@@ -1,0 +1,32 @@
+.fon
+  ul.scrolling
+    - @inverse_friends.each do |f|
+      li.message
+        a href="#{new_message_path(:user_id => f.friend.id)}"
+          .row-fluid
+            .span2
+                = image_tag(f.friend.avatar.url(:small))
+            .span10
+              p.name
+                = f.friend.full_name
+              - if f.friend.status == 'online'
+                p.online
+                  = f.friend.status
+              - else
+                p.offline
+                  = f.friend.status
+    - @friends.each do |f|
+      li.message
+        a href="#{new_message_path(:user_id => f.inverse_friend.id)}"
+          .row-fluid
+            .span2
+                = image_tag(f.inverse_friend.avatar.url(:small))
+            .span10
+              p.name
+                = f.inverse_friend.full_name
+              - if f.inverse_friend.status == 'online'
+                p.online
+                  = f.inverse_friend.status
+              - else
+                p.offline
+                  = f.inverse_friend.status

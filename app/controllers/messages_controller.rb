@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
 
   def index
     @messages = current_user.mailbox.inbox
+    @friends = current_user.friends.where(:status => 'confirmed')
+    @inverse_friends = current_user.inverse_friends.where(:status => 'confirmed')
   end
 
   def new
@@ -25,6 +27,8 @@ class MessagesController < ApplicationController
     current_user.mark_as_read(@conversation)
     messages_count
     @messages = current_user.mailbox.inbox
+    @friends = current_user.friends.where(:status => 'confirmed')
+    @inverse_friends = current_user.inverse_friends.where(:status => 'confirmed')
   end
 
   #def destroy

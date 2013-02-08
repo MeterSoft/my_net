@@ -15,7 +15,7 @@ html
       .main
         .container-fluid
           .row-fluid
-            .span3
+            .span4
               ul.right-menu
                 li
                   i.icon-chevron-right
@@ -33,10 +33,16 @@ html
                   = link_to 'Friend', friends_path
                 li
                   i.icon-chevron-right
+                  = link_to 'MyImage', '#'
+                li
+                  i.icon-chevron-right
+                  = link_to 'MyVideo', '#'
+                li
+                  i.icon-chevron-right
                   = link_to 'Setting', '#'
-            .span3
+            .span2
               .user-avatar
-                = image_tag(current_user.avatar.url(:medium), :class => "img-polaroid")
+                = image_tag(current_user.avatar.url(:medium))
             .span6
               .user-info
                 ul
