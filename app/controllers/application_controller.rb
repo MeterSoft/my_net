@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
   before_filter :messages_count
+  before_filter :friends
 
   layout :layout_by_resource
 
@@ -24,9 +25,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def friends
+    @friends = current_user.friends.where(:status => 'confirmed') if current_user
+    @inverse_friends = current_user.inverse_friends.where(:status => 'confirmed') if current_user
+
+    @friends_invite = current_user.inverse_friends.where(:status => 'invite') if current_user
+  end
+
   def messages_count
     user_status if current_user
     friend_invite if current_user
+    friends if current_user
     @count = current_user.receipts.where(is_read: false).count if current_user
     @count = nil if @count == 0
   end

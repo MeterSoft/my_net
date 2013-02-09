@@ -32,4 +32,9 @@ $(function() {
             $('#submit').submit();
         }
     };
+
+    $("html").niceScroll({cursorcolor:"#e0e0e0"});
+    $(".scrolling").niceScroll({cursorcolor:"#e0e0e0"});
+    $(".scrolling").getNiceScroll().onResize();
+    $("html").getNiceScroll().onResize();
 });

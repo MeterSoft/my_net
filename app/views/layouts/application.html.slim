@@ -29,17 +29,10 @@ html
                   = link_to 'Messages', messages_path
                 li
                   i.icon-chevron-right
-                  i class="badge" id="invite_count" data-url="#{messages_counts_path}" #{@invite}
-                  = link_to 'Friend', friends_path
-                li
-                  i.icon-chevron-right
                   = link_to 'MyImage', '#'
                 li
                   i.icon-chevron-right
                   = link_to 'MyVideo', '#'
-                li
-                  i.icon-chevron-right
-                  = link_to 'Setting', '#'
             .span2
               .user-avatar
                 = image_tag(current_user.avatar.url(:medium))
@@ -52,7 +45,9 @@ html
                     = current_user.status
           br
           .row-fluid
-            .span12
+            .span4
+              = render :partial => "friends/index"
+            .span8
               = yield
 
 
