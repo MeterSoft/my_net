@@ -11,10 +11,10 @@
             = mes.body
           .span1
             /= link_to '&times;'.html_safe , message_path(mes, :conversation => @conversation.id) , :class => "close", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true
-  = form_tag('/messages', :id => "submit") do
-    = hidden_field_tag "conversation", value=@conversation.id
-    .row-fluid
-      = text_area_tag "body" ,"", :class => "full-area", :onKeyPress=>"return disableEnterKey(event)"
+    = form_tag('/messages', :id => "submit") do
+      = hidden_field_tag "conversation", value=@conversation.id
+      .row-fluid
+        = text_area_tag "body" ,"", :class => "full-area", :onKeyPress=>"return disableEnterKey(event)"
 
 javascript:
   $(function() {
