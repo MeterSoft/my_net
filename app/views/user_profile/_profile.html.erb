@@ -1,12 +1,14 @@
-<%= form_for(@user,:url => user_profile_path, :html => {:multipart => true}) do |f| %>
-  <div><%= f.label :first_name %> <%= f.text_field :first_name, :placeholder => 'first_name' %></div>
-  <br>
-  <div><%= f.label :last_name %> <%= f.text_field :last_name, :placeholder => 'last_name' %></div>
-  <br>
-  <div><%= f.label :thread_name %> <%= f.text_field :thread_name, :placeholder => 'thread_name' %></div>
-  <div><%= f.label :avatar %> <%= f.file_field :avatar %></div>
+<div class="fon">
+    <%= form_for(@user,:url => user_profile_path, :html => {:multipart => true}) do |f| %>
+      <div><%= f.label :first_name %> <%= f.text_field :first_name, :placeholder => 'first_name' %></div>
+      <br>
+      <div><%= f.label :last_name %> <%= f.text_field :last_name, :placeholder => 'last_name' %></div>
+      <br>
+      <div><%= f.label :thread_name %> <%= f.text_field :thread_name, :placeholder => 'thread_name' %></div>
+      <div><%= f.label :avatar %> <%= f.file_field :avatar %></div>
 
-  <div>
-    <%= f.submit "Save" %>
-  </div>
-<% end %>
+      <div>
+        <%= f.submit "Save" %>
+      </div>
+    <% end %>
+</div>

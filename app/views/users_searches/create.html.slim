@@ -4,7 +4,7 @@
       li.message
         .row-fluid
           .span2
-            = image_tag(u.avatar.url(:small), :class => "img-polaroid")
+            = image_tag(u.avatar.url(:small))
           .span7
             p
               = u.full_name
@@ -20,10 +20,11 @@
               p
                 | Already your friend
             - else
-              = form_tag(friends_path) do
-                = hidden_field_tag :user_id, value=u.id
-                = submit_tag 'Add to friend', :class => "btn btn-inverse"
-            = link_to "Send message", new_message_path(:user_id => u.id),  :class => "btn btn-inverse"
-- else
-  span
-    | This user is not found
+              - if u.friend_invited?(current_user)
+                p
+                  | Already invited
+              - else
+                = form_tag(friends_path) do
+                  = hidden_field_tag :user_id, value=u.id
+                  = submit_tag 'Add to friend', :class => "btn btn-inverse"
+              /= link_to "Send message", new_message_path(:user_id => u.id),  :class => "btn btn-inverse"

@@ -38,6 +38,11 @@ class User < ActiveRecord::Base
     Friend.find_by_user_id_and_user_friend_id_and_status(current_user, self, 'confirmed')
   end
 
+  def friend_invited?(current_user)
+    Friend.find_by_user_id_and_user_friend_id_and_status(self, current_user, 'invite') ||
+    Friend.find_by_user_id_and_user_friend_id_and_status(current_user, self, 'invite')
+  end
+
   def cropping?
     !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
   end
