@@ -15,6 +15,8 @@ gem 'progress_bar'
 gem 'pry'
 gem "mailboxer", "~> 0.9.0"
 gem 'mysql2'
+gem 'jquery-fileupload-rails'
+#gem 'twitter-bootstrap-rails'
 
 group :development, :test do
   gem 'mysql2'

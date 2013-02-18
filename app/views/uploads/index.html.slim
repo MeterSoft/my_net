@@ -1,0 +1,13 @@
+.fon
+  .row-fluid.scrolling
+    #gallery
+      ul
+        - @uploads.each do |u|
+          li
+            a href="#{u.upload.url(:original)}"
+              img src="#{u.upload.url(:small)}"
+  = link_to 'Add new image', new_upload_path
+javascript:
+  $(function() {
+
+  });

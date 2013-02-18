@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205104639) do
+ActiveRecord::Schema.define(:version => 20130218130838) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(:version => 20130205104639) do
   end
 
   add_index "receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
+
+  create_table "uploads", :force => true do |t|
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
+    t.integer  "user_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "",        :null => false

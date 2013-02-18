@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
   has_many :friends, :foreign_key => "user_id", :class_name => "Friend"
   has_many :inverse_friends, :foreign_key => "user_friend_id", :class_name => "Friend"
+  has_many :uploads
 
   acts_as_messageable
 

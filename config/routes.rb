@@ -13,6 +13,8 @@ Net::Application.routes.draw do
 
   resources :friends
 
+  resources :uploads
+
   devise_scope :user do
     get "/" => "devise/sessions#new"
     get "/login" => "devise/sessions#new"
