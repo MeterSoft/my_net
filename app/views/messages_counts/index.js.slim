@@ -1,4 +1,3 @@
 | $('#msg_count').text("#{@count}");
 | $('#invite_count').text("Invite #{@invite}");
-| $('#friends').replaceWith('#{escape_javascript(render(:partial => 'friends/index', :locals => { :friends => @friends, :inverse_friends => @inverse_friend, :friends_invite => @friends_invite }))}');
 

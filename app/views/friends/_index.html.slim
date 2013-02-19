@@ -13,9 +13,9 @@
           li.message
             a href="#{new_message_path(:user_id => f.friend.id)}"
               .row-fluid
-                .span2
+                .span3
                     = image_tag(f.friend.avatar.url(:small))
-                .span10
+                .span9
                   p.name
                     = f.friend.full_name
                   - if f.friend.status == 'online'
@@ -28,9 +28,9 @@
           li.message
             a href="#{new_message_path(:user_id => f.inverse_friend.id)}"
               .row-fluid
-                .span2
+                .span3
                     = image_tag(f.inverse_friend.avatar.url(:small))
-                .span10
+                .span9
                   p.name
                     = f.inverse_friend.full_name
                   - if f.inverse_friend.status == 'online'
@@ -44,9 +44,9 @@
         - @friends_invite.each do |fi|
           li.message
             .row-fluid
-              .span2
+              .span3
                   = image_tag(fi.friend.avatar.url(:small))
-              .span6
+              .span5
                 p.name
                   = fi.friend.full_name
                 - if fi.friend.status == 'online'
