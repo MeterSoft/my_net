@@ -1,7 +1,6 @@
 class UsersSearchesController < ApplicationController
 
-  def create
-
+  def index
     users = User.search do
       fulltext params[:user_name]
       without :id, current_user.id
@@ -10,6 +9,7 @@ class UsersSearchesController < ApplicationController
     respond_to do |format|
           format.html
           format.js
-        end
+    end
   end
+
 end

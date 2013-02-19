@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
                     :styles => { :medium => {:geometry => "300x300#" },
                                  :small => {:geometry => "50x50#", :processors => [:cropper]},
                                  :large => {:geometry => "600x600>" } },
-                    :default_url => 'default_large.png'
+                    :default_url => '/assets/:style/default_large.png'
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
