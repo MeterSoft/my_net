@@ -25,8 +25,12 @@ $(function() {
             type: "GET",
             url: "/messages_counts",
             success: function (data, textStatus) {
-                $('#msg_count').text(data.count);
-                $('#invite_count').text(data.invite);
+                if (data.count != null) {
+                    $('#msg_count').text(data.count);
+                }
+                if (data.invite != null) {
+                    $('#invite_count').text(data.invite);
+                }
             }
         });
     }

@@ -6,7 +6,7 @@
       <br>
       <div><%= f.text_field :thread_name, :placeholder => t('.thread_name') %></div>
       <div>
-          <%= image_tag @user.avatar.url %>
+          <%= image_tag @user.avatar.url(:medium) %>
           <span class="btn btn-success fileinput-button">
               <i class="icon-plus icon-white"></i>
               <span><%= t('.avatar') %></span>
