@@ -1,0 +1,10 @@
+ru:
+  user_profile:
+    profile:
+      first_name: "Имя"
+      last_name: "Фамилия"
+      thread_name: "Отчество"
+      save: "Сохранить"
+      avatar: "Фото"
+    crop:
+      crop: "Сохранить"

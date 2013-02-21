@@ -17,14 +17,19 @@
 //= require_tree .
 
 $(function() {
-    $("#logdiv").modal();
-    setInterval(function() {
+    update_date();
+    setInterval(update_date, 10000);
+
+    function update_date() {
         $.ajax({
             type: "GET",
-            url: "/messages_counts"
-            })
-        }
-    , 10000);
+            url: "/messages_counts",
+            success: function (data, textStatus) {
+                $('#msg_count').text(data.count);
+                $('#invite_count').text(data.invite);
+            }
+        });
+    }
 
     disableEnterKey = function(e) {
         var code = (e.keyCode ? e.keyCode : e.which);

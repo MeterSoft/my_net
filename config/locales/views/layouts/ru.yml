@@ -1,0 +1,14 @@
+ru:
+  layouts:
+    header:
+      search_people: "Поиск Людей"
+      sign_out: "Выход"
+    application:
+      my_page: "Моя страница"
+      profile: "Профиль"
+      messages: "Сообщения"
+      my_image: "Мои фото"
+      my_video: "Мои видео"
+    all_header:
+      sign_in: "Войти"
+      sign_up: "Регистрация"

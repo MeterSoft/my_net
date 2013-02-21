@@ -1,14 +1,21 @@
 <div class="fon">
     <%= form_for(@user,:url => user_profile_path, :html => {:multipart => true}) do |f| %>
-      <div><%= f.label :first_name %> <%= f.text_field :first_name, :placeholder => 'first_name' %></div>
+      <div><%= f.text_field :first_name, :placeholder => t('.first_name') %></div>
       <br>
-      <div><%= f.label :last_name %> <%= f.text_field :last_name, :placeholder => 'last_name' %></div>
+      <div><%= f.text_field :last_name, :placeholder => t('.last_name') %></div>
       <br>
-      <div><%= f.label :thread_name %> <%= f.text_field :thread_name, :placeholder => 'thread_name' %></div>
-      <div><%= f.label :avatar %> <%= f.file_field :avatar %></div>
-
+      <div><%= f.text_field :thread_name, :placeholder => t('.thread_name') %></div>
       <div>
-        <%= f.submit "Save" %>
+          <%= image_tag @user.avatar.url %>
+          <span class="btn btn-success fileinput-button">
+              <i class="icon-plus icon-white"></i>
+              <span><%= t('.avatar') %></span>
+              <%= f.file_field :avatar %>
+          </span>
+      </div>
+      <br>
+      <div>
+        <%= f.submit t('.save'), class: "btn" %>
       </div>
     <% end %>
 </div>

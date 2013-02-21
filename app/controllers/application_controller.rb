@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :lenguage
   before_filter :authenticate_user!
   before_filter :messages_count
   before_filter :friends
@@ -34,10 +35,10 @@ class ApplicationController < ActionController::Base
 
   def messages_count
     user_status if current_user
-    friend_invite if current_user
-    friends if current_user
-    @count = current_user.receipts.where(is_read: false).count if current_user
-    @count = nil if @count == 0
+  end
+
+  def lenguage
+    I18n.locale = current_user.lenguage if current_user
   end
 
   def user_status
@@ -51,11 +52,6 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-  end
-
-  def friend_invite
-    @invite = current_user.inverse_friends.where(:status => 'invite').count
-    @invite = nil if @invite == 0
   end
 
 end

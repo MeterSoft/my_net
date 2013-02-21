@@ -15,6 +15,8 @@ Net::Application.routes.draw do
 
   resources :uploads
 
+  resources :languages
+
   devise_scope :user do
     get "/" => "devise/sessions#new"
     get "/login" => "devise/sessions#new"

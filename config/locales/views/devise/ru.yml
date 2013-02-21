@@ -1,0 +1,25 @@
+ru:
+  devise:
+    sessions:
+      new:
+        login: "Вход"
+        email: "Емейл"
+        password: "Пароль"
+        sign_in: "Вход"
+        sign_up: "Регистрация"
+        forgot: "Забыли пароль?"
+    registrations:
+      new:
+        registration: "Регестрация"
+        email: "Емейл"
+        password: "Пароль"
+        sign_in: "Вход"
+        sign_up: "Регистрация"
+        first_name: "Имя"
+        last_name: "Фамилия"
+        thread_name: "Отчество"
+    confirmation:
+      new:
+        email: "Емейл"
+        resend_confirmation_instructions: "Итправить инструкцию востановления"
+        sign_in: "Вход"

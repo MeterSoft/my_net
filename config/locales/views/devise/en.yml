@@ -1,0 +1,25 @@
+en:
+  devise:
+    sessions:
+      new:
+        login: "Login"
+        email: "Email"
+        password: "Password"
+        sign_in: "Sign in"
+        sign_up: "Sign up"
+        forgot: "Forgot your password?"
+    registrations:
+      new:
+        registration: "Registration"
+        email: "Email"
+        password: "Password"
+        sign_in: "Sign in"
+        sign_up: "Sign up"
+        first_name: "First Name"
+        last_name: "Last Name"
+        thread_name: "Thread Name"
+    confirmation:
+      new:
+        email: "Email"
+        resend_confirmation_instructions: "Resend confirmation instructions"
+        sign_in: "Sign in"

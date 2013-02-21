@@ -1,0 +1,10 @@
+ru:
+  uploads:
+    index:
+      add_new_image: "Добавить фото"
+    new:
+      upload_file: "Загрузить фото"
+      add_files: "Добавить файлы..."
+      start_upload: "Начать"
+      cancel_upload: "Отменить"
+      delete: "Удалить"

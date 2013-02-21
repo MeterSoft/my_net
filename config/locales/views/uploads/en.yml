@@ -1,0 +1,10 @@
+en:
+  uploads:
+    index:
+      add_new_image: "Add new image"
+    new:
+      upload_file: "Upload file"
+      add_files: "Add files..."
+      start_upload: "Start upload"
+      cancel_upload: "Cancel upload"
+      delete: "Delete"

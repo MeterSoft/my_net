@@ -19,13 +19,13 @@
             .span3
               - if u.friend?(current_user)
                 p
-                  | Already your friend
+                  = t('.already_your_friend')
               - else
                 - if u.friend_invited?(current_user)
                   p
-                    | Already invited
+                    = t('.already_invited')
                 - else
                   = form_tag(friends_path) do
                     = hidden_field_tag :user_id, value=u.id
-                    = submit_tag 'Add to friend', :class => "btn btn-inverse"
+                    = submit_tag t('.add_to_friend'), :class => "btn btn-inverse"
                 /= link_to "Send message", new_message_path(:user_id => u.id),  :class => "btn btn-inverse"

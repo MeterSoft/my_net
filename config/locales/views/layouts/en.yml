@@ -1,0 +1,14 @@
+en:
+  layouts:
+      header:
+        search_people: "Search People"
+        sign_out: "Sign out"
+      application:
+        my_page: "My Page"
+        profile: "Profile"
+        messages: "Message"
+        my_image: "My Image"
+        my_video: "My Video"
+      all_header:
+        sign_in: "Sign in"
+        sign_up: "Sign up"

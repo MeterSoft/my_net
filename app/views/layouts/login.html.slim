@@ -7,9 +7,8 @@ html
     = javascript_include_tag "application"
     = csrf_meta_tags
   body
-    .mlogo
-      = link_to image_tag('mlogo.png'), new_session_path(resource_name)
-    div
-      p.sign_up
-    #logdiv
-      = yield
+    .header
+      = render :partial => "layouts/all_header"
+    .main
+      .container-fluid
+        = yield
