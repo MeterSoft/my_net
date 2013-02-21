@@ -18,20 +18,15 @@ html
             .span3
               ul.right-menu
                 li
-                  i.icon-chevron-right
                   = link_to t('.my_page'), '#'
                 li
-                  i.icon-chevron-right
                   = link_to t('.profile'), edit_user_profile_path(current_user.id)
                 li
-                  i.icon-chevron-right
                   i class="badge" id="msg_count" data-url="#{messages_counts_path}"
                   = link_to t('.messages'), messages_path
                 li
-                  i.icon-chevron-right
                   = link_to t('.my_image'), uploads_path
                 li
-                  i.icon-chevron-right
                   = link_to t('.my_video'), '#'
             .span2
               .user-avatar

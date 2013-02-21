@@ -11,4 +11,16 @@ html
       = render :partial => "layouts/all_header"
     .main
       .container-fluid
-        = yield
+        <br>
+        .row-fluid
+          | Добро пожаловать на сайт! Ето только тестовая версия, при обнаружении багов
+          | &nbsp
+          | прошу сообщать мне в личном сообщении!
+          | &nbsp
+          | Спасиба за понимание
+        <br>
+        <br>
+        .row-fluid
+          .span3
+          .span9
+            = yield

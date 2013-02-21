@@ -1,14 +1,14 @@
 .container-fluid
   .row-fluid
     .span3
-      = image_tag("logo_while.gif")
+      = image_tag("logo.gif")
     .span1
-    .span5
+    .span4
     .span1
       = link_to "en", languages_path(locale: "en"), class: "btn btn-mini btn-primary"
       | &nbsp
       = link_to "ru", languages_path(locale: "ru"), class: "btn btn-mini btn-primary"
-    .span2
+    .span3
       = link_to t('.sign_in'), new_user_session_path, class: "btn btn-primary"
       | &nbsp;
       = link_to t('.sign_up'), new_registration_path(resource_name), class: "btn btn-primary"
