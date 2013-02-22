@@ -17,9 +17,9 @@ html
           .row-fluid
             .navbar
               .navbar-inner
-                ul.nav
-                  li.active
-                    = link_to t('.my_page'), '#'
+                ul.nav.nav-tab
+                  li
+                    = link_to t('.my_page'), main_page_index_path
                   li
                     = link_to t('.profile'), edit_user_profile_path(current_user.id)
                   li
@@ -36,18 +36,6 @@ html
                = render :partial => "friends/index"
             .span9
               .navbar-inner.my-nav
-                .row-fluid
-                  .span3
-                    .user-avatar
-                      = image_tag(current_user.avatar.url(:medium))
-                  .span9
-                    .user-info
-                      ul
-                        li
-                          = current_user.full_name
-                        li
-                          = current_user.status
-                .row-fluid
-                  = yield
+                = yield
       .footer
         = render :partial => "layouts/footer"
