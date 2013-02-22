@@ -17,7 +17,7 @@ html
           .row-fluid
             .navbar
               .navbar-inner
-                ul.nav.nav-tab
+                ul.nav
                   li
                     = link_to t('.my_page'), main_page_index_path
                   li
@@ -35,7 +35,7 @@ html
             .span3
                = render :partial => "friends/index"
             .span9
-              .navbar-inner.my-nav
+              .navbar-inner.my-nav.main-page
                 = yield
       .footer
         = render :partial => "layouts/footer"

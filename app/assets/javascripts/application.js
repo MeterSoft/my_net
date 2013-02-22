@@ -45,6 +45,8 @@ $(function() {
 
     $("html").niceScroll({cursorcolor:"#e0e0e0"});
     $(".scrolling").niceScroll({cursorcolor:"#e0e0e0"});
+    $(".main-page").niceScroll({cursorcolor:"#e0e0e0"});
     $(".scrolling").getNiceScroll().onResize();
+    $(".main-page").getNiceScroll().onResize();
     $("html").getNiceScroll().onResize();
 });

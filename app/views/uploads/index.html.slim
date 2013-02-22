@@ -1,12 +1,11 @@
-.fon
-  .row-fluid.scrolling
-    #gallery
-      ul
-        - @uploads.each do |u|
-          li
-            a href="#{u.upload.url(:original)}"
-              img src="#{u.upload.url(:small)}"
-  = link_to t('.add_new_image'), new_upload_path
+.row-fluid
+  #gallery
+    ul
+      - @uploads.each do |u|
+        li
+          a href="#{u.upload.url(:original)}"
+            img src="#{u.upload.url(:small)}"
+= link_to t('.add_new_image'), new_upload_path, class: "btn"
 javascript:
   $(function() {
 
