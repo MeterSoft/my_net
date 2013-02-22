@@ -4,7 +4,7 @@
       .row-fluid
         .span3
           = image_tag("logo.gif")
-        .span4
+        .span3
         .span3
           .nav-collapse.collapse
             = form_tag("/users_searches", method: "get", class: "navbar-search") do
@@ -13,5 +13,5 @@
           = link_to "en", languages_path(locale: "en"), class: "btn btn-mini"
           | &nbsp
           = link_to "ru", languages_path(locale: "ru"), class: "btn btn-mini"
-        .span1
+        .span2
           = link_to t('.sign_out'), destroy_user_session_path, :method => :delete, class: "btn btn-small"
