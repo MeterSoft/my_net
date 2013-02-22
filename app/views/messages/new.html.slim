@@ -1,8 +1,7 @@
-.fon
-  = form_tag('/messages', :id => "submit") do
-    .row-fluid
-      = label_tag "user_name", value=@user.full_name
-      = hidden_field_tag "user_id", value=@user.id
-      = hidden_field_tag "subject", value="message"
-    .row-fluid
-      = text_area_tag "body", "", :class => "full-area", :onKeyPress=>"return disableEnterKey(event)"
+= form_tag('/messages', :id => "submit") do
+  .row-fluid
+    = label_tag "user_name", value=@user.full_name
+    = hidden_field_tag "user_id", value=@user.id
+    = hidden_field_tag "subject", value="message"
+  .row-fluid
+    = text_area_tag "body", "", :class => "full-area", :onKeyPress=>"return disableEnterKey(event)"

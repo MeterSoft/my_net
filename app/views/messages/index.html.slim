@@ -1,12 +1,11 @@
-.fon
-  ul.scrolling
-    - @messages.each_with_index do |m, i|
-      li
-        a.message#conversation href="#{message_path(m.id)}"
-          .row-fluid
-            .span2
-              = image_tag(m.messages.last.sender.avatar.url(:small))
-            .span9
-              = m.messages.last.body
-            .span1
-              = image_tag "message-icon-new.png" if m.receipts.is_unread.count != 0
+ul
+  - @messages.each_with_index do |m, i|
+    li
+      a.message#conversation href="#{message_path(m.id)}"
+        .row-fluid
+          .span2
+            = image_tag(m.messages.last.sender.avatar.url(:small))
+          .span9
+            = m.messages.last.body
+          .span1
+            = image_tag "message-icon-new.png" if m.receipts.is_unread.count != 0
