@@ -26,10 +26,10 @@ $(function() {
             url: "/messages_counts",
             success: function (data, textStatus) {
                 if (data.count != null) {
-                    $('#msg_count').text(data.count);
+                    $('#msg_count').text(' (' + data.count + ')');
                 }
                 if (data.invite != null) {
-                    $('#invite_count').text(data.invite);
+                    $('#invite_count').text(' (' + data.invite + ')');
                 }
             }
         });

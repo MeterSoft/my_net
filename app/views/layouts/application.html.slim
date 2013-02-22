@@ -15,48 +15,39 @@ html
       .main
         .container-fluid
           .row-fluid
-            .span3
-              ul.right-menu
-                li
-                  = link_to t('.my_page'), '#'
-                li
-                  = link_to t('.profile'), edit_user_profile_path(current_user.id)
-                li
-                  i class="badge" id="msg_count" data-url="#{messages_counts_path}"
-                  = link_to t('.messages'), messages_path
-                li
-                  = link_to t('.my_image'), uploads_path
-                li
-                  = link_to t('.my_video'), '#'
-            .span2
-              .user-avatar
-                = image_tag(current_user.avatar.url(:medium))
-            .span7
-              .user-info
-                ul
+            .navbar
+              .navbar-inner
+                ul.nav
+                  li.active
+                    = link_to t('.my_page'), '#'
                   li
-                    = current_user.full_name
+                    = link_to t('.profile'), edit_user_profile_path(current_user.id)
                   li
-                    = current_user.status
-          br
+                    a href="#{messages_path}"
+                      span
+                        = t('.messages')
+                      span id="msg_count"
+                  li
+                    = link_to t('.my_image'), uploads_path
+                  li
+                    = link_to t('.my_video'), '#'
           .row-fluid
             .span3
-              = render :partial => "friends/index"
+               = render :partial => "friends/index"
             .span9
-              = yield
-          br
-          .fon
-            .row-fluid
-              .span3
-                = image_tag("logo.gif")
-              .span6
-                address
-                  strong Jabber, Inc.
-                  br
-                  | Cherkasy, 2013
-              .span3
-                span
-                  | Admin: Semenets Bohdan
-                br
-                span
-                  | Designer: Suhak Maxim
+              .navbar-inner.my-nav
+                .row-fluid
+                  .span3
+                    .user-avatar
+                      = image_tag(current_user.avatar.url(:medium))
+                  .span9
+                    .user-info
+                      ul
+                        li
+                          = current_user.full_name
+                        li
+                          = current_user.status
+                .row-fluid
+                  = yield
+      .footer
+        = render :partial => "layouts/footer"
