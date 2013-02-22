@@ -19,7 +19,7 @@ html
               .navbar-inner
                 ul.nav
                   li
-                    = link_to t('.my_page'), main_page_index_path
+                    = link_to t('.my_page'), main_page_path(current_user.id)
                   li
                     = link_to t('.profile'), edit_user_profile_path(current_user.id)
                   li

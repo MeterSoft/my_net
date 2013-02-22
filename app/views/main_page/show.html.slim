@@ -1,0 +1,13 @@
+.row-fluid
+  .span3
+    .user-avatar
+      = image_tag(@user.avatar.url(:medium))
+  .span9
+    .user-info
+      ul
+        li
+          = @user.full_name
+        li
+          = @user.status
+.row-fluid
+  = render partial: "posters/index"

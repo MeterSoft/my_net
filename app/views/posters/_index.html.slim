@@ -1,0 +1,18 @@
+br
+br
+.navbar-inner.my-nav
+  = t('.what_do_you_want_me_to_say')
+.row-fluid
+  ul
+    - @posters.each do |p|
+      li.navbar-inner.my-nav
+        .row-fluid
+          .span10
+            = p.message
+          .span2
+            = p.created_at
+.row-fluid
+  = form_tag('/posters', :id => "submit") do
+    = hidden_field_tag "sender", value=@user.id
+    .row-fluid
+      = text_area_tag "body" ,"", :class => "full-area", :onKeyPress=>"return disableEnterKey(event)"

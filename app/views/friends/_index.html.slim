@@ -12,7 +12,7 @@
       ul.scrolling
         - @inverse_friends.each do |f|
           li.message
-            a href="#{new_message_path(:user_id => f.friend.id)}"
+            a href="#{main_page_path(f.friend.id)}"
               .row-fluid
                 .span3
                     = image_tag(f.friend.avatar.url(:small))
@@ -27,7 +27,7 @@
                       = f.friend.status
         - @friends.each do |f|
           li.message
-            a href="#{new_message_path(:user_id => f.inverse_friend.id)}"
+            a href="#{main_page_path(f.inverse_friend.id)}"
               .row-fluid
                 .span3
                     = image_tag(f.inverse_friend.avatar.url(:small))
