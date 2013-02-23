@@ -28,6 +28,11 @@ html
                         = t('.messages')
                       span id="msg_count"
                   li
+                    a href="#{friends_path}"
+                      span
+                        = t('.friends')
+                      span id="invite"
+                  li
                     = link_to t('.my_image'), uploads_path
                   li
                     = link_to t('.my_video'), '#'

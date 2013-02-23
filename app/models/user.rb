@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_attached_file :avatar,
                     :styles => { :medium => {:geometry => "300x300#" },
-                                 :small => {:geometry => "50x50#", :processors => [:cropper]},
+                                 :small => {:geometry => "40x40#", :processors => [:cropper]},
                                  :large => {:geometry => "600x600>" } },
                     :default_url => '/assets/:style/default_large.png'
 
@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
 
   def full_name
     [first_name, last_name].compact.join(' ')
+  end
+
+  def its_i?(id)
+    id == self.id
   end
 
   def friend?(current_user)

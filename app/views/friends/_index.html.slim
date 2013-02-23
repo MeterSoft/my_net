@@ -1,15 +1,5 @@
 .navbar-inner.my-nav
-  ul.nav.nav-tabs#myTab
-    li.active
-      a href="#friend" #{t('.friends')}
-    li
-      a href="#invite"
-        span #{t('.invite')}
-        span id="invite_count"
-
-  .tab-content
-    .tab-pane.active#friend
-      ul.scrolling
+  ul.scrolling
         - @inverse_friends.each do |f|
           li.message
             a href="#{main_page_path(f.friend.id)}"
@@ -40,30 +30,3 @@
                   - else
                     p.offline
                       = f.inverse_friend.status
-    .tab-pane#invite
-      ul.scrolling
-        - @friends_invite.each do |fi|
-          li.message
-            .row-fluid
-              .span3
-                  = image_tag(fi.friend.avatar.url(:small))
-              .span5
-                p.name
-                  = fi.friend.full_name
-                - if fi.friend.status == 'online'
-                  p.online
-                    = fi.friend.status
-                - else
-                  p.offline
-                      = fi.friend.status
-              .span4
-                = form_tag(friends_path) do
-                  = hidden_field_tag :user_confirmed_id, value=fi.id
-                  = submit_tag t('.add'), :class => "btn btn-inverse"
-javascript:
-  $(function() {
-    $('#myTab a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    })
-  });

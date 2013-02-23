@@ -2,6 +2,8 @@
   .span3
     .user-avatar
       = image_tag(@user.avatar.url(:medium))
+      - if !@user.its_i?(current_user.id)
+        = link_to t('.sent_message'), new_message_path(user_id: @user.id), class: "btn"
   .span9
     .user-info
       ul

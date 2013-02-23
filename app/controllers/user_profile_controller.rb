@@ -10,7 +10,7 @@ class UserProfileController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         if params[:user][:avatar].blank?
-          format.html { redirect_to main_page_index_path, notice: 'Category was successfully updated.' }
+          format.html { redirect_to main_page_path(current_user.id), notice: 'Category was successfully updated.' }
           format.json
         else
           format.html { render :action => "crop" }
