@@ -1,6 +1,7 @@
 class FriendsController < ApplicationController
 
   def index
+    @friends_invite = current_user.inverse_friends.where(:status => 'invite')
   end
 
   def create
