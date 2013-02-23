@@ -7,6 +7,7 @@ en:
         my_page: "My Page"
         profile: "Profile"
         messages: "Message"
+        friends: "Friends"
         my_image: "My Image"
         my_video: "My Video"
       all_header:
