@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(:version => 20130222135439) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "message"
+    t.datetime "send"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "receipts", :force => true do |t|
     t.integer  "receiver_id"
     t.string   "receiver_type"

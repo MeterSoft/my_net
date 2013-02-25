@@ -1,9 +1,7 @@
 class MessagesController < ApplicationController
 
   def index
-    @messages = current_user.mailbox.inbox
-    @friends = current_user.friends.where(:status => 'confirmed')
-    @inverse_friends = current_user.inverse_friends.where(:status => 'confirmed')
+    @messages = current_user.mailbox.conversations
   end
 
   def new
@@ -13,6 +11,10 @@ class MessagesController < ApplicationController
   def create
     if params[:conversation]
       conversation = current_user.mailbox.conversations.find(params[:conversation])
+    else
+      conversation = is_conversation?(params[:user_id])
+    end
+    if conversation
       current_user.reply_to_conversation(conversation, params[:body])
       redirect_to message_path(conversation)
     else
@@ -23,12 +25,19 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @conversation = current_user.mailbox.inbox.find(params[:id])
+    @conversation = current_user.mailbox.conversations.find(params[:id])
     current_user.mark_as_read(@conversation)
     messages_count
-    @messages = current_user.mailbox.inbox
-    @friends = current_user.friends.where(:status => 'confirmed')
-    @inverse_friends = current_user.inverse_friends.where(:status => 'confirmed')
+  end
+
+  def is_conversation?(user_id)
+    current_user.mailbox.conversations.each do |c|
+      ids = c.recipients.map(&:id)
+      if ids.include?(user_id.to_i)
+        return c
+      end
+    end
+    return false
   end
 
   #def destroy

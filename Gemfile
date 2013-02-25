@@ -20,6 +20,11 @@ gem 'rails-i18n'
 
 group :development, :test do
   gem 'mysql2'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl'
+  gem 'factory_girl_rails', require: false
+  gem 'shoulda'
 end
 
 group :production do
