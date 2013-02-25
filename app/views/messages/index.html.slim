@@ -1,11 +1,23 @@
 ul
   - @messages.each_with_index do |m, i|
     li
-      a.message#conversation href="#{message_path(m.id)}"
+      a.message href="#{message_path(m.id)}"
         .row-fluid
+          .span1
+            = image_tag(m.originator.avatar.url(:small))
           .span2
+            span
+              = m.originator.full_name
+            br
+            span.time
+              = m.created_at.strftime('%e.%m.%y  %T')
+          .span1
             = image_tag(m.messages.last.sender.avatar.url(:small))
-          .span9
-            = m.messages.last.body
+          .span6
+            span
+              = m.messages.last.body
+            br
+            span.time
+              = m.messages.last.created_at.strftime('%e.%m.%y  %T')
           .span1
             = image_tag "message-icon-new.png" if m.receipts.is_unread.count != 0
