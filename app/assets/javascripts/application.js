@@ -16,7 +16,7 @@
 //= require jquery-fileupload
 //= require_tree .
 
-$(function() {
+$(document).ready(function() {
     update_date();
     setInterval(update_date, 10000);
 

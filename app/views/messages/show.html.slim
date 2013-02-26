@@ -1,26 +1,33 @@
 .row-fluid
-  ul.scrolling
-    - @conversation.messages.each_with_index do |mes, i|
-      li.message
-        .row-fluid
-          .span1
-            = image_tag(mes.sender.avatar.url(:small))
-          .span8
-            = mes.body
-          .span2
-            span.time
-              = mes.created_at.strftime('%e.%m.%y  %T')
-          .span1
-            /= link_to '&times;'.html_safe , message_path(mes, :conversation => @conversation.id) , :class => "close", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true
+  .scrolling#show-scrolling
+    ul
+      - @messages.each_with_index do |mes, i|
+        li.message
+          .row-fluid
+            .span1
+              = image_tag(mes.sender.avatar.url(:small))
+            .span8
+              = mes.body
+            .span2
+              span.time
+                = mes.created_at.strftime('%e.%m.%y  %T')
+            .span1
+              /= link_to '&times;'.html_safe , message_path(mes, :conversation => @conversation.id) , :class => "close", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true
 .row-fluid
-  = form_tag('/messages', :id => "submit") do
-    = hidden_field_tag "conversation", value=@conversation.id
+  = form_tag('/messages', :id => "submit", remote: true) do
+    = hidden_field_tag "conversation", value=@conversation
     .row-fluid
       br
       = text_area_tag "body" ,"", :class => "span12", id: "show_area", :onKeyPress=>"return disableEnterKey(event)"
 
 javascript:
-  $(function() {
-    var destination = $('ul.scrolling li:last').offset().top;
-    $('.scrolling').animate({scrollTop: destination}, 1);
-  });
+  $(document).ready(
+    function() {
+      $('#show-scrolling').scrollTo($('#show-scrolling li').last())
+      $('#submit').bind('ajax:success', function(evt, data, status, xhr) {
+          $('#show_area').val('')
+          $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src=' + data.avatar +
+          '></div><div class="span8">' + data.body + '</div><div class="span2"><span class="time">' + data.created_at + '</span></div><div class="span1"></div></div></li>');
+          $('#show-scrolling').scrollTo($('#show-scrolling li').last())
+      })
+    });

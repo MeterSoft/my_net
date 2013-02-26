@@ -14,19 +14,25 @@ class MessagesController < ApplicationController
     else
       conversation = is_conversation?(params[:user_id])
     end
-    if conversation
-      current_user.reply_to_conversation(conversation, params[:body])
-      redirect_to message_path(conversation)
-    else
-      @user = User.find(params[:user_id])
-      current_user.send_message(@user, params[:body], params[:subject])
-      redirect_to messages_path
+    respond_to do |format|
+      if conversation
+        current_user.reply_to_conversation(conversation, params[:body])
+        message = conversation.messages.last
+        format.json { render json: { avatar: message.sender.avatar.url(:small), body: message.body, created_at: message.created_at.strftime('%e.%m.%y  %T') } }
+        format.html { redirect_to message_path(conversation) }
+      else
+        @user = User.find(params[:user_id])
+        current_user.send_message(@user, params[:body], params[:subject])
+        format.html { redirect_to messages_path }
+      end
     end
   end
 
   def show
-    @conversation = current_user.mailbox.conversations.find(params[:id])
-    current_user.mark_as_read(@conversation)
+    conversation = current_user.mailbox.conversations.find(params[:id])
+    @messages = conversation.messages.last(30)
+    @conversation = conversation.id
+    current_user.mark_as_read(conversation)
     messages_count
   end
 
