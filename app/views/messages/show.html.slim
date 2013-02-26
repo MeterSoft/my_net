@@ -21,6 +21,6 @@
 
 javascript:
   $(function() {
-    var destination = $('ul.scrolling').offset().left;
+    var destination = $('ul.scrolling li:last').offset().top;
     $('.scrolling').animate({scrollTop: destination}, 1);
   });
