@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
       if conversation
         current_user.reply_to_conversation(conversation, params[:body])
         message = conversation.messages.last
-        format.json { render json: { avatar: message.sender.avatar.url(:small), body: message.body, created_at: message.created_at.strftime('%e.%m.%y  %T') } }
+        format.json { render json: { status: "OK" } }
         format.html { redirect_to message_path(conversation) }
       else
         @user = User.find(params[:user_id])

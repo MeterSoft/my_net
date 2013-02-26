@@ -23,11 +23,17 @@
 javascript:
   $(document).ready(
     function() {
-      $('#show-scrolling').scrollTo($('#show-scrolling li').last())
-      $('#submit').bind('ajax:success', function(evt, data, status, xhr) {
-          $('#show_area').val('')
-          $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src=' + data.avatar +
-          '></div><div class="span8">' + data.body + '</div><div class="span2"><span class="time">' + data.created_at + '</span></div><div class="span1"></div></div></li>');
-          $('#show-scrolling').scrollTo($('#show-scrolling li').last())
-      })
+      $('#show-scrolling').scrollTo($('#show-scrolling ul li').last())
+
+      disableEnterKey = function(e) {
+          var code = (e.keyCode ? e.keyCode : e.which);
+          if(code == 13) {
+              e.preventDefault();
+              $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src=#{current_user.avatar.url(:small)}>' +
+              '</div><div class="span8">' + $('#show_area').val() + '</div><div class="span2"><span class="time">#{Time.now.strftime('%e.%m.%y  %T')}</span></div><div class="span1"></div></div></li>');
+              $('#show-scrolling').scrollTo($('#show-scrolling ul li').last())
+              $('#submit').submit();
+              $('#show_area').val('');
+          }
+      }
     });

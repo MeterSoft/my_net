@@ -17,3 +17,14 @@ br
     = hidden_field_tag "sender", value=@user.id
     .row-fluid
       = text_area_tag "body" ,"", :class => "span12", :onKeyPress=>"return disableEnterKey(event)"
+javascript:
+  $(document).ready(
+    function() {
+      disableEnterKey = function(e) {
+          var code = (e.keyCode ? e.keyCode : e.which);
+          if(code == 13) {
+              e.preventDefault();
+              $('#submit').submit();
+          }
+      }
+    });
