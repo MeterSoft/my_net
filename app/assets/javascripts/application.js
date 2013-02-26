@@ -22,7 +22,6 @@ $(function() {
 
     function update_date() {
         $.ajax({
-            type: "GET",
             url: "/messages_counts",
             success: function (data, textStatus) {
                 if (data.count != null) {
@@ -42,11 +41,4 @@ $(function() {
             $('#submit').submit();
         }
     };
-
-    $("html").niceScroll({cursorcolor:"#e0e0e0"});
-    $(".scrolling").niceScroll({cursorcolor:"#e0e0e0"});
-    $(".main-page").niceScroll({cursorcolor:"#e0e0e0"});
-    $(".scrolling").getNiceScroll().onResize();
-    $(".main-page").getNiceScroll().onResize();
-    $("html").getNiceScroll().onResize();
 });

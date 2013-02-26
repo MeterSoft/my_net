@@ -1,23 +1,26 @@
-ul
-  - @conversation.messages.each_with_index do |mes, i|
-    li.message
-      .row-fluid
-        .span1
-          = image_tag(mes.sender.avatar.url(:small))
-        .span8
-          = mes.body
-        .span2
-          span.time
-            = mes.created_at.strftime('%e.%m.%y  %T')
-        .span1
-          /= link_to '&times;'.html_safe , message_path(mes, :conversation => @conversation.id) , :class => "close", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true
+.row-fluid
+  ul.scrolling
+    - @conversation.messages.each_with_index do |mes, i|
+      li.message
+        .row-fluid
+          .span1
+            = image_tag(mes.sender.avatar.url(:small))
+          .span8
+            = mes.body
+          .span2
+            span.time
+              = mes.created_at.strftime('%e.%m.%y  %T')
+          .span1
+            /= link_to '&times;'.html_safe , message_path(mes, :conversation => @conversation.id) , :class => "close", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true
+.row-fluid
   = form_tag('/messages', :id => "submit") do
     = hidden_field_tag "conversation", value=@conversation.id
     .row-fluid
-      = text_area_tag "body" ,"", :class => "full-area", :onKeyPress=>"return disableEnterKey(event)"
+      br
+      = text_area_tag "body" ,"", :class => "span12", id: "show_area", :onKeyPress=>"return disableEnterKey(event)"
 
 javascript:
   $(function() {
-    var destination = $('.full-area').offset().top;
+    var destination = $('ul.scrolling').offset().left;
     $('.scrolling').animate({scrollTop: destination}, 1);
   });

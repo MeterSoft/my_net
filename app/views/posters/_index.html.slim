@@ -10,9 +10,10 @@ br
           .span10
             = p.message
           .span2
-            = p.created_at
+            span.time
+              = p.created_at.strftime('%e.%m.%y  %T')
 .row-fluid
   = form_tag('/posters', :id => "submit") do
     = hidden_field_tag "sender", value=@user.id
     .row-fluid
-      = text_area_tag "body" ,"", :class => "full-area", :onKeyPress=>"return disableEnterKey(event)"
+      = text_area_tag "body" ,"", :class => "span12", :onKeyPress=>"return disableEnterKey(event)"
