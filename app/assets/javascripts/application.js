@@ -18,7 +18,7 @@
 
 $(document).ready(function() {
     update_date();
-    setInterval(update_date, 10000);
+    setInterval(update_date, 15000);
 
     function update_date() {
         $.ajax({

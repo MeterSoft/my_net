@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
     integer :id
   end
 
+  def avatar_url
+    self.avatar.url(:small)
+  end
+
   def full_name
     [first_name, last_name].compact.join(' ')
   end
