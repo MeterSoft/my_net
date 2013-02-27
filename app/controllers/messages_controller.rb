@@ -37,8 +37,8 @@ class MessagesController < ApplicationController
         current_user.mark_as_read(conversation)
       }
       format.json {
-        new_message = conversation.receipts.where(is_read: false)
-        if new_message
+        new_message = conversation.receipts.where(is_read: false, receiver_id: current_user.id)
+        if new_message != []
           new_message_json = new_message.map{|m| {:body => m.message.body, :created_at => m.message.created_at.strftime('%e.%m.%y  %T'), :avatar_url => m.message.sender.avatar_url} }.to_json
           current_user.mark_as_read(conversation)
           render json: new_message_json
