@@ -18,7 +18,7 @@
 
 $(document).ready(function() {
     update_date();
-    setInterval(update_date, 15000);
+    setInterval(update_date, 10000);
 
     function update_date() {
         $.ajax({
@@ -26,9 +26,13 @@ $(document).ready(function() {
             success: function (data, textStatus) {
                 if (data.count != null) {
                     $('#msg_count').text(' (' + data.count + ')');
+                } else {
+                    $('#msg_count').text('');
                 }
                 if (data.invite != null) {
                     $('#invite_count').text(' (' + data.invite + ')');
+                } else {
+                    $('#invite_count').text('');
                 }
             }
         });
