@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_attached_file :avatar,
-                    :styles => { :medium => {:geometry => "300x300#" },
+                    :styles => { :medium => {:geometry => "300x300" },
                                  :small => {:geometry => "40x40#", :processors => [:cropper]},
                                  :large => {:geometry => "600x600>" } },
                     :default_url => '/assets/:style/default_large.png'
@@ -26,10 +26,10 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name
 
-  searchable do
-    text :first_name, :last_name
-    integer :id
-  end
+  #searchable do
+  #  text :first_name, :last_name
+  #  integer :id
+  #end
 
   def avatar_url
     self.avatar.url(:small)
