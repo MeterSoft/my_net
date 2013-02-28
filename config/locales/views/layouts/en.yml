@@ -2,14 +2,14 @@ en:
   layouts:
       header:
         search_people: "Search People"
-        sign_out: "Sign out"
+        sign_out: "Logout"
       application:
         my_page: "My Page"
         profile: "Profile"
-        messages: "Message"
+        messages: "Messages"
         friends: "Friends"
-        my_image: "My Image"
-        my_video: "My Video"
+        my_image: "My Images"
+        my_video: "My Videos"
       all_header:
-        sign_in: "Sign in"
-        sign_up: "Sign up"
+        sign_in: "Login"
+        sign_up: "Register"
