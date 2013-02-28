@@ -26,10 +26,10 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name
 
-  #searchable do
-  #  text :first_name, :last_name
-  #  integer :id
-  #end
+  searchable do
+    text :first_name, :last_name
+    integer :id
+  end
 
   def avatar_url
     self.avatar.url(:small)
