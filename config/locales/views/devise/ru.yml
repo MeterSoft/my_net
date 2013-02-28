@@ -10,7 +10,7 @@ ru:
         forgot: "Забыли пароль?"
     registrations:
       new:
-        registration: "Регестрация"
+        registration: "Регистрация"
         email: "Емейл"
         password: "Пароль"
         sign_in: "Вход"
