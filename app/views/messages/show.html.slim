@@ -37,7 +37,6 @@ javascript:
                       $.each(data, function(index, value) {
                           $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src="' + value.avatar_url +
                           '"></div><div class="span8">' + value.body + '</div><div class="span2"><span class="time">' + value.created_at + '</span></div><div class="span1"></div></div></li>');
-                          $('#show-scrolling ul li').first().remove();
                           $('#show-scrolling').scrollTo($('#show-scrolling ul li').last())
                       });
                   }
@@ -49,7 +48,6 @@ javascript:
           e.preventDefault();
           $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src=#{current_user.avatar.url(:small)}>' +
           '</div><div class="span8">' + $('#show_area').val() + '</div><div class="span2"><span class="time">#{Time.now.strftime('%e.%m.%y  %T')}</span></div><div class="span1"></div></div></li>');
-          $('#show-scrolling ul li').first().remove();
           $('#show-scrolling').scrollTo($('#show-scrolling ul li').last())
           $('#submit').submit();
           $('#show_area').val('');
@@ -62,7 +60,6 @@ javascript:
               e.preventDefault();
               $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src=#{current_user.avatar.url(:small)}>' +
               '</div><div class="span8">' + $('#show_area').val() + '</div><div class="span2"><span class="time">#{Time.now.strftime('%e.%m.%y  %T')}</span></div><div class="span1"></div></div></li>');
-              $('#show-scrolling ul li').first().remove();
               $('#show-scrolling').scrollTo($('#show-scrolling ul li').last())
               $('#submit').submit();
               $('#show_area').val('');
