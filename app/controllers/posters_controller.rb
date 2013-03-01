@@ -6,4 +6,12 @@ class PostersController < ApplicationController
       redirect_to :back
     end
   end
+
+  def destroy
+    Poster.find(params[:id]).destroy
+    @id = params[:id]
+    respond_to do |format|
+      format.js
+    end
+  end
 end

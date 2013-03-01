@@ -5,7 +5,7 @@ br
 .row-fluid
   ul.poster
     - @posters.each do |p|
-      li.poster_message
+      li.poster_message id="posters_#{p.id}"
         .row-fluid
           .span9
             = p.message
@@ -13,7 +13,7 @@ br
             span.time
               = p.created_at.strftime('%e.%m.%y  %T')
           .span1
-            = link_to '&times;'.html_safe , message_path(p) , :class => "close", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true
+            = link_to '&times;'.html_safe , poster_path(p) , :class => "close", method: :delete, :remote => true
 .row-fluid
   = form_tag('/posters', :id => "submit") do
     = hidden_field_tag "sender", value=@user.id
