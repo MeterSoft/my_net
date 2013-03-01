@@ -3,20 +3,24 @@ br
 .navbar-inner.my-nav
   = t('.what_do_you_want_me_to_say')
 .row-fluid
-  ul
+  ul.poster
     - @posters.each do |p|
-      li.navbar-inner.my-nav
+      li.poster_message
         .row-fluid
-          .span10
+          .span9
             = p.message
           .span2
             span.time
               = p.created_at.strftime('%e.%m.%y  %T')
+          .span1
+            = link_to '&times;'.html_safe , message_path(p) , :class => "close", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true
 .row-fluid
   = form_tag('/posters', :id => "submit") do
     = hidden_field_tag "sender", value=@user.id
     .row-fluid
       = text_area_tag "body" ,"", :class => "span12", :onKeyPress=>"return disableEnterKey(event)"
+      .pull-right
+        = submit_tag t('.send'), class: "btn btn-info"
 javascript:
   $(document).ready(
     function() {
