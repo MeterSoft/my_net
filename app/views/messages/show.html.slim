@@ -1,16 +1,15 @@
 .row-fluid
-  .scrolling#show-scrolling
-    ul
-      - @messages.each do |mes|
-        li.messages_no
-          .row-fluid
-            .span1
-              = image_tag(mes.sender.avatar.url(:small))
-            .span9
-              = mes.body
-            .span2
-              span.time
-                = mes.created_at.strftime('%e.%m.%y  %T')
+  ul.scrolling#show-scrolling
+    - @messages.each do |mes|
+      li.messages_no
+        .row-fluid
+          .span1
+            = image_tag(mes.sender.avatar.url(:small))
+          .span9
+            = mes.body
+          .span2
+            span.time
+              = mes.created_at.strftime('%e.%m.%y  %T')
 .row-fluid
   = form_tag('/messages', :id => "submit", remote: true) do
     = hidden_field_tag "conversation", value=@conversation
@@ -21,7 +20,7 @@
         = link_to t('.send'), "", class: "btn btn-info", :onClick=>"return disableEnter(event)"
 
 javascript:
-  $(function() {
+  $(document).ready(function() {
       $('#show-scrolling')[0].scrollTop = $('#show-scrolling')[0].scrollHeight;
       setInterval(update_message, 5000);
 
@@ -32,8 +31,8 @@ javascript:
               success: function (data) {
                   if (data.status != "OK") {
                       $.each(data, function(index, value) {
-                          $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src="' + value.avatar_url +
-                          '"></div><div class="span8">' + value.body + '</div><div class="span2"><span class="time">' + value.created_at + '</span></div><div class="span1"></div></div></li>');
+                          $('#show-scrolling').append('<li class="messages_no"><div class="row-fluid"><div class="span1"><img src="' + value.avatar_url +
+                          '"></div><div class="span9">' + value.body + '</div><div class="span2"><span class="time">' + value.created_at + '</span></div></div></li>');
                           $('#show-scrolling')[0].scrollTop = $('#show-scrolling')[0].scrollHeight;
                       });
                   }
@@ -43,20 +42,19 @@ javascript:
 
       disableEnter = function(e) {
           e.preventDefault();
-          $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src=#{current_user.avatar.url(:small)}>' +
-          '</div><div class="span8">' + $('#show_area').val() + '</div><div class="span2"><span class="time">#{Time.now.strftime('%e.%m.%y  %T')}</span></div><div class="span1"></div></div></li>');
+          $('#show-scrolling').append('<li class="messages_no"><div class="row-fluid"><div class="span1"><img src=#{current_user.avatar.url(:small)}>' +
+          '</div><div class="span9">' + $('#show_area').val() + '</div><div class="span2"><span class="time">#{Time.now.strftime('%e.%m.%y  %T')}</span></div></div></li>');
           $('#show-scrolling')[0].scrollTop = $('#show-scrolling')[0].scrollHeight;
           $('#submit').submit();
           $('#show_area').val('');
       }
 
-
       disableEnterKey = function(e) {
           var code = (e.keyCode ? e.keyCode : e.which);
           if(code == 13) {
               e.preventDefault();
-              $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src=#{current_user.avatar.url(:small)}>' +
-              '</div><div class="span8">' + $('#show_area').val() + '</div><div class="span2"><span class="time">#{Time.now.strftime('%e.%m.%y  %T')}</span></div><div class="span1"></div></div></li>');
+              $('#show-scrolling').append('<li class="messages_no"><div class="row-fluid"><div class="span1"><img src=#{current_user.avatar.url(:small)}>' +
+              '</div><div class="span9">' + $('#show_area').val() + '</div><div class="span2"><span class="time">#{Time.now.strftime('%e.%m.%y  %T')}</span></div></div></li>');
               $('#show-scrolling')[0].scrollTop = $('#show-scrolling')[0].scrollHeight;
               $('#submit').submit();
               $('#show_area').val('');

@@ -45,7 +45,7 @@ class MessagesController < ApplicationController
         else
           render json: { status: "OK" }
         end
-      }                 \
+      }
     end
   end
 
@@ -60,6 +60,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+
     current_user.mailbox.inbox.find(params[:id]).destroy
     @id = params[:id]
     respond_to do |format|
