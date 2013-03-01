@@ -35,14 +35,13 @@ p.offline { color: #e9322d; }
   overflow-y: auto;
 }
 
-.message {
-  display: block;
-  padding: 10px;
-}
+.close { display: none; }
 
-.message:hover {
-  text-decoration: none; background-color: #d4d4d4;
-}
+.messages { padding: 10px; }
+.message a { display: block; }
+.messages:hover { background: #cccccc; }
+.messages:hover .close { display: block; }
+.messages_no { padding: 10px; }
 
 #gallery {
   width: 628px;

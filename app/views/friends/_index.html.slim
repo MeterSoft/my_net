@@ -1,7 +1,7 @@
 .navbar-inner.my-nav
   ul.scrolling
         - @inverse_friends.each do |f|
-          li.message
+          li.messages
             a href="#{main_page_path(f.friend.id)}"
               .row-fluid
                 .span3
@@ -16,7 +16,7 @@
                     p.offline
                       = f.friend.status
         - @friends.each do |f|
-          li.message
+          li.messages
             a href="#{main_page_path(f.inverse_friend.id)}"
               .row-fluid
                 .span3

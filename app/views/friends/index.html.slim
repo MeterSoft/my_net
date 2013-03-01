@@ -2,13 +2,16 @@ ul.nav.nav-tabs#myTab
   li.active
     a href="#friend" #{t('.friends')}
   li
-    a href="#invite" #{t('.invite')}
+    a href="#invite"
+      span #{t('.invite')}
+      &nbsp;
+      span #{@i_count}
 
 .tab-content
   .tab-pane.active#friend
     ul
       - @inverse_friends.each do |f|
-        li.message
+        li.messages
           a href="#{main_page_path(f.friend.id)}"
             .row-fluid
               .span3
@@ -23,7 +26,7 @@ ul.nav.nav-tabs#myTab
                   p.offline
                     = f.friend.status
       - @friends.each do |f|
-        li.message
+        li.messages
           a href="#{main_page_path(f.inverse_friend.id)}"
             .row-fluid
               .span3
@@ -40,7 +43,7 @@ ul.nav.nav-tabs#myTab
   .tab-pane#invite
     ul
       - @friends_invite.each do |fi|
-        li.message
+        li.messages
           .row-fluid
             .span3
                 = image_tag(fi.friend.avatar.url(:small))

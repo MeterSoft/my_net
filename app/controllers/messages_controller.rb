@@ -59,9 +59,12 @@ class MessagesController < ApplicationController
     return false
   end
 
-  #def destroy
-  #  current_user.mailbox.inbox.find(params[:conversation]).messages.find(params[:id]).destroy
-  #  render :nothing => true
-  #end
+  def destroy
+    current_user.mailbox.inbox.find(params[:id]).destroy
+    @id = params[:id]
+    respond_to do |format|
+      format.js
+    end
+  end
 
 end

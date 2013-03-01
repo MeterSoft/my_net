@@ -1,18 +1,16 @@
 .row-fluid
   .scrolling#show-scrolling
     ul
-      - @messages.each_with_index do |mes, i|
-        li.message
+      - @messages.each do |mes|
+        li.messages_no
           .row-fluid
             .span1
               = image_tag(mes.sender.avatar.url(:small))
-            .span8
+            .span9
               = mes.body
             .span2
               span.time
                 = mes.created_at.strftime('%e.%m.%y  %T')
-            .span1
-              /= link_to '&times;'.html_safe , message_path(mes, :conversation => @conversation.id) , :class => "close", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true
 .row-fluid
   = form_tag('/messages', :id => "submit", remote: true) do
     = hidden_field_tag "conversation", value=@conversation
