@@ -23,9 +23,8 @@
         = link_to t('.send'), "", class: "btn btn-info", :onClick=>"return disableEnter(event)"
 
 javascript:
-  $(document).ready(
-    function() {
-      $('#show-scrolling').scrollTo($('#show-scrolling ul li').last())
+  $(function() {
+      $('#show-scrolling')[0].scrollTop = $('#show-scrolling')[0].scrollHeight;
       setInterval(update_message, 5000);
 
       function update_message() {
@@ -37,7 +36,7 @@ javascript:
                       $.each(data, function(index, value) {
                           $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src="' + value.avatar_url +
                           '"></div><div class="span8">' + value.body + '</div><div class="span2"><span class="time">' + value.created_at + '</span></div><div class="span1"></div></div></li>');
-                          $('#show-scrolling').scrollTo($('#show-scrolling ul li').last())
+                          $('#show-scrolling')[0].scrollTop = $('#show-scrolling')[0].scrollHeight;
                       });
                   }
               }
@@ -48,7 +47,7 @@ javascript:
           e.preventDefault();
           $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src=#{current_user.avatar.url(:small)}>' +
           '</div><div class="span8">' + $('#show_area').val() + '</div><div class="span2"><span class="time">#{Time.now.strftime('%e.%m.%y  %T')}</span></div><div class="span1"></div></div></li>');
-          $('#show-scrolling').scrollTo($('#show-scrolling ul li').last())
+          $('#show-scrolling')[0].scrollTop = $('#show-scrolling')[0].scrollHeight;
           $('#submit').submit();
           $('#show_area').val('');
       }
@@ -60,7 +59,7 @@ javascript:
               e.preventDefault();
               $('#show-scrolling').append('<li class="message"><div class="row-fluid"><div class="span1"><img src=#{current_user.avatar.url(:small)}>' +
               '</div><div class="span8">' + $('#show_area').val() + '</div><div class="span2"><span class="time">#{Time.now.strftime('%e.%m.%y  %T')}</span></div><div class="span1"></div></div></li>');
-              $('#show-scrolling').scrollTo($('#show-scrolling ul li').last())
+              $('#show-scrolling')[0].scrollTop = $('#show-scrolling')[0].scrollHeight;
               $('#submit').submit();
               $('#show_area').val('');
           }
