@@ -4,6 +4,15 @@
       = image_tag(@user.avatar.url(:medium))
       - if !@user.its_i?(current_user.id)
         = link_to t('.sent_message'), new_message_path(user_id: @user.id), class: "btn"
+
+
+      #playlist
+        .item href="http://www.miaowmusic.com/audio/mp3/Miaow-07-Bubble.mp3" style="width: 400px;"
+          div
+            .btns.play
+            .title
+          .player.inactive
+
   .span9
     .user-info
       ul
@@ -13,3 +22,14 @@
           = @user.status
 .row-fluid
   = render partial: "posters/index"
+
+
+javascript:
+  	$(document).ready(function() {
+  	   $("#playlist").playlist(
+               {
+                   playerurl: "/drplayer.swf"
+               }
+           )
+  	});
+
