@@ -5,6 +5,8 @@
       - if !@user.its_i?(current_user.id)
         = link_to t('.sent_message'), new_message_path(user_id: @user.id), class: "btn"
 
+      embed src="/audios/tik.mp3" hidden="true" autostart="true" loop="false"
+
       #playlist
         .item href="http://www.miaowmusic.com/audio/mp3/Miaow-07-Bubble.mp3" style="width: 400px;"
           div
@@ -27,7 +29,7 @@ javascript:
   	$(document).ready(function() {
   	   $("#playlist").playlist(
                {
-                   playerurl: "/drplayer.swf"
+                   playerurl: "/Jplayer.swf"
                }
            )
   	});
