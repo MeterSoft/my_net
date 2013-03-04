@@ -156,7 +156,7 @@ $(window).unload(function() {
                 progressBarColor     : 0x999999,
                 progressSliderColor  : 0x555555,
                 bufferColor          : 0x555555,
-		playerurl	     : "Jplayer.swf"
+		playerurl	     : "drplayer.swf"
             }
 
             if (options) {
