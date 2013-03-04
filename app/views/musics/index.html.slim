@@ -1,0 +1,20 @@
+#playlist
+  .item href="http://www.miaowmusic.com/audio/mp3/Miaow-07-Bubble.mp3" style="width: 400px;"
+    div
+      .fr.duration 02:06
+      .btns.play
+      .title
+        b The Ting Tings
+        | \- Shut up and let me go
+    .player.inactive
+  .clear
+  .clear
+
+javascript:
+  	$(document).ready(function() {
+  	   $("#playlist").playlist(
+               {
+                   playerurl: "/drplayer.swf"
+               }
+           )
+  	});

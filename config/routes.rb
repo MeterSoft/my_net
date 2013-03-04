@@ -19,6 +19,10 @@ Net::Application.routes.draw do
 
   resources :posters
 
+  resources :videos
+
+  resources :musics
+
   devise_scope :user do
     get "/" => "devise/sessions#new"
     get "/login" => "devise/sessions#new"

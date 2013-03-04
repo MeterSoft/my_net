@@ -8,8 +8,9 @@ en:
         profile: "Profile"
         messages: "Messages"
         friends: "Friends"
-        my_image: "My Images"
-        my_video: "My Videos"
+        my_image: "Images"
+        my_video: "Videos"
+        my_music: "Musics"
       all_header:
         sign_in: "Login"
         sign_up: "Register"

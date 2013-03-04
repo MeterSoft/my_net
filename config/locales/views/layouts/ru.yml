@@ -8,8 +8,9 @@ ru:
       profile: "Профиль"
       messages: "Сообщения"
       friends: "Друзья"
-      my_image: "Мои фото"
-      my_video: "Мои видео"
+      my_image: "Фото"
+      my_video: "Видео"
+      my_music: "Музыка"
     all_header:
       sign_in: "Войти"
       sign_up: "Регистрация"
