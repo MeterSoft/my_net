@@ -17,6 +17,9 @@
 //= require_tree .
 
 $(document).ready(function() {
+    var count_msg = 0;
+    var count_invite = 0;
+
     update_date();
     setInterval(update_date, 10000);
 
@@ -26,11 +29,19 @@ $(document).ready(function() {
             success: function (data, textStatus) {
                 if (data.count != null) {
                     $('#msg_count').text(' (' + data.count + ')');
+                    if (count_msg < data.count) {
+                        $('#mes_sound').html('<embed src="/audios/tik.mp3" hidden="true" autostart="true" loop="false" />');
+                        count_msg = data.count;
+                    }
                 } else {
                     $('#msg_count').text('');
                 }
                 if (data.invite != null) {
                     $('#invite_count').text(' (' + data.invite + ')');
+                    if (count_invite < data.count) {
+                        $('#mes_sound').html('<embed src="/audios/tik.mp3" hidden="true" autostart="true" loop="false" />');
+                        count_invite = data.count;
+                    }
                 } else {
                     $('#invite_count').text('');
                 }
