@@ -17,6 +17,7 @@ gem "mailboxer", "~> 0.9.0"
 gem 'mysql2'
 gem 'jquery-fileupload-rails'
 gem 'rails-i18n'
+gem 'vkontakte_api', '~> 1.1'
 
 group :development, :test do
   gem 'mysql2'
