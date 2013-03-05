@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :friends, :foreign_key => "user_id", :class_name => "Friend"
   has_many :inverse_friends, :foreign_key => "user_friend_id", :class_name => "Friend"
   has_many :uploads
-  has_many :posters
+  has_many :posters, order: 'created_at desc'
 
   acts_as_messageable
 

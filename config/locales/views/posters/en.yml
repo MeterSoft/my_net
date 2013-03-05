@@ -3,3 +3,7 @@ en:
     index:
       what_do_you_want_me_to_say: "What do you want me to say?"
       send: "Create post"
+      comment: "comment"
+      new_comment: "New comment"
+      add: "Add"
+      close: "Close"
