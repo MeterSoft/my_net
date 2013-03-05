@@ -2,3 +2,4 @@ en:
   main_page:
     show:
       sent_message: "Sent message"
+      login: "Last login:"

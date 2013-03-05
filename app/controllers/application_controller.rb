@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :lenguage
+  before_filter :time_zone
   before_filter :authenticate_user!
   before_filter :messages_count
   before_filter :friends
@@ -37,6 +38,10 @@ class ApplicationController < ActionController::Base
 
   def lenguage
     I18n.locale = current_user.lenguage if current_user
+  end
+
+  def time_zone
+    Time.zone = Time.now.zone
   end
 
   def user_status

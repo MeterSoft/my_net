@@ -2,3 +2,4 @@ ru:
   main_page:
     show:
       sent_message: "Отправить сообщение"
+      login: "Заходил:"

@@ -10,7 +10,18 @@
         li
           = @user.full_name
         li
-          = @user.status
+          span
+            = @user.status
+          | &nbsp;
+          | &nbsp;
+          | &nbsp;
+          | &nbsp;
+          span
+            - if !@user.its_i?(current_user.id) && @user.status == 'offline'
+              = t('.login')
+              = @user.time.strftime('%e.%m.%y  %T')
+
+
 .row-fluid
   = render partial: "posters/index"
 
