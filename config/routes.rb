@@ -25,8 +25,6 @@ Net::Application.routes.draw do
 
   resources :comments
 
-  resources :sessions
-
   devise_scope :user do
     get "/" => "devise/sessions#new"
     get "/login" => "devise/sessions#new"
