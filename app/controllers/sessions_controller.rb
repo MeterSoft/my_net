@@ -35,6 +35,7 @@ class SessionsController < ApplicationController
     # теперь получим текущего юзера
     @user = vk.users.get(uid: session[:vk_id], fields: [:screen_name, :photo]).first
     @new_user = User.find_or_create(id: session[:vk_id], first_name: name_for(@user), avatar: avatar_for(@user))
+    session[:user_id] = @new_user.id
     # его друзей
     @friends = vk.friends.get(fields: [:screen_name, :sex, :photo, :last_seen])
     # отдельно выберем тех, кто в данный момент онлайн
