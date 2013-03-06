@@ -1,12 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :authenticate_user
+
+  helper_method :logged_in?
+  helper_method :current_user
+
   before_filter :lenguage
   #before_filter :authenticate_user!
   before_filter :messages_count
   before_filter :friends
 
-  #layout :layout_by_resource
+  layout :layout_by_resource
 
   protected
 
@@ -19,7 +24,7 @@ class ApplicationController < ActionController::Base
   #end
 
   def layout_by_resource
-    if devise_controller?
+    if logged_in?
       "login"
     else
       "application"
@@ -54,6 +59,12 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.where(id: session[:user_id]).first
+  end
+
+  protected
+
+  def authenticate_user
+    redirect_to '/sessions/new' unless logged_in?
   end
 
 end
