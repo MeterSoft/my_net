@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
     vk = VkontakteApi::Client.new(session[:token])
 
     # теперь получим текущего юзера
-    @user = vk.users.get(uid: session[:vk_id], fields: [:screen_name, :photo]).first
+    @user_my = vk.users.get(uid: session[:vk_id], fields: [:screen_name, :photo]).first
 
     # его друзей
     @friends = vk.friends.get(fields: [:screen_name, :sex, :photo, :last_seen])
