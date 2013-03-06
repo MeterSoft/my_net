@@ -1,13 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :authenticate_user
-
-  helper_method :logged_in?
-  helper_method :current_user
-
   before_filter :lenguage
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!
   before_filter :messages_count
   before_filter :friends
 
@@ -15,20 +10,16 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  #def after_sign_out_path_for(resource_or_scope)
-  #  new_user_session_path
-  #end
-  #
-  #def after_sign_in_path_for(resource_or_scope)
-  #  main_page_path(current_user)
-  #end
+  def after_sign_out_path_for(resource_or_scope)
+    new_user_session_path
+  end
 
-  def logged_in?
-    !!current_user
+  def after_sign_in_path_for(resource_or_scope)
+    main_page_path(current_user)
   end
 
   def layout_by_resource
-    if logged_in?
+    if devise_controller?
       "login"
     else
       "application"
@@ -59,16 +50,6 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-  end
-
-  def current_user
-    @current_user ||= User.where(id: session[:user_id]).first
-  end
-
-  protected
-
-  def authenticate_user
-    redirect_to '/sessions/new' unless logged_in?
   end
 
 end
