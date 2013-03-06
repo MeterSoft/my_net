@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def authenticate_user
-    redirect_to 'sessions/new' unless logged_in?
+    redirect_to '/sessions/new' unless logged_in?
   end
 
 end
