@@ -31,9 +31,10 @@ class SessionsController < ApplicationController
     # сначала создадим клиент API
     vk = VkontakteApi::Client.new(session[:token])
 
-    # теперь получим текущего юзера
-    @user_my = vk.users.get(uid: session[:vk_id], fields: [:screen_name, :photo]).first
 
+    # теперь получим текущего юзера
+    @user = vk.users.get(uid: session[:vk_id], fields: [:screen_name, :photo]).first
+    @new_user = User.find_or_create(id: session[:vk_id], first_name: name_for(@user), avatar: avatar_for(@user))
     # его друзей
     @friends = vk.friends.get(fields: [:screen_name, :sex, :photo, :last_seen])
     # отдельно выберем тех, кто в данный момент онлайн
@@ -49,7 +50,7 @@ class SessionsController < ApplicationController
     # обработанную в отдельном методе
     @newsfeed = process_feed(raw_feed)
 
-    redirect_to main_page_path(current_user)
+    redirect_to main_page_path(@new_user)
   end
 
 

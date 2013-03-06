@@ -6,17 +6,17 @@ class ApplicationController < ActionController::Base
   before_filter :messages_count
   before_filter :friends
 
-  layout :layout_by_resource
+  #layout :layout_by_resource
 
   protected
 
-  def after_sign_out_path_for(resource_or_scope)
-    new_user_session_path
-  end
-
-  def after_sign_in_path_for(resource_or_scope)
-    main_page_path(current_user)
-  end
+  #def after_sign_out_path_for(resource_or_scope)
+  #  new_user_session_path
+  #end
+  #
+  #def after_sign_in_path_for(resource_or_scope)
+  #  main_page_path(current_user)
+  #end
 
   def layout_by_resource
     if devise_controller?
@@ -50,6 +50,10 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+  end
+
+  def current_user
+    @current_user ||= User.where(id: session[:user_id]).first
   end
 
 end
