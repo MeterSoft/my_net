@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
   #  main_page_path(current_user)
   #end
 
+  def logged_in?
+    !!current_user
+  end
+
   def layout_by_resource
     if logged_in?
       "login"
@@ -64,7 +68,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def authenticate_user
-    redirect_to '/sessions/new' unless logged_in?
+    redirect_to 'sessions/new' unless logged_in?
   end
 
 end
