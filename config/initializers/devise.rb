@@ -16,8 +16,8 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   require "omniauth-facebook"
-  config.omniauth :facebook, '437976079617087', 'f2d4f984cb04fc7437dbae3074f84070', :strategy_class => OmniAuth::Strategies::Facebook
-    #:client_options => {:ssl => {:ca_path => '/etc/ssl/certs'}}
+  config.omniauth :facebook, '437976079617087', 'f2d4f984cb04fc7437dbae3074f84070',
+                  {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/etc/ssl/certs/ca-certificates.crt'}}}
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
