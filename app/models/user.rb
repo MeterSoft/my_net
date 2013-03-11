@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
   has_attached_file :avatar,
                     :styles => { :medium => {:geometry => "300x300" },
                                  :small => {:geometry => "40x40#", :processors => [:cropper]},
@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :thread_name, :avatar, :time, :status, :lenguage,
-                  :crop_x, :crop_y, :crop_w, :crop_h
+                  :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid
 
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :reprocess_avatar, :if => :cropping?
@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
     text :first_name, :last_name
     integer :id
   end
+
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   def avatar_url
     self.avatar.url(:small)
@@ -60,6 +62,31 @@ class User < ActiveRecord::Base
   def avatar_geometry(style = :original)
     @geometry ||= {}
     @geometry[style] ||= Paperclip::Geometry.from_file(avatar.path(style))
+  end
+
+
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    #user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    user = User.find_by_provider_and_uid(auth.provider, auth.uid)
+    unless user
+      user = User.create(first_name: auth.extra.raw_info.first_name,
+                         last_name: auth.extra.raw_info.last_name,
+                         provider: auth.provider,
+                         uid: auth.uid,
+                         email: auth.info.email,
+                         password: Devise.friendly_token[0,20],
+                         avatar: open(auth.info.image)
+      )
+    end
+    user
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
   end
 
   private

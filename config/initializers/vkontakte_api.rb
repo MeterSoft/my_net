@@ -2,7 +2,7 @@ VkontakteApi.configure do |config|
   # Authorization parameters (not needed when using an external authorization):
   config.app_id       = '3472115'
   config.app_secret   = '2p6u2LIKlhC7CxecCIIT'
-  config.redirect_uri = 'jabberpeople.tk/callback'
+  config.redirect_uri = '78.137.5.149:3000/user_profile/callback'
   
   # Faraday adapter to make requests with:
   # config.adapter = :net_http

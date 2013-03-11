@@ -17,7 +17,11 @@ gem "mailboxer", "~> 0.9.0"
 gem 'mysql2'
 gem 'jquery-fileupload-rails'
 gem 'rails-i18n'
-gem 'vkontakte_api', '~> 1.1'
+gem 'vkontakte_api'
+gem 'omniauth', '~> 1.0.3'
+gem 'omniauth-facebook'
+gem 'oa-core'
+gem 'koala'
 
 group :development, :test do
   gem 'mysql2'
