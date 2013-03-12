@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable
+         :recoverable, :rememberable, :trackable, :omniauthable
   has_attached_file :avatar,
                     :styles => { :medium => {:geometry => "300x300" },
                                  :small => {:geometry => "40x40#", :processors => [:cropper]},
@@ -30,8 +30,6 @@ class User < ActiveRecord::Base
     text :first_name, :last_name
     integer :id
   end
-
-  devise :omniauthable, :omniauth_providers => [:facebook]
 
   def avatar_url
     self.avatar.url(:small)
@@ -66,7 +64,6 @@ class User < ActiveRecord::Base
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    #user = User.where(:provider => auth.provider, :uid => auth.uid).first
     user = User.find_by_provider_and_uid(auth.provider, auth.uid)
     unless user
       user = User.find_by_email(auth.info.email)
@@ -78,6 +75,25 @@ class User < ActiveRecord::Base
                            email: auth.info.email,
                            password: Devise.friendly_token[0,20],
                            avatar: open(auth.info.image)
+        )
+      end
+    end
+    user
+  end
+
+  def self.find_for_vkontakte_oauth(auth, signed_in_resource=nil)
+    user = User.find_by_provider_and_uid(auth.provider, auth.uid)
+    unless user
+      user = User.find_by_email(auth.info.email)
+      unless user
+        user = User.create(first_name: auth.extra.raw_info.first_name,
+                           last_name: auth.extra.raw_info.last_name,
+                           thread_name: auth.extra.raw_info.nickname,
+                           provider: auth.provider,
+                           uid: auth.uid,
+                           email: auth.info.email || auth.info.nickname + "@vk.com",
+                           password: Devise.friendly_token[0,20],
+                           avatar: open(auth.extra.raw_info.photo_big)
         )
       end
     end

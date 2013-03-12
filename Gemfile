@@ -5,23 +5,21 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'devise', '1.4.7'
-gem "paperclip", "~> 2.7"
+gem 'devise', '2.0.4'
+gem 'paperclip', '~> 2.7'
 gem 'less'
 gem 'slim'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'progress_bar'
 gem 'pry'
-gem "mailboxer", "~> 0.9.0"
+gem 'mailboxer', '~> 0.9.0'
 gem 'mysql2'
 gem 'jquery-fileupload-rails'
 gem 'rails-i18n'
-gem 'vkontakte_api'
-gem 'omniauth', '~> 1.0.3'
+gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'oa-core'
-gem 'koala'
+gem 'omniauth-vkontakte'
 
 group :development, :test do
   gem 'mysql2'

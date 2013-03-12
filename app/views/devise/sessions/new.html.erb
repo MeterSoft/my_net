@@ -18,6 +18,7 @@
   <%= link_to t('.forgot'), new_password_path(resource_name) %>
 </p>
 
-<%= link_to "Facebook", user_omniauth_authorize_path(:facebook), class: "btn" %>
+<%= link_to t('.login_with_facebook'), user_omniauth_authorize_path(:facebook), class: "btn btn-mini btn-primary" %>
+<%= link_to t('.login_with_vkontakte'), user_omniauth_authorize_path(:vkontakte), class: "btn btn btn-mini btn-primary" %>
 
 

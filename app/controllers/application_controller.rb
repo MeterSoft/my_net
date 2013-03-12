@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :lenguage
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!
   before_filter :messages_count
   before_filter :friends
 

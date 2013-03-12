@@ -8,6 +8,8 @@ en:
         sign_in: "Login"
         sign_up: "Register"
         forgot: "Forgot your password?"
+        login_with_facebook: "Login with Facebook"
+        login_with_vkontakte: "Login with VKontakte"
     registrations:
       new:
         registration: "Registration"

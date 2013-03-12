@@ -8,6 +8,8 @@ ru:
         sign_in: "Вход"
         sign_up: "Регистрация"
         forgot: "Забыли пароль?"
+        login_with_facebook: "Вход через Facebook"
+        login_with_vkontakte: "Вход через VKontakte"
     registrations:
       new:
         registration: "Регистрация"
