@@ -102,18 +102,24 @@ class User < ActiveRecord::Base
         vk = VkontakteApi::Client.new(auth.credentials.token)
 
         photos =  vk.photos.getAll
-        photos[1..-1].each do |p|
-          Photo.create(user_id: current_user, url: p.src, url_big: p.src_big, url_small: p.src_small)
+        if photos
+          photos[1..-1].each do |p|
+            Photo.create(user_id: current_user, url: p.src, url_big: p.src_big, url_small: p.src_small)
+          end
         end
 
         audios =  vk.audio.get
-        audios[1..-1].each do |a|
-          Audio.create(user_id: current_user, artist: a.artist, title: a.title, url: a.url)
+        if audios
+          audios[1..-1].each do |a|
+            Audio.create(user_id: current_user, artist: a.artist, title: a.title, url: a.url)
+          end
         end
 
         videos =  vk.video.get
-        videos[1..-1].each do |v|
-          Video.create(user_id: current_user, description: v.description, title: v.title, url: v.player, image: v.image, date: v.date)
+        if videos
+          videos[1..-1].each do |v|
+            Video.create(user_id: current_user, description: v.description, title: v.title, url: v.player, image: v.image, date: v.date)
+          end
         end
       end
     end
