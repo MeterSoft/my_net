@@ -26,5 +26,5 @@
               - else
                 = form_tag(friends_path) do
                   = hidden_field_tag :user_id, value=u.id
-                  = submit_tag t('.add_to_friend'), :class => "btn btn-inverse"
+                  = submit_tag t('.add_to_friend'), :class => "btn btn-mini btn-primary"
               /= link_to "Send messages", new_message_path(:user_id => u.id),  :class => "btn btn-inverse"
