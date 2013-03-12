@@ -1,0 +1,20 @@
+#playlist
+  - @audios.each do |a|
+    .item href="#{a.url}" style="width: 400px;"
+      div
+        .btns.play
+        .title
+          b
+            = a.artist + " /- " + a.title
+      .player.inactive
+    .clear
+    .clear
+
+javascript:
+  	$(document).ready(function() {
+  	   $("#playlist").playlist(
+               {
+                   playerurl: "/drplayer.swf"
+               }
+           )
+  	});

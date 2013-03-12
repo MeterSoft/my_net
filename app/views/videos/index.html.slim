@@ -1,3 +1,4 @@
-a href="http://pseudo01.hddn.com/vod/demo.flowplayervod/flowplayer-700.flv" style="display:block;width:520px;height:330px" id="player"
+- @videos.each do |v|
+  a href="#{v.url}" style="display:block;width:520px;height:330px" id="player"
 javascript:
   flowplayer("player", "/flowplayer-3.2.16.swf");

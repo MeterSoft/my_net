@@ -21,6 +21,10 @@ Net::Application.routes.draw do
 
   resources :videos
 
+  resources :audios
+
+  resources :photos
+
   resources :musics
 
   resources :comments

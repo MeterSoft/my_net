@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307130014) do
+ActiveRecord::Schema.define(:version => 20130312120241) do
+
+  create_table "audios", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "url"
+    t.string   "artist"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "poster_id"
@@ -51,6 +60,15 @@ ActiveRecord::Schema.define(:version => 20130307130014) do
   end
 
   add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
+
+  create_table "photos", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "url"
+    t.string   "url_small"
+    t.string   "url_big"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "posters", :force => true do |t|
     t.integer  "user_id"
@@ -122,6 +140,18 @@ ActiveRecord::Schema.define(:version => 20130307130014) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "videos", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "url"
+    t.string   "description"
+    t.string   "title"
+    t.string   "image"
+    t.string   "image_medium"
+    t.datetime "date"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   add_foreign_key "notifications", "conversations", :name => "notifications_on_conversation_id"
 

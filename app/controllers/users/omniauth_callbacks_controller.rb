@@ -12,6 +12,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def vkontakte
+    session[:vk_token] = request.env["omniauth.auth"].credentials.token
     @user = User.find_for_vkontakte_oauth(request.env["omniauth.auth"], current_user)
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication

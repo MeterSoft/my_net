@@ -20,6 +20,7 @@ gem 'rails-i18n'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
+gem 'vkontakte_api'
 
 group :development, :test do
   gem 'mysql2'

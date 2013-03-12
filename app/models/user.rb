@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   has_many :inverse_friends, :foreign_key => "user_friend_id", :class_name => "Friend"
   has_many :uploads
   has_many :posters, order: 'created_at desc'
+  has_many :videos
+  has_many :photos
+  has_many :audios
 
   acts_as_messageable
 
@@ -95,6 +98,23 @@ class User < ActiveRecord::Base
                            password: Devise.friendly_token[0,20],
                            avatar: open(auth.extra.raw_info.photo_big)
         )
+
+        vk = VkontakteApi::Client.new(session[:vk_token])
+
+        photos =  vk.photos.getAll
+        photos[1..-1].each do |p|
+          Photo.create(user_id: current_user, url: p.src, url_big: p.src_big, url_small: p.src_small)
+        end
+
+        audios =  vk.audio.get
+        audios[1..-1].each do |a|
+          Audio.create(user_id: current_user, artist: a.artist, title: a.title, url: a.url)
+        end
+
+        videos =  vk.video.get
+        videos[1..-1].each do |v|
+          Video.create(user_id: current_user, description: v.description, title: v.title, url: v.player, image: v.image, date: v.date)
+        end
       end
     end
     user
