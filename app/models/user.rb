@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
                            avatar: open(auth.extra.raw_info.photo_big)
         )
 
-        vk = VkontakteApi::Client.new(session[:vk_token])
+        vk = VkontakteApi::Client.new(auth.credentials.token)
 
         photos =  vk.photos.getAll
         photos[1..-1].each do |p|
