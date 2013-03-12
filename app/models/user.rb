@@ -94,7 +94,7 @@ class User < ActiveRecord::Base
                            thread_name: auth.extra.raw_info.nickname,
                            provider: auth.provider,
                            uid: auth.uid,
-                           email: auth.info.email || auth.uid + "@vk.com",
+                           email: auth.info.email || auth.uid.to_s + "@vk.com",
                            password: Devise.friendly_token[0,20],
                            avatar: open(auth.extra.raw_info.photo_big)
         )
