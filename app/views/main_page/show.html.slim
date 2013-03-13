@@ -3,7 +3,7 @@
     .user-avatar
       = image_tag(@user.avatar.url(:medium))
       - if !@user.its_i?(current_user.id)
-        = link_to t('.sent_message'), new_message_path(user_id: @user.id), class: "btn btn-mini btn-primary"
+        a href="#" class="btn" onClick="return send_message(event)" #{t('.send_message')}
       - if !@user.its_i?(current_user.id)
         - if @user.friend?(current_user)
           p
@@ -37,4 +37,36 @@
 .row-fluid
   = render partial: "posters/index"
 
-= @user_my
+#send_message.comment-dialog style="display: none"
+  .row-fluid
+    h3
+      = t('.new_message')
+  .row-fluid
+    = form_tag('/messages', :id => "submit") do
+      .row-fluid
+        = label_tag "user_name", value=@user.full_name
+        = hidden_field_tag "user_id", value=@user.id
+        = hidden_field_tag "subject", value="message"
+      .row-fluid
+        = text_area_tag "body", "", :class => "span12", :onKeyPress=>"return disableEnterKey(event)"
+        .pull-right
+          = submit_tag t('.send'), class: "btn btn-info"
+          | &nbsp;
+          a href="#" rel="modal:close" class="btn" #{t('.close')}
+
+javascript:
+  $(document).ready(
+    function() {
+      disableEnterKey = function(e) {
+          var code = (e.keyCode ? e.keyCode : e.which);
+          if(code == 13) {
+              e.preventDefault();
+              $('#submit').submit();
+          }
+      }
+
+      send_message = function(e) {
+          e.preventDefault();
+          $('#send_message').modal({ showClose: false });
+      }
+    });
