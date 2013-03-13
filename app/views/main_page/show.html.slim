@@ -3,7 +3,19 @@
     .user-avatar
       = image_tag(@user.avatar.url(:medium))
       - if !@user.its_i?(current_user.id)
-        = link_to t('.sent_message'), new_message_path(user_id: @user.id), class: "btn"
+        = link_to t('.sent_message'), new_message_path(user_id: @user.id), class: "btn btn-mini btn-primary"
+      - if !@user.its_i?(current_user.id)
+        - if @user.friend?(current_user)
+          p
+            = t('.already_your_friend')
+        - else
+          - if @user.friend_invited?(current_user)
+            p
+              = t('.already_invited')
+          - else
+            = form_tag(friends_path) do
+              = hidden_field_tag :user_id, value=@user.id
+              = submit_tag t('.add_to_friend'), :class => "btn btn-small btn-primary"
   .span9
     .user-info
       ul

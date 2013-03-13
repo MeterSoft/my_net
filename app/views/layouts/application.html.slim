@@ -8,7 +8,8 @@ html
     = stylesheet_link_tag "drplayer"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    link rel="shortcut icon" href="assets/icon.ico"
+    link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon"
+    link rel="icon" href="favicon.ico" type="image/x-icon"
 
   body
     #wrapper
@@ -46,6 +47,7 @@ html
                = render :partial => "friends/index"
             .span9
               .navbar-inner.my-nav
-                = yield
+                #testscroll
+                  = yield
       .footer
         = render :partial => "layouts/footer"

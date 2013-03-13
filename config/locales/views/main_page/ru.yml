@@ -3,3 +3,6 @@ ru:
     show:
       sent_message: "Отправить сообщение"
       login: "Заходил:"
+      already_your_friend: "Уже у вас в друзьях"
+      already_invited: "Приглашение уже отправлено"
+      add_to_friend: "Добавить в друзья"

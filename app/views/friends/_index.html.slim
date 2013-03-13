@@ -1,6 +1,7 @@
 .navbar-inner.my-nav
+  h4 Friends
   .row-fluid
-    = select_tag 'sort', "<option value='1'>#{t('.all')}</option><option value='2'>#{t('.online')}</option><option value='3'>#{t('.offline')}</option>".html_safe, class: 'span8', id: "sort", onChange: 'sort()'
+    /= select_tag 'sort', "<option value='1'>#{t('.all')}</option><option value='2'>#{t('.online')}</option><option value='3'>#{t('.offline')}</option>".html_safe, class: 'span8', id: "sort", onChange: 'sort()'
   .row-fluid
     ul.scrolling
           - @inverse_friends.each do |f|

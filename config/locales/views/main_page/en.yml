@@ -3,3 +3,6 @@ en:
     show:
       sent_message: "Sent message"
       login: "Last login:"
+      already_your_friend: "Already your friend"
+      already_invited: "Already invited"
+      add_to_friend: "Add to friend"

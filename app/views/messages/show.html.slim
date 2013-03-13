@@ -17,7 +17,7 @@
       br
       = text_area_tag "body" ,"", :class => "span12", id: "show_area", :onKeyPress=>"return disableEnterKey(event)"
       .pull-right
-        = link_to t('.send'), "", class: "btn btn-info", :onClick=>"return disableEnter(event)"
+        = link_to t('.send'), "", class: "btn btn-small btn-primary", :onClick=>"return disableEnter(event)"
 
 javascript:
   $(document).ready(function() {

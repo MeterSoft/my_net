@@ -108,12 +108,12 @@ class User < ActiveRecord::Base
           end
         end
 
-        audios =  vk.audio.get
-        if audios != []
-          audios[1..-1].each do |a|
-            Audio.create(user_id: user.id, artist: a.artist, title: a.title, url: a.url)
-          end
-        end
+        #audios =  vk.audio.get
+        #if audios != []
+        #  audios[1..-1].each do |a|
+        #    Audio.create(user_id: user.id, artist: a.artist, title: a.title, url: a.url)
+        #  end
+        #end
 
         videos =  vk.video.get
         if videos != []
