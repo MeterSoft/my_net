@@ -1,20 +1,21 @@
-#playlist
-  - @audios.each do |a|
-    .item href="#{a.url}" style="width: 650px;"
-      div
-        .btns.play
-        .title
-          b
-            = a.artist + " /- " + a.title
-      .player.inactive
-    .clear
-    .clear
-
-javascript:
-  	$(document).ready(function() {
-  	   $("#playlist").playlist(
-               {
-                   playerurl: "/drplayer.swf"
-               }
-           )
-  	});
+| Сервис временно отключон
+/#playlist
+/  - @audios.each do |a|
+/    .item href="#{a.url}" style="width: 650px;"
+/      div
+/        .btns.play
+/        .title
+/          b
+/            = a.artist + " /- " + a.title
+/      .player.inactive
+/    .clear
+/    .clear
+/
+/javascript:
+/  	$(document).ready(function() {
+/  	   $("#playlist").playlist(
+/               {
+/                   playerurl: "/drplayer.swf"
+/               }
+/           )
+/  	});
