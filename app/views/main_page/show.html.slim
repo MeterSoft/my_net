@@ -42,15 +42,15 @@
     h3
       = t('.new_message')
   .row-fluid
-    = form_tag('/messages', :id => "submit") do
+    = form_tag('/messages', :id => "message_submit", remote: true) do
       .row-fluid
         = label_tag "user_name", value=@user.full_name
         = hidden_field_tag "user_id", value=@user.id
         = hidden_field_tag "subject", value="message"
       .row-fluid
-        = text_area_tag "body", "", :class => "span12", :onKeyPress=>"return disableEnterKey(event)"
+        = text_area_tag "body", "", :class => "span12", :id => "message_area", :onKeyPress=>"return disableEnterKey(event)"
         .pull-right
-          = submit_tag t('.send'), class: "btn btn-info"
+          = submit_tag t('.send'), class: "btn btn-info", :onClick=>"return disableEnterButton(event)"
           | &nbsp;
           a href="#" rel="modal:close" class="btn" #{t('.close')}
 
@@ -58,15 +58,25 @@ javascript:
   $(document).ready(
     function() {
       disableEnterKey = function(e) {
-          var code = (e.keyCode ? e.keyCode : e.which);
-          if(code == 13) {
-              e.preventDefault();
-              $('#submit').submit();
-          }
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if(code == 13) {
+          e.preventDefault();
+          $('#message_submit').submit();
+          $('#message_area').val('');
+          $.modal.close();
+          $("#section-flash").prepend("#{ escape_javascript(bootstrap_flash) }");
+        }
+      }
+      disableEnterButton =  function(e) {
+        e.preventDefault();
+        $('#message_submit').submit();
+        $('#message_area').val('');
+        $.modal.close();
+        $("#section-flash").prepend("#{ escape_javascript(bootstrap_flash) }");
       }
 
       send_message = function(e) {
-          e.preventDefault();
-          $('#send_message').modal({ showClose: false });
+        e.preventDefault();
+        $('#send_message').modal({ showClose: false });
       }
     });
