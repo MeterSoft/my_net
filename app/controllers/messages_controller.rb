@@ -21,11 +21,13 @@ class MessagesController < ApplicationController
         format.json { render json: { status: "OK" } }
         format.html { redirect_to message_path(conversation) }
         flash.now[:notice] = t("messages.create.message_is_sent")
+        format.js
       else
         @user = User.find(params[:user_id])
         current_user.send_message(@user, params[:body], params[:subject])
         format.html { redirect_to messages_path }
         flash.now[:notice] = t("messages.create.message_is_sent")
+        format.js
       end
     end
   end

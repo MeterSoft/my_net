@@ -64,7 +64,6 @@ javascript:
           $('#message_submit').submit();
           $('#message_area').val('');
           $.modal.close();
-          $("#section-flash").prepend("#{ escape_javascript(bootstrap_flash) }");
         }
       }
       disableEnterButton =  function(e) {
@@ -72,7 +71,6 @@ javascript:
         $('#message_submit').submit();
         $('#message_area').val('');
         $.modal.close();
-        $("#section-flash").prepend("#{ escape_javascript(bootstrap_flash) }");
       }
 
       send_message = function(e) {
