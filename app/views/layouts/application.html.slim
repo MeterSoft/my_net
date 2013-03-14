@@ -42,8 +42,11 @@ html
                   li
                     = link_to t('.my_video'), videos_path
           .row-fluid
+            #section-flash
+              = bootstrap_flash
+          .row-fluid
             .span3
-               = render :partial => "friends/index"
+              = render :partial => "friends/index"
             .span9
               .navbar-inner.my-nav
                 #testscroll

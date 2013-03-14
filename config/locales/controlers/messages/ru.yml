@@ -1,0 +1,4 @@
+ru:
+  messages:
+      create:
+        message_is_sent: "Сообщение отправлено!"

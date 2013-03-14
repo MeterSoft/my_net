@@ -1,0 +1,4 @@
+en:
+  messages:
+      create:
+        message_is_sent: "Message is sent!"
