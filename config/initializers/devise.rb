@@ -16,9 +16,10 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   config.omniauth :facebook, '437976079617087', 'f2d4f984cb04fc7437dbae3074f84070'
-  config.omniauth :vkontakte, '3472115', '2p6u2LIKlhC7CxecCIIT', {
-      :scope => 'friends,offline,notify,audio,video,photos'
-  }
+  config.omniauth :vkontakte, '3472115', '2p6u2LIKlhC7CxecCIIT'
+  #{
+  #    :scope => 'friends,offline,notify,audio,video,photos'
+  #}
 
 
   # ==> Configuration for any authentication mechanism
