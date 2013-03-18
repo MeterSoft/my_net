@@ -13,6 +13,7 @@
 .row-fluid
   = form_tag('/messages', :id => "submit", remote: true) do
     = hidden_field_tag "conversation", value=@conversation
+    = hidden_field_tag "chat", value="ok"
     .row-fluid
       br
       = text_area_tag "body" ,"", :class => "span12", id: "show_area", :onKeyPress=>"return disableEnterKey(event)"
