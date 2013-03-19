@@ -41,9 +41,8 @@ html
                     = link_to t('.my_music'), audios_path
                   li
                     = link_to t('.my_video'), videos_path
-          .row-fluid
-            #section-flash
-              = bootstrap_flash
+          #section-flash
+            = bootstrap_flash
           .row-fluid
             .span3
               = render :partial => "friends/index"
