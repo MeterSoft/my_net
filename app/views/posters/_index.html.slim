@@ -6,9 +6,9 @@ br
   = form_tag('/posters', :id => "submit_post") do
     = hidden_field_tag "sender", value=@user.id
     .row-fluid
-      = text_area_tag "body" ,"", :class => "span12", :onKeyPress=>"return disableEnterKeyPost(event)"
+      = text_area_tag "body" ,"", :class => "span12", :id => "posts_area", :onKeyPress=>"return disableEnterKeyPost(event)"
       .pull-right
-        = submit_tag t('.send'), class: "btn btn-small btn-primary"
+        = submit_tag t('.send'), class: "btn btn-small btn-primary", :onClick=>"return disableButtonPost(event)"
 .row-fluid
   ul.poster
     - @posters.each do |p|
@@ -59,8 +59,20 @@ javascript:
     function() {
       disableEnterKeyPost = function(e) {
           var code = (e.keyCode ? e.keyCode : e.which);
-          if(code == 13) {
+          var val = $('#posts_area').val();
+          if (code == 13) {
               e.preventDefault();
+              if (val != '') {
+                $('#submit_post').submit();
+              }
+          }
+      }
+
+      disableButtonPost = function(e) {
+          e.preventDefault();
+          var code = (e.keyCode ? e.keyCode : e.which);
+          var val = $('#posts_area').val()
+          if ( val != '') {
               $('#submit_post').submit();
           }
       }

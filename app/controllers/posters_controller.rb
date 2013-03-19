@@ -3,7 +3,7 @@ class PostersController < ApplicationController
   def create
     @poster = Poster.new(message: params[:body], user_id: params[:sender])
     if @poster.save
-      flash[:notice] = t("controller.create.post_was_create")
+      flash[:notice] = t(".posters.create.post_was_create")
       redirect_to :back
     end
   end
