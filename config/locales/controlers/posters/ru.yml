@@ -1,0 +1,4 @@
+ru:
+  posters:
+    create:
+      post_was_create: "Пост удачно создан"
