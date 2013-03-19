@@ -3,10 +3,10 @@ br
 .navbar-inner.my-nav
   = t('.what_do_you_want_me_to_say')
 .row-fluid
-  = form_tag('/posters', :id => "submit") do
+  = form_tag('/posters', :id => "submit_post") do
     = hidden_field_tag "sender", value=@user.id
     .row-fluid
-      = text_area_tag "body" ,"", :class => "span12", :onKeyPress=>"return disableEnterKey(event)"
+      = text_area_tag "body" ,"", :class => "span12", :onKeyPress=>"return disableEnterKeyPost(event)"
       .pull-right
         = submit_tag t('.send'), class: "btn btn-small btn-primary"
 .row-fluid
@@ -57,11 +57,11 @@ br
 javascript:
   $(document).ready(
     function() {
-      disableEnterKey = function(e) {
+      disableEnterKeyPost = function(e) {
           var code = (e.keyCode ? e.keyCode : e.which);
           if(code == 13) {
               e.preventDefault();
-              $('#submit').submit();
+              $('#submit_post').submit();
           }
       }
 
