@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   searchable do
     text :first_name, :last_name
     integer :id
+    latlon(:location) { Sunspot::Util::Coordinates.new(self.latitude, self.longitude) }
   end
 
   def avatar_url
