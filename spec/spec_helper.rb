@@ -11,16 +11,16 @@ require 'shoulda'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-RSpec.configure do |config|
-  config.before :all do
-    SunspotTest.stub
-  end
-
-  config.before(:all, search: true) do
-    SunspotTest.setup_solr
-    Sunspot.remove_all!
-    Sunspot.commit
-  end
+#RSpec.configure do |config|
+#  config.before :all do
+#    SunspotTest.stub
+#  end
+#
+#  config.before(:all, search: true) do
+#    SunspotTest.setup_solr
+#    Sunspot.remove_all!
+#    Sunspot.commit
+#  end
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
