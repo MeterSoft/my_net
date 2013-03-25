@@ -21,6 +21,7 @@ gem 'omniauth-vkontakte'
 gem 'vkontakte_api'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem 'whenever', :require => false
 
 group :development, :test do
   gem 'mysql2'
