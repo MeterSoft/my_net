@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def friends
+    user_status
     @friends = current_user.friends.where(:status => 'confirmed') if current_user
     @inverse_friends = current_user.inverse_friends.where(:status => 'confirmed') if current_user
   end
