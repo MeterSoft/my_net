@@ -2,19 +2,53 @@
   .navbar-inner
     .container-fluid
       .row-fluid
-        .span3
-          = image_tag("logo.gif")
-        .span3
-        .span4
-          .nav-collapse.collapse
-            = form_tag("/users_searches", method: "get", class: "navbar-search") do
-              = text_field_tag("user_name", "", :placeholder => "#{t('.search_people')}", :class => "search-query")
-        .span2
-          = link_to "en", languages_path(locale: "en"), class: "btn btn-mini"
-          | &nbsp
-          = link_to "ru", languages_path(locale: "ru"), class: "btn btn-mini"
-          | &nbsp
-          | &nbsp
-          | &nbsp
-          | &nbsp
-          = link_to t('.sign_out'), destroy_user_session_path, :method => :delete, class: "btn btn-mini"
+        .nav-collapse.collapse
+          - if current_user
+            ul.nav
+              li
+                = link_to t('layouts.application.my_page'), main_page_path(current_user.id)
+              li
+                = link_to t('layouts.application.profile'), edit_user_profile_path(current_user.id)
+              li
+                a href="#{messages_path}"
+                  span
+                    = t('layouts.application.messages')
+                  span id="msg_count"
+                  span id="mes_sound"
+              li
+                a href="#{friends_path}"
+                  span
+                    = t('layouts.application.friends')
+                  span id="invite_count"
+              li= form_tag("/users_searches", method: "get", class: "navbar-search") do
+                = text_field_tag("user_name", "", :placeholder => "#{t('.search_people')}", :class => "search-query")
+          ul.nav.pull-right
+            li.dropdown
+              = link_to '#', { 'class' => 'dropdown-toggle', 'data-toggle' => 'dropdown' } do
+                '
+                = t('.language')
+                '
+                b.caret
+              ul.dropdown-menu
+                li= link_to "en", languages_path(locale: "en")
+                li= link_to "ru", languages_path(locale: "ru")
+            - if current_user
+              li.dropdown
+                = link_to '#', { 'class' => 'dropdown-toggle', 'data-toggle' => 'dropdown' } do
+                  '
+                  | #{t('.hi')}, #{current_user.full_name}!
+                  '
+                  b.caret
+                ul.dropdown-menu
+                  li= link_to user_profile_path(current_user) do
+                    i.icon-user
+                    '
+                    = t('layouts.application.profile')
+                  li= link_to destroy_user_session_path, :method => :delete do
+                    i.icon.icon-remove
+                    '
+                    = t('.sign_out')
+javascript:
+  $('.dropdown-toggle').dropdown()
+
+

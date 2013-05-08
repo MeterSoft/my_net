@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :lenguage
   before_filter :authenticate_user!
-  before_filter :friends
+  before_filter :user_status
 
   layout :layout_by_resource
 
@@ -23,12 +23,6 @@ class ApplicationController < ActionController::Base
     else
       "application"
     end
-  end
-
-  def friends
-    user_status
-    @friends = current_user.friends.where(:status => 'confirmed') if current_user
-    @inverse_friends = current_user.inverse_friends.where(:status => 'confirmed') if current_user
   end
 
   def lenguage

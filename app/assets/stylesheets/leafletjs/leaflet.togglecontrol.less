@@ -1,0 +1,28 @@
+@import "twitter/bootstrap/variables";
+@import "twitter/bootstrap/mixins";
+
+.leaflet-toggle-control {
+  background-color: white;
+  .border-radius(8px);
+  .box-shadow(0 1px 7px rgba(0, 0, 0, 0.4));
+
+  .leaflet-toggle-control-toggle {
+    display: block;
+    width: 36px;
+    height: 36px;
+    background: transparent url("/assets/leafletjs/layers.png") no-repeat center center;
+  }
+  form {
+    display: none;
+    padding: 5px 10px;
+    margin: 0px;
+  }
+  &:HOVER {
+    .leaflet-toggle-control-toggle {
+      display: none;
+    }
+    form {
+      display: block;
+    }
+  }
+}

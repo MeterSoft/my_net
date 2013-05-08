@@ -3,6 +3,7 @@ ru:
     header:
       search_people: "Поиск Людей"
       sign_out: "Выход"
+      language: "Язык"
     application:
       my_page: "Моя страница"
       profile: "Профиль"

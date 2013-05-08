@@ -3,6 +3,7 @@ en:
       header:
         search_people: "Search People"
         sign_out: "Logout"
+        language: "Language"
       application:
         my_page: "My Page"
         profile: "Profile"

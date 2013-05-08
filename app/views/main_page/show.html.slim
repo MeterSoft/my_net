@@ -3,7 +3,7 @@
     .user-avatar
       = image_tag(@user.avatar.url(:medium))
       - if !@user.its_i?(current_user.id)
-        a href="#" class="btn" onClick="return send_message(event)" #{t('.send_message')}
+        a href="#" class="btn btn-mini btn-primary" onClick="return send_message(event)" #{t('.send_message')}
       - if !@user.its_i?(current_user.id)
         - if @user.friend?(current_user)
           p
@@ -15,23 +15,26 @@
           - else
             = form_tag(friends_path) do
               = hidden_field_tag :user_id, value=@user.id
-              = submit_tag t('.add_to_friend'), :class => "btn btn-small btn-primary"
+              = submit_tag t('.add_to_friend'), :class => "btn btn-mini btn-primary"
   .span9
-    .user-info
-      ul
-        li
-          = @user.full_name
-        li
-          span
-            = @user.status
-          | &nbsp;
-          | &nbsp;
-          | &nbsp;
-          | &nbsp;
-          span
-            - if !@user.its_i?(current_user.id) && @user.status == 'offline'
-              = t('.login')
-              = @user.time.strftime('%e.%m.%y  %T')
+    .row-fluid
+      .user-info
+        ul
+          li
+            = @user.full_name
+          li
+            span
+              = @user.status
+            | &nbsp;
+            | &nbsp;
+            | &nbsp;
+            | &nbsp;
+            span
+              - if !@user.its_i?(current_user.id) && @user.status == 'offline'
+                = t('.login')
+                = @user.time.strftime('%e.%m.%y  %T')
+      .row-fluid
+        #map.item
 
 
 .row-fluid
@@ -77,4 +80,6 @@ javascript:
         e.preventDefault();
         $('#send_message').modal({ showClose: false });
       }
+
+      new StaticContactsMap('map');
     });
