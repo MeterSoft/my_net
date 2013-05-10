@@ -22,6 +22,8 @@
         ul
           li
             = @user.full_name
+
+            = request.ip
           li
             span
               = @user.status
