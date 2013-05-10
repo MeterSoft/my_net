@@ -18,25 +18,25 @@
               = submit_tag t('.add_to_friend'), :class => "btn btn-mini btn-primary"
   .span9
     .row-fluid
-      .user-info
-        ul
-          li
-            = @user.full_name
-
-            = request.ip
-          li
-            span
-              = @user.status
-            | &nbsp;
-            | &nbsp;
-            | &nbsp;
-            | &nbsp;
-            span
-              - if !@user.its_i?(current_user.id) && @user.status == 'offline'
-                = t('.login')
-                = @user.time.strftime('%e.%m.%y  %T')
-      .row-fluid
-        #map.item
+      .span4
+        .user-info
+          ul
+            li
+              = @user.full_name
+            li
+              span
+                = @user.status
+              | &nbsp;
+              | &nbsp;
+              | &nbsp;
+              | &nbsp;
+              span
+                - if !@user.its_i?(current_user.id) && @user.status == 'offline'
+                  = t('.login')
+                  = @user.time.strftime('%e.%m.%y  %T')
+      .span8
+        #map
+          = image_tag "http://maps.googleapis.com/maps/api/staticmap?zoom=10&size=600x300&maptype=roadmap&markers=color:red%7Ccolor:red%7Clabel:C%7C#{current_user.latitude},#{current_user.longitude}&sensor=false"
 
 
 .row-fluid

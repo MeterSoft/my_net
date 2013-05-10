@@ -22,6 +22,7 @@ gem 'vkontakte_api'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'whenever', :require => false
+gem 'geocoder'
 
 group :development, :test do
   gem 'mysql2'

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :thread_name, :avatar, :time, :status, :lenguage,
-                  :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid
+                  :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid, :ip_address, :latitude, :longitude
 
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :reprocess_avatar, :if => :cropping?
@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
   acts_as_messageable
 
   validates_presence_of :first_name, :last_name
+
+  geocoded_by :ip_address
+  after_validation :geocode
 
   def avatar_url
     self.avatar.url(:small)
