@@ -40,6 +40,7 @@ class MessagesController < ApplicationController
         @messages = conversation.messages.last(30)
         @conversation = conversation.id
         current_user.mark_as_read(conversation)
+        @user = companion(conversation)
       }
       format.json {
         new_message = conversation.receipts.where(is_read: false, receiver_id: current_user.id)
@@ -70,6 +71,14 @@ class MessagesController < ApplicationController
     @id = params[:id]
     respond_to do |format|
       format.js
+    end
+  end
+
+  private
+
+  def companion(conversation)
+    conversation.messages.each do |message|
+      return message.sender unless message.sender.eql?(current_user)
     end
   end
 

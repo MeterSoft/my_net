@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :omniauthable
   has_attached_file :avatar,
                     :styles => { :medium => {:geometry => "300x300" },
-                                 :small => {:geometry => "40x40#", :processors => [:cropper]},
+                                 :small => {:geometry => "50x50#", :processors => [:cropper]},
                                  :large => {:geometry => "600x600>" } },
                     :default_url => '/assets/:style/default_large.png'
 

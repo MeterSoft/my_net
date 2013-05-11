@@ -1,0 +1,6 @@
+.map data-zoom="10" data-latitude="#{@user.latitude}" data-longitude="#{@user.longitude}"
+  .map_section
+    = image_tag "http://maps.googleapis.com/maps/api/staticmap?zoom=10&size=600x300&maptype=roadmap&markers=color:red%7Ccolor:red%7Clabel:C%7C#{@user.latitude},#{@user.longitude}&sensor=false"
+  .btn-group-vertical.map_action
+    = link_to "+", ApplicationHelper::JS_NOOP, class: "btn btn-mini action", :'data-action' => "up"
+    = link_to "-", ApplicationHelper::JS_NOOP, class: "btn btn-mini action", :'data-action' => "down"
