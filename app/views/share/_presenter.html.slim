@@ -1,0 +1,39 @@
+.row-fluid.well
+  .span12
+    #myCarousel.carousel.slide
+      ol.carousel-indicators
+        li.active data-slide-to="0" data-target="#myCarousel"
+        li data-slide-to="1" data-target="#myCarousel"
+        li data-slide-to="2" data-target="#myCarousel"
+        li data-slide-to="3" data-target="#myCarousel"
+        li data-slide-to="4" data-target="#myCarousel"
+        li data-slide-to="5" data-target="#myCarousel"
+        li data-slide-to="6" data-target="#myCarousel"
+        li data-slide-to="7" data-target="#myCarousel"
+        li data-slide-to="8" data-target="#myCarousel"
+        li data-slide-to="9" data-target="#myCarousel"
+        li data-slide-to="10" data-target="#myCarousel"
+      /! Carousel items
+      .carousel-inner
+        .active.item
+          - user = User.find(:first, :offset => rand(User.count))
+          .row-fluid
+            = image_tag(user.avatar.url(:medium))
+          .row-fluid
+            h2= link_to user.full_name, main_page_path(user.id)
+        - 10.times do
+          .item
+            - user = User.find(:first, :offset => rand(User.count))
+            .row-fluid
+              = image_tag(user.avatar.url(:medium))
+            .row-fluid
+              h2= link_to user.full_name, main_page_path(user.id)
+
+      /! Carousel nav
+      a.carousel-control.left data-slide="prev" href="#myCarousel" ‹
+      a.carousel-control.right data-slide="next" href="#myCarousel" ›
+
+javascript:
+  $('document').ready(function() {
+    $('.carousel').carousel()
+  });

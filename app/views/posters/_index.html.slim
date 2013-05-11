@@ -1,44 +1,41 @@
-br
-br
-.navbar-inner.my-nav
-  = t('.what_do_you_want_me_to_say')
-.row-fluid
-  = form_tag('/posters', :id => "submit_post") do
-    = hidden_field_tag "sender", value=@user.id
-    .row-fluid
-      = text_area_tag "body" ,"", :class => "span12", :id => "posts_area", :onKeyPress=>"return disableEnterKeyPost(event)"
-      .pull-right
-        = submit_tag t('.send'), class: "btn btn-small btn-primary", :onClick=>"return disableButtonPost(event)"
-.row-fluid
-  ul.poster
-    - @posters.each do |p|
-      li.poster_message id="posters_#{p.id}"
-        .row-fluid
-          .span9
-            = p.message
-          .span2
-            span.time
-              = p.created_at.strftime('%e.%m.%y  %T')
-          .span1
-            - if @user.its_i?(current_user.id)
-              = link_to '&times;'.html_safe , poster_path(p) , :class => "close", method: :delete, :remote => true
-        .row-fluid
-          .pull-right
-            a href="#" class="comment" onClick="return new_comment(event, #{p.id})" #{t('.comment')}
-        br
-        .row-fluid
-          ul.poster-comment
-            - p.comments.each do |c|
-              li id="comments_#{c.id}"
-                .row-fluid
-                  .span9
-                    = c.comment
-                  .span2
-                    span.time
-                      = c.created_at.strftime('%e.%m.%y  %T')
-                  .span1
-                    - if @user.its_i?(current_user.id)
-                      = link_to '&times;'.html_safe , comment_path(c) , :class => "close", method: :delete, :remote => true
+.well
+  .row-fluid
+    = form_tag('/posters', :id => "submit_post") do
+      = hidden_field_tag "sender", value=@user.id
+      .row-fluid
+        = text_area_tag "body" ,"", :class => "span12", :id => "posts_area", :onKeyPress=>"return disableEnterKeyPost(event)"
+        .pull-right
+          = submit_tag t('.send'), class: "btn btn-small btn-primary", :onClick=>"return disableButtonPost(event)"
+  .row-fluid
+    ul.poster
+      - @posters.each do |p|
+        li.poster_message id="posters_#{p.id}"
+          .row-fluid
+            .span9
+              = p.message
+            .span2
+              span.time
+                = p.created_at.strftime('%e.%m.%y  %T')
+            .span1
+              - if @user.its_i?(current_user.id)
+                = link_to '&times;'.html_safe , poster_path(p) , :class => "close", method: :delete, :remote => true
+          .row-fluid
+            .pull-right
+              a href="#" class="comment" onClick="return new_comment(event, #{p.id})" #{t('.comment')}
+          br
+          .row-fluid
+            ul.poster-comment
+              - p.comments.each do |c|
+                li id="comments_#{c.id}"
+                  .row-fluid
+                    .span9
+                      = c.comment
+                    .span2
+                      span.time
+                        = c.created_at.strftime('%e.%m.%y  %T')
+                    .span1
+                      - if @user.its_i?(current_user.id)
+                        = link_to '&times;'.html_safe , comment_path(c) , :class => "close", method: :delete, :remote => true
 
   #new_comment.comment-dialog style="display: none"
     .row-fluid

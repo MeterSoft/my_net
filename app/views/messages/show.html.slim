@@ -1,28 +1,29 @@
-.row-fluid
-  .span12
-    .conversation_map
-      = render partial: "map/map"
-.row-fluid
-  ul.scrolling#show-scrolling
-    - @messages.each do |mes|
-      li.messages_no
-        .row-fluid
-          .span1
-            = image_tag(mes.sender.avatar.url(:small))
-          .span9
-            = mes.body
-          .span2
-            span.time
-              = mes.created_at.strftime('%e.%m.%y  %T')
-.row-fluid
-  = form_tag('/messages', :id => "submit", remote: true) do
-    = hidden_field_tag "conversation", value=@conversation
-    = hidden_field_tag "chat", value="ok"
-    .row-fluid
-      br
-      = text_area_tag "body" ,"", :class => "span12", id: "show_area", :onKeyPress=>"return disableEnterKey(event)"
-      .pull-right
-        = link_to t('.send'), "", class: "btn btn-small btn-primary", :onClick=>"return disableEnter(event)"
+.well
+  .row-fluid
+    .span12
+      .conversation_map
+        = render partial: "map/map"
+  .row-fluid
+    ul.scrolling#show-scrolling
+      - @messages.each do |mes|
+        li.messages_no
+          .row-fluid
+            .span1
+              = image_tag(mes.sender.avatar.url(:small))
+            .span9
+              = mes.body
+            .span2
+              span.time
+                = mes.created_at.strftime('%e.%m.%y  %T')
+  .row-fluid
+    = form_tag('/messages', :id => "submit", remote: true) do
+      = hidden_field_tag "conversation", value=@conversation
+      = hidden_field_tag "chat", value="ok"
+      .row-fluid
+        br
+        = text_area_tag "body" ,"", :class => "span12", id: "show_area", :onKeyPress=>"return disableEnterKey(event)"
+        .pull-right
+          = link_to t('.send'), "", class: "btn btn-small btn-primary", :onClick=>"return disableEnter(event)"
 
 javascript:
   $(document).ready(function() {

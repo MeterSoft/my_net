@@ -1,36 +1,41 @@
-.row-fluid
+.row-fluid.well
   .span3
     .user-avatar
-      = image_tag(@user.avatar.url(:medium))
-      - if !@user.its_i?(current_user.id)
-        a href="#" class="btn btn-mini btn-primary" onClick="return send_message(event)" #{t('.send_message')}
-      - if !@user.its_i?(current_user.id)
-        - if @user.friend?(current_user)
-          p
-            = t('.already_your_friend')
-        - else
-          - if @user.friend_invited?(current_user)
-            p
-              = t('.already_invited')
-          - else
-            = form_tag(friends_path) do
-              = hidden_field_tag :user_id, value=@user.id
-              = submit_tag t('.add_to_friend'), :class => "btn btn-mini btn-primary"
+      .row-fluid
+        = image_tag(@user.avatar.url(:medium))
+      .row-fluid
+        .btn-group-vertical
+          - if !@user.its_i?(current_user.id)
+            a href="#" class="btn btn-mini" onClick="return send_message(event)" #{t('.send_message')}
+          - if !@user.its_i?(current_user.id)
+            - if @user.friend?(current_user)
+              p
+                = t('.already_your_friend')
+            - else
+              - if @user.friend_invited?(current_user)
+                p
+                  = t('.already_invited')
+              - else
+                = form_tag(friends_path) do
+                  = hidden_field_tag :user_id, value=@user.id
+                  = submit_tag t('.add_to_friend'), :class => "btn btn-small"
   .span9
     .row-fluid
       .span4
         .user-info
           ul
             li
-              = @user.full_name
+              h1= @user.full_name
             li
-              span
-                = @user.status
-              | &nbsp;
-              | &nbsp;
-              | &nbsp;
-              | &nbsp;
-              span
+              h5
+                - if @user.status == 'online'
+                  p.online
+                    = @user.status
+                - else
+                  p.offline
+                    = @user.status
+            li
+              .login
                 - if !@user.its_i?(current_user.id) && @user.status == 'offline'
                   = t('.login')
                   = @user.time.strftime('%e.%m.%y  %T')
@@ -39,7 +44,10 @@
 
 
 .row-fluid
-  = render partial: "posters/index"
+  .span8
+    = render partial: "posters/index"
+  .span4
+    = render partial: "share/presenter"
 
 #send_message.comment-dialog style="display: none"
   .row-fluid

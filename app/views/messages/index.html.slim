@@ -1,4 +1,4 @@
-ul.scrolling
+ul.scrolling.well
   - @messages.each do |m|
     li.messages id="conversation_#{m.id}"
       a.message href="#{message_path(m.id)}"
