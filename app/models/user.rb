@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
                            last_name: auth.extra.raw_info.last_name,
                            provider: auth.provider,
                            uid: auth.uid,
-                           email: auth.info.email,
+                           email: auth.info.email || auth.uid.to_s + "@facebook.com",
                            password: Devise.friendly_token[0,20],
                            avatar: open(auth.info.image)
         )
