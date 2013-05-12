@@ -3,7 +3,7 @@ en:
     profile:
       first_name: "First Name"
       last_name: "Last Name"
-      thread_name: "Thread Name"
+      thread_name: "Nick"
       save: "Save"
       avatar: "Avatar"
     crop:

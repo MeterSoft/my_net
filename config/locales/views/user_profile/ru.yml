@@ -3,7 +3,7 @@ ru:
     profile:
       first_name: "Имя"
       last_name: "Фамилия"
-      thread_name: "Отчество"
+      thread_name: "Ник"
       save: "Сохранить"
       avatar: "Фото"
     crop:

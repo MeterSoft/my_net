@@ -2,8 +2,7 @@ DOCTYPE html
 html
   head
     title Velcome to Bubble
-    = stylesheet_link_tag "bootstrap.min"
-    = stylesheet_link_tag    "login"
+    = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
     link rel="shortcut icon" href="http://bubble.pp.ua/assets/favicon.ico" type="image/x-icon"
@@ -13,14 +12,6 @@ html
       = render :partial => "layouts/header"
     .main
       .container-fluid
-        .row-fluid
-          | Добро пожаловать на сайт! Это только тестовая версия, при обнаружении багов
-          | &nbsp
-          | прошу сообщать мне в личном сообщении!
-          | &nbsp
-          | Спасибо за понимание
-        br
-        br
         .row-fluid
           .span3
           .span9
