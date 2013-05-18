@@ -27,7 +27,7 @@
             .row-fluid
               = image_tag(user.avatar.url(:medium))
             .row-fluid
-              h2= link_to user.full_name, main_page_path(user.id)
+              h3= link_to user.full_name, main_page_path(user.id)
 
       /! Carousel nav
       a.carousel-control.left data-slide="prev" href="#myCarousel" ‹

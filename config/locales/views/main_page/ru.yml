@@ -1,5 +1,7 @@
 ru:
   main_page:
+    index:
+      connections: "Древо отношений"
     show:
       send_message: "Отправить сообщение"
       login: "Заходил:"

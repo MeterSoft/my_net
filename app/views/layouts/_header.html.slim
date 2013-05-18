@@ -5,6 +5,8 @@
         - if current_user
           ul.nav
             li
+              = link_to t('layouts.application.home'), root_path
+            li
               = link_to t('layouts.application.my_page'), main_page_path(current_user.id)
             li
               a href="#{messages_path}"

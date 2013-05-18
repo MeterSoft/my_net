@@ -21,7 +21,7 @@
                   = submit_tag t('.add_to_friend'), :class => "btn btn-small"
   .span9
     .row-fluid
-      .span4
+      .span5
         .user-info
           ul
             li
@@ -39,14 +39,14 @@
                 - if !@user.its_i?(current_user.id) && @user.status == 'offline'
                   = t('.login')
                   = @user.time.strftime('%e.%m.%y  %T')
-      .span8
+      .span7
         = render partial: "map/map"
 
 
 .row-fluid
-  .span8
+  .span9
     = render partial: "posters/index"
-  .span4
+  .span3
     = render partial: "share/presenter"
 
 #send_message.comment-dialog style="display: none"

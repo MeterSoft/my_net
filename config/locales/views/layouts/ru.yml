@@ -5,6 +5,7 @@ ru:
       sign_out: "Выход"
       language: "Язык"
     application:
+      home: "На главную"
       my_page: "Моя страница"
       profile: "Профиль"
       messages: "Сообщения"

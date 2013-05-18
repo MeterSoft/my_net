@@ -1,7 +1,13 @@
 Net::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  resources :main_page
+  root :to => "main_page#index"
+
+  resources :main_page do
+    collection do
+      get :user_connections
+    end
+  end
 
   resources :user_profile
 

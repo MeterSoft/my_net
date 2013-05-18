@@ -19,7 +19,7 @@ ru:
         sign_up: "Регистрация"
         first_name: "Имя"
         last_name: "Фамилия"
-        thread_name: "Отчество"
+        thread_name: "Ник"
     confirmation:
       new:
         email: "Емейл"

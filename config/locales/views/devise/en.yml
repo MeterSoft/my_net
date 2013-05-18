@@ -19,7 +19,7 @@ en:
         sign_up: "Register"
         first_name: "First Name"
         last_name: "Last Name"
-        thread_name: "Thread Name"
+        thread_name: "Nik Name"
     confirmation:
       new:
         email: "Email"

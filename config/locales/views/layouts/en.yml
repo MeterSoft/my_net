@@ -5,6 +5,7 @@ en:
         sign_out: "Logout"
         language: "Language"
       application:
+        home: "Home"
         my_page: "My Page"
         profile: "Profile"
         messages: "Messages"

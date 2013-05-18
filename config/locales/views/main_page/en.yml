@@ -1,5 +1,7 @@
 en:
   main_page:
+    index:
+      connections: "Tree of Relationship"
     show:
       send_message: "Sent message"
       login: "Last login:"
