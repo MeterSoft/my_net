@@ -13,6 +13,10 @@ ru:
       my_image: "Фото"
       my_video: "Видео"
       my_music: "Музыка"
+      welcome: "Добро пожаловать в Bubble"
+      bubble: "Bubble"
+      login: "Нет логина? Тогда "
+      or: "Или войди через социальную сеть "
     all_header:
       sign_in: "Войти"
-      sign_up: "Регистрация"
+      sign_up: "Регистрируйся"

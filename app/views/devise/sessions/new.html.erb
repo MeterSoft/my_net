@@ -1,6 +1,6 @@
-<p class="top_login">
+<h1 class="top_login">
   <%= t('.login') %>
-</p>
+</h1>
 <div class="mlogin">
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <div><%= devise_error_messages! %></div>
@@ -14,11 +14,7 @@
   <% end %>
 </div>
 <p class="futer-login">
-  <%= link_to t('.sign_up'), new_registration_path(resource_name)%><br>
   <%= link_to t('.forgot'), new_password_path(resource_name) %>
 </p>
-
-<%= link_to t('.login_with_facebook'), user_omniauth_authorize_path(:facebook), class: "btn btn-mini btn-primary" %>
-<%= link_to t('.login_with_vkontakte'), user_omniauth_authorize_path(:vkontakte), class: "btn btn btn-mini btn-primary" %>
 
 

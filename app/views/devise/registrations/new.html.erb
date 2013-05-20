@@ -1,6 +1,6 @@
-<p class="top_login">
+<h1 class="top_login">
   <%= t('.registration') %>
-</p>
+</h1>
 <div class="mlogin">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <div><%= devise_error_messages! %></div>
@@ -22,8 +22,3 @@
       </div>
     <% end %>
 </div>
-<p class="futer-login">
-  <%= link_to t('.sign_in'), new_session_path(resource_name)%>
-</p>
-
-

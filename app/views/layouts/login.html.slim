@@ -1,7 +1,7 @@
 DOCTYPE html
 html
   head
-    title Velcome to Bubble
+    title = t('layouts.application.welcome')
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -13,6 +13,19 @@ html
     .main
       .container-fluid
         .row-fluid
-          .span3
-          .span9
+          .span8
+            h1
+               = t('layouts.application.bubble')
+            = link_to t('layouts.all_header.sign_in'), new_session_path(resource_name)
+          .span4
             = yield
+        .row-fluid
+          .span12
+            h2
+              = t('layouts.application.login')
+              = link_to t('layouts.all_header.sign_up'), new_registration_path(resource_name)
+            h3
+              = t('layouts.application.or')
+            .btn-group
+              = link_to t('devise.sessions.new.login_with_facebook'), user_omniauth_authorize_path(:facebook), class: "btn btn-primary"
+              = link_to t('devise.sessions.new.login_with_vkontakte'), user_omniauth_authorize_path(:vkontakte), class: "btn btn-primary"

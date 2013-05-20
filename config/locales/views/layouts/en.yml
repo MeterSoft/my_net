@@ -13,6 +13,10 @@ en:
         my_image: "Images"
         my_video: "Videos"
         my_music: "Musics"
+        welcome: "Welcome to Bubble"
+        buble: "Bubble"
+        login: "Don`t have login? Then "
+        or: "Or go in through a social network "
       all_header:
         sign_in: "Login"
-        sign_up: "Register"
+        sign_up: "Registered"
