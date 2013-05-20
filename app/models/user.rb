@@ -12,11 +12,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :thread_name, :avatar, :time, :status, :lenguage,
-                  :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid, :ip_address, :latitude, :longitude
+                  :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid, :ip_address, :latitude, :longitude,
+                  :sex,:zip_code, :birthday, :country, :time_zone, :address, :city, :phone, :phone_secondary
 
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :reprocess_avatar, :if => :cropping?
-
+    
   has_many :friends, :foreign_key => "user_id", :class_name => "Friend"
   has_many :inverse_friends, :foreign_key => "user_friend_id", :class_name => "Friend"
   has_many :uploads
