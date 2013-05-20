@@ -51,6 +51,10 @@ end
 
 gem 'jquery-rails'
 
+gem 'countries'
+gem 'carmen-rails', '~> 1.0.0.beta3'
+
+gem 'jquery_datepicker'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

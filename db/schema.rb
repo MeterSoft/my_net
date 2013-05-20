@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312120241) do
+ActiveRecord::Schema.define(:version => 20130517144519) do
 
   create_table "audios", :force => true do |t|
     t.integer  "user_id"
@@ -135,6 +135,18 @@ ActiveRecord::Schema.define(:version => 20130312120241) do
     t.string   "lenguage",                              :default => "ru"
     t.string   "provider"
     t.string   "uid"
+    t.string   "ip_address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "sex"
+    t.date     "birthday"
+    t.integer  "zip_code"
+    t.string   "country"
+    t.string   "time_zone",                             :default => "UTC"
+    t.string   "city"
+    t.string   "address"
+    t.integer  "phone"
+    t.integer  "phone_secondary"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
