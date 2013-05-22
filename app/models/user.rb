@@ -66,14 +66,14 @@ class User < ActiveRecord::Base
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.find_by_provider_and_uid(auth.provider, auth.uid)
+    user = User.find_by_provider_and_uid(auth.provider, auth.uid.to_s)
     unless user
       user = User.find_by_email(auth.info.email)
       unless user
         user = User.create(first_name: auth.extra.raw_info.first_name,
                            last_name: auth.extra.raw_info.last_name,
                            provider: auth.provider,
-                           uid: auth.uid,
+                           uid: auth.uid.to_s,
                            email: auth.info.email || auth.uid.to_s + "@facebook.com",
                            password: Devise.friendly_token[0,20],
                            avatar: open(auth.info.image)
@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_vkontakte_oauth(auth, signed_in_resource=nil)
-    user = User.find_by_provider_and_uid(auth.provider, auth.uid)
+    user = User.find_by_provider_and_uid(auth.provider, auth.uid.to_s)
     unless user
       user = User.find_by_email(auth.info.email)
       unless user
@@ -92,20 +92,20 @@ class User < ActiveRecord::Base
                            last_name: auth.extra.raw_info.last_name,
                            thread_name: auth.extra.raw_info.nickname,
                            provider: auth.provider,
-                           uid: auth.uid,
+                           uid: auth.uid.to_s,
                            email: auth.info.email || auth.uid.to_s + "@vk.com",
                            password: Devise.friendly_token[0,20],
                            avatar: open(auth.extra.raw_info.photo_big)
         )
 
-        vk = VkontakteApi::Client.new(auth.credentials.token)
-
-        photos =  vk.photos.getAll
-        if photos != []
-          photos[1..-1].each do |p|
-            Photo.create(user_id: user.id, url: p.src, url_big: p.src_big, url_small: p.src_small)
-          end
-        end
+        #vk = VkontakteApi::Client.new(auth.credentials.token)
+        #
+        #photos =  vk.photos.getAll
+        #if photos != []
+        #  photos[1..-1].each do |p|
+        #    Photo.create(user_id: user.id, url: p.src, url_big: p.src_big, url_small: p.src_small)
+        #  end
+        #end
 
         #audios =  vk.audio.get
         #if audios != []
@@ -114,12 +114,12 @@ class User < ActiveRecord::Base
         #  end
         #end
 
-        videos =  vk.video.get
-        if videos != []
-          videos[1..-1].each do |v|
-            Video.create(user_id: user.id, description: v.description, title: v.title, url: v.player, image: v.image, date: v.date)
-          end
-        end
+        #videos =  vk.video.get
+        #if videos != []
+        #  videos[1..-1].each do |v|
+        #    Video.create(user_id: user.id, description: v.description, title: v.title, url: v.player, image: v.image, date: v.date)
+        #  end
+        #end
       end
     end
     user
