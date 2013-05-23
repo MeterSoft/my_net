@@ -1,0 +1,11 @@
+en:
+  settings:
+    edit:
+      title: 'Check params to views'
+      birthday: 'Birthday'
+      zip_code: 'Zip Code'
+      country: 'Country'
+      city: 'City'
+      address: 'Address'
+      phone: 'Phone'
+      phone_secondary: 'Phone Secondary'
