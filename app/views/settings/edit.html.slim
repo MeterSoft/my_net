@@ -1,0 +1,25 @@
+h1 
+  = t('.title')
+= form_for @settings do |f|
+  = f.label :birthday, class: 'checkbox' do
+    = f.check_box :birthday 
+    = t('.birthday') 
+  = f.label :zip_code, class: 'checkbox' do
+    = f.check_box :zip_code
+    = t('.zip_code')
+  = f.label :country, class: 'checkbox' do
+    = f.check_box :country
+    = t('.country')
+  = f.label :city, class: 'checkbox' do
+    = f.check_box :city
+    = t('.city')
+  = f.label :address, class: 'checkbox' do
+    = f.check_box :address
+    = t('.address')
+  = f.label :phone, class: 'checkbox' do
+    = f.check_box :phone
+    = t('.phone')
+  = f.label :phone_secondary, class: 'checkbox' do
+    = f.check_box :phone_secondary
+    = t('.phone_secondary')
+  = f.submit

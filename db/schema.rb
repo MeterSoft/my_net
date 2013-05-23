@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130517144519) do
+ActiveRecord::Schema.define(:version => 20130522110243) do
 
   create_table "audios", :force => true do |t|
     t.integer  "user_id"
@@ -90,6 +90,19 @@ ActiveRecord::Schema.define(:version => 20130517144519) do
   end
 
   add_index "receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
+
+  create_table "settings", :force => true do |t|
+    t.boolean  "birthday",        :default => true
+    t.boolean  "zip_code",        :default => true
+    t.boolean  "country",         :default => true
+    t.boolean  "city",            :default => true
+    t.boolean  "address",         :default => true
+    t.boolean  "phone",           :default => true
+    t.boolean  "phone_secondary", :default => true
+    t.integer  "user_id"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
 
   create_table "uploads", :force => true do |t|
     t.string   "upload_file_name"

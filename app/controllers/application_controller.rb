@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource_or_scope)
     current_user.update_attributes(:ip_address => request.ip)
+    current_user.setting = Setting.new(user_id: current_user.id) unless current_user.setting
     root_path
   end
 
