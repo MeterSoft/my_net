@@ -1,54 +1,42 @@
 <%= form_for(@user,:url => user_profile_path, :html => {:multipart => true}) do |f| %>
   <div>
-    <%= f.label t('.first_name') %>
     <%= f.text_field :first_name, :placeholder => t('.first_name') %></div>
 
-    <%= f.label t('.last_name') %>
     <%= f.text_field :last_name, :placeholder => t('.last_name') %>
   <div style="font-weight: bold;">
-    <%= f.label t('.thread_name') %>
     <%= f.text_field :thread_name, :placeholder => t('.thread_name') %></div>
   <div>
-    <%= f.label t('.sex') %>
     <%= f.select :sex, ([['- - -', 1], [t('.sex_params_2'), 2], [t('.sex_params_3'), 3]]) %></div>
   <div>
-    <%= f.label t('.birthday_lable') %>
-    <%= f.text_field :birthday, :placeholder => t('.birthday') %></div>
+    <%= f.text_field :birthday, :placeholder => t('settings.edit.birthday') %></div>
   <div>
-    <%= f.label t('.zip_code') %>
-    <%= f.text_field :zip_code, :placeholder => t('.zip_code') %></div>
+    <%= f.text_field :zip_code, :placeholder => t('settings.edit.zip_code') %></div>
   <div>
-    <%= f.label t('.country') %>
-    <%= f.country_select :country, {priority: %w(UA RU BY)}, prompt: 'Please select a country' %></div>
+    <%= f.country_select :country, {priority: %w(UA RU BY)}, prompt: t('settings.edit.country') %></div>
   <div>
-    <%= f.label t('.time_zone') %>
     <%= f.time_zone_select :time_zone %>
   </div>
   <div>
-    <%= f.label t('.city') %>
-    <%= f.text_field :city, :placeholder => t('.city') %>
+    <%= f.text_field :city, :placeholder => t('settings.edit.city') %>
   </div>
   <div>
-    <%= f.label t('.address_lable') %>
-    <%= f.text_field :address, :placeholder => t('.address') %>
+    <%= f.text_field :address, :placeholder => t('settings.edit.address') %>
   </div>
   <div>
-    <%= f.label t('.phone') %>
-    <%= f.telephone_field :phone, :placeholder => t('.phone') %>
+    <%= f.telephone_field :phone, :placeholder => t('settings.edit.phone_secondary') %>
   </div>
   <div>
-    <%= f.label t('.phone_secondary') %>
-    <%= f.telephone_field :phone_secondary, :placeholder => t('.phone') %>
+    <%= f.telephone_field :phone_secondary, :placeholder => t('settings.edit.phone_secondary') %>
   </div>
       <%= image_tag @user.avatar.url(:medium) %>
       <span class="btn btn-success fileinput-button">
           <i class="icon-plus icon-white"></i>
-          <span><%= t('.avatar') %></span>
+          <span><%= t('user_profile.profile.avatar') %></span>
           <%= f.file_field :avatar %>
       </span>
   </div>
   <br>
   <div>
-    <%= f.submit t('.save'), class: "btn" %>
+    <%= f.submit t('user_profile.profile.save'), class: "btn" %>
   </div>
 <% end %>
