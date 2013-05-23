@@ -1,0 +1,11 @@
+ru:
+  settings:
+    edit:
+      title: 'Отметьте параметры для отображения'
+      birthday: 'День рождения'
+      zip_code: 'Индекс'
+      country: 'Страна'
+      city: 'Город'
+      address: 'Адресс'
+      phone: 'Телефон'
+      phone_secondary: 'Дополнительный телефон'
