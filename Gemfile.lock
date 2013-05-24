@@ -254,6 +254,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  carmen (~> 1.0.0)
   carmen-rails (~> 1.0.0.beta3)
   coffee-rails (~> 3.2.1)
   countries
