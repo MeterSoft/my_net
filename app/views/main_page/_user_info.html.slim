@@ -1,0 +1,63 @@
+.span3
+  .user-avatar
+    .row-fluid
+      = image_tag(@user.avatar.url(:medium))
+.span9
+  .row-fluid
+    .span9
+      .user-info
+        ul
+          li
+            h1= @user.full_name
+          li
+            hr
+          li
+            h5
+              - if @user.status == 'online'
+                p.online
+                  = @user.status
+              - else
+                p.offline
+                  = @user.status
+          li
+            .login
+              - if !@user.its_i?(current_user.id) && @user.status == 'offline'
+                = t('.login')
+                = @user.time.strftime('%e.%m.%y  %T')
+          li
+            - if @user.setting.birthday && !@user.birthday.blank?
+              | #{t('settings.edit.birthday')}: #{@user.birthday}
+          li
+            - if @user.setting.zip_code && !@user.zip_code.blank?
+              | #{t('settings.edit.zip_code')}: #{@user.zip_code}
+          li
+            /- if @user.setting.country
+              | "#{t('settings.edit.country')}: #{Carmen::Country.coded(@user.country).name}"
+          li
+            - if @user.setting.city && !@user.city.blank?
+              | #{t('settings.edit.city')}: #{@user.city}
+          li
+            - if @user.setting.address && !@user.address.blank?
+              | #{t('settings.edit.address')}: #{@user.address}
+          li
+            /- if @user.setting.phone
+              | #{t('settings.edit.phone')}: +#{Country.find_country_by_alpha2(@user.country).country_code}#{@user.phone}
+          li
+            /- if @user.setting.phone_secondary
+              | #{t('settings.edit.phone_secondary')}: +#{Country.find_country_by_alpha2(@user.country).country_code}#{@user.phone_secondary}
+    .span3
+      - if !@user.its_i?(current_user.id)
+        a href="#" class="btn btn-block btn-info" onClick="$('#send_message_popup').modal('show')" #{t('main_page.show.send_message')}
+        = render partial: 'main_page/send_message_popup'
+      - if !@user.its_i?(current_user.id)
+        - if @user.friend?(current_user)
+          p
+            = t('main_page.show.already_your_friend')
+        - else
+          - if @user.friend_invited?(current_user)
+            p
+              = t('main_page.show.already_invited')
+          - else
+            = form_tag(friends_path) do
+              = hidden_field_tag :user_id, value=@user.id
+              = submit_tag t('main_page.show.add_to_friend'), :class => "btn btn-block btn-info"
