@@ -6,7 +6,7 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise', '2.0.4'
-gem 'paperclip', '~> 2.7'
+gem 'paperclip'
 gem 'less'
 gem 'slim'
 gem 'progress_bar'
@@ -28,6 +28,7 @@ gem 'paloma'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'nokogiri'
+gem 'paperclip-dropbox', ">= 1"
 
 group :development, :test do
   gem 'mysql2'

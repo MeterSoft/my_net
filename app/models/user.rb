@@ -4,10 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable
   has_attached_file :avatar,
+                    :storage => :dropbox,
+                    :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
                     :styles => { :medium => {:geometry => "300x300" },
-                                 :small => {:geometry => "50x50#", :processors => [:cropper]},
-                                 :large => {:geometry => "600x600>" } },
-                    :default_url => '/assets/:style/default_large.png'
+                                 :small => {:geometry => "50x50#"} },
+                    :default_url => '/assets/:style/default_large.png',
+                    :dropbox_options => {
+                        :path => proc { |style| "#{style}/#{id}_#{avatar.original_filename}"},
+                        :unique_filename => true
+                    }
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
@@ -16,7 +21,7 @@ class User < ActiveRecord::Base
                   :sex,:zip_code, :birthday, :country, :time_zone, :address, :city, :phone, :phone_secondary
 
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
-  after_update :reprocess_avatar, :if => :cropping?
+  #after_update :reprocess_avatar, :if => :cropping?
     
   has_many :friends, :foreign_key => "user_id", :class_name => "Friend"
   has_many :inverse_friends, :foreign_key => "user_friend_id", :class_name => "Friend"
@@ -60,14 +65,14 @@ class User < ActiveRecord::Base
     Friend.find_by_user_id_and_user_friend_id_and_status(current_user, self, 'invite')
   end
 
-  def cropping?
-    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
-  end
-
-  def avatar_geometry(style = :original)
-    @geometry ||= {}
-    @geometry[style] ||= Paperclip::Geometry.from_file(avatar.path(style))
-  end
+  #def cropping?
+  #  !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  #end
+  #
+  #def avatar_geometry(style = :original)
+  #  @geometry ||= {}
+  #  @geometry[style] ||= Paperclip::Geometry.from_file(avatar.path(style))
+  #end
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)

@@ -9,15 +9,11 @@ class UserProfileController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        if params[:user][:avatar].blank?
-          format.html { redirect_to main_page_path(current_user.id), notice: 'Category was successfully updated.' }
-          format.json
-        else
-          format.html { render :action => "crop" }
-        end
+        format.html { redirect_to main_page_path(current_user.id) }
+        format.json
       else
         format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json
       end
     end
   end
