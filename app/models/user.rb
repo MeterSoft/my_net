@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :omniauthable
+         :recoverable, :rememberable, :trackable, :omniauthable, :confirmable
   has_attached_file :avatar,
                     :storage => :dropbox,
                     :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
                   :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid, :ip_address, :latitude, :longitude,
                   :sex,:zip_code, :birthday, :country, :time_zone, :address, :city, :phone, :phone_secondary
 
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  #attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   #after_update :reprocess_avatar, :if => :cropping?
     
   has_many :friends, :foreign_key => "user_id", :class_name => "Friend"
@@ -29,9 +29,6 @@ class User < ActiveRecord::Base
   has_many :created_posts, :foreign_key => "creator_id", :class_name => "Post"
   has_many :received_posts, :foreign_key => "receiver_id", :class_name => "Post"
   has_many :posts
-  has_many :videos
-  has_many :photos
-  has_many :audios
   has_one  :setting
 
   acts_as_messageable

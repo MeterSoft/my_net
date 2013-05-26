@@ -2,14 +2,14 @@
   .modal-header
     = t('main_page.show.new_message')
   .modal-body
-    = form_tag('/messages', :id => "message_submit", remote: true) do
+    = form_tag('/messages', id: 'send_message_submit', remote: true) do
       .row-fluid
         = label_tag "user_name", value=@user.full_name
         = hidden_field_tag "user_id", value=@user.id
         = hidden_field_tag "subject", value="message"
       .row-fluid
-        = text_area_tag "body", "", :class => "span12", :id => "message_area", :onKeyPress=>"return disableEnterKey(event)"
+        = text_area_tag "body", "", :class => "span12", :id => "message_area"
   .modal-footer
     .pull-right
-      = submit_tag t('messages.show.send'), class: 'btn'
+      = link_to t('messages.show.send'), ApplicationHelper::JS_NOOP, onclick: "$('#send_message_submit').submit();", class: 'btn'
       = link_to t('posts.posts.close'), ApplicationHelper::JS_NOOP, onclick: "$('#send_message_popup').modal('hide');", class: 'btn btn-primary'

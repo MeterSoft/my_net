@@ -19,6 +19,10 @@ en:
         login: "Don`t have login? Then "
         or: "Or go in through a social network "
         loading: "Loading..."
+        this: "is:"
+        message_1: "anonymous letters and statements"
+        message_2: "the ability to find friends"
+        message_3: "find out what you've always wondered"
       all_header:
         sign_in: "Login"
         sign_up: "Registered"

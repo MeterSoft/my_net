@@ -1,20 +1,20 @@
-<h1 class="top_login">
-  <%= t('.login') %>
+<h1>
+  <%= t('devise.sessions.new.login') %>
 </h1>
-<div class="mlogin">
+<div>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <div><%= devise_error_messages! %></div>
-    <div><%= f.email_field :email, :placeholder => t('.email') %></div>
+    <div><%= f.email_field :email, :placeholder => t('devise.confirmation.new.email') %></div>
     <br>
-    <div><%= f.password_field :password, :placeholder => t('.password') %></div>
+    <div><%= f.password_field :password, :placeholder => t('devise.registrations.new.password') %></div>
     <br>
     <div>
-      <%= f.submit t('.sign_in'), :class => "btn" %>
+      <%= f.submit t('devise.registrations.new.sign_in'), :class => "btn" %>
     </div>
   <% end %>
 </div>
-<p class="futer-login">
-  <%= link_to t('.forgot'), new_password_path(resource_name) %>
+<p>
+  <%= link_to t('devise.sessions.new.forgot'), new_password_path(resource_name) %>
 </p>
 
 
