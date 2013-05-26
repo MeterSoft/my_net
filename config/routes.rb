@@ -33,16 +33,6 @@ Net::Application.routes.draw do
     resources :posts, controller: 'replies'
   end
 
-  resources :videos
-
-  resources :audios
-
-  resources :photos
-
-  resources :musics
-
-  resources :comments
-
   resources :settings
 
  devise_scope :user do
