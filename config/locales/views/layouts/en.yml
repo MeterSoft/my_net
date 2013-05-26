@@ -18,6 +18,7 @@ en:
         buble: "Bubble"
         login: "Don`t have login? Then "
         or: "Or go in through a social network "
+        loading: "Loading..."
       all_header:
         sign_in: "Login"
         sign_up: "Registered"

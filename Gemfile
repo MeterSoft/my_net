@@ -23,6 +23,11 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'whenever', :require => false
 gem 'geocoder'
+gem 'acts_as_votable', '~> 0.5.0'
+gem 'paloma'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'mysql2'

@@ -1,0 +1,9 @@
+#delete_post_popup.modal.hide.fade
+  .modal-header
+    h3= t('settings.edit.title')
+  .modal-body
+    = t('posts.posts.message')
+  .modal-footer
+    .pull-right
+      = link_to t('uploads.new.delete'), ApplicationHelper::JS_NOOP, remote: true, method: :delete, class: 'btn confirm'
+      = link_to t('posts.posts.close'), ApplicationHelper::JS_NOOP, onclick: "$('#delete_post_popup').modal('hide');", class: 'btn btn-primary'

@@ -1,0 +1,3 @@
+| $('#post_message').val('');
+| $('#posts_section').prepend("#{ j(render partial: 'posts/post', locals: { post: @post }) }");
+| Post.popover();

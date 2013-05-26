@@ -18,6 +18,7 @@ ru:
       bubble: "Bubble"
       login: "Нет логина? Тогда "
       or: "Или войди через социальную сеть "
+      loading: "Загрузка..."
     all_header:
       sign_in: "Войти"
       sign_up: "Регистрируйся"

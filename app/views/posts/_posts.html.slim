@@ -1,0 +1,7 @@
+.row-fluid
+  .span12
+    #posts_section.infinity-scroll
+      -if @posts.any?
+        = render partial: 'posts/post', collection: @posts, as: :post
+        nav#page_nav
+          = link_to '', main_page_path(@user, page: 2)

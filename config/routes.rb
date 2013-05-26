@@ -9,6 +9,8 @@ Net::Application.routes.draw do
     end
   end
 
+  resources :links
+
   resources :user_profile
 
   resources :users_searches
@@ -23,7 +25,13 @@ Net::Application.routes.draw do
 
   resources :languages
 
-  resources :posters
+  resources :posts do
+    member do
+      put :like
+    end
+    resources :replies
+    resources :posts, controller: 'replies'
+  end
 
   resources :videos
 

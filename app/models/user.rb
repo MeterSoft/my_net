@@ -21,13 +21,17 @@ class User < ActiveRecord::Base
   has_many :friends, :foreign_key => "user_id", :class_name => "Friend"
   has_many :inverse_friends, :foreign_key => "user_friend_id", :class_name => "Friend"
   has_many :uploads
-  has_many :posters, order: 'created_at desc'
+  has_many :created_posts, :foreign_key => "creator_id", :class_name => "Post"
+  has_many :received_posts, :foreign_key => "receiver_id", :class_name => "Post"
+  has_many :posts
   has_many :videos
   has_many :photos
   has_many :audios
   has_one  :setting
 
   acts_as_messageable
+
+  acts_as_voter
 
   validates_presence_of :first_name, :last_name
 

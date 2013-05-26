@@ -28,8 +28,13 @@ GEM
     activesupport (3.2.8)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    acts_as_votable (0.5.0)
+      rails (>= 3.0.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bootstrap-kaminari-views (0.0.2)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
@@ -99,6 +104,9 @@ GEM
     json (1.7.7)
     jwt (0.1.7)
       multi_json (>= 1.5)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     less (2.3.1)
       commonjs (~> 0.2.6)
     less-rails (2.3.2)
@@ -121,6 +129,7 @@ GEM
     multi_json (1.6.1)
     multipart-post (1.2.0)
     mysql2 (0.3.11)
+    nokogiri (1.5.9)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -143,6 +152,8 @@ GEM
     options (2.3.0)
       fattr
     orm_adapter (0.0.7)
+    paloma (2.0.4)
+      jquery-rails
     paperclip (2.8.0)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
@@ -254,6 +265,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_votable (~> 0.5.0)
+  bootstrap-kaminari-views
   carmen (~> 1.0.0)
   carmen-rails (~> 1.0.0.beta3)
   coffee-rails (~> 3.2.1)
@@ -265,13 +278,16 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   jquery_datepicker
+  kaminari
   less
   less-rails
   mailboxer (~> 0.9.0)
   mysql2
+  nokogiri
   omniauth
   omniauth-facebook
   omniauth-vkontakte
+  paloma
   paperclip (~> 2.7)
   pg
   progress_bar

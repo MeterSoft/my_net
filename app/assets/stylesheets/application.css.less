@@ -9,9 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap.min
  *= require_tree
- *= require jquery.fileupload-ui
+ *= require jquery.Jcrop.min
+ *= require bootstrap-modal
  */
+
 
 body {
 //  background-image: url("4.jpg");
@@ -37,18 +40,6 @@ p.offline { color: #e9322d; }
   overflow-y: auto;
 }
 
-.poster { background: white; }
-.poster_message { padding: 10px; border: 1px solid #c5c5c5; }
-.poster_message:hover .close { display: block; }
-.poster .close { display: none; }
-.messages { padding: 10px; }
-.message { display: block; height: 100%; }
-.messages:hover { background: #50749b; }
-.messages:hover .close { display: block; }
-.messages_no { padding: 10px; min-height: 40px; }
-.comment { text-decoration: underline; font-size: 10px; }
-.comment-dialog { padding: 10px; }
-.poster-comment { padding-left: 30px; padding-right: 30px; }
 #section-flash {
   position: fixed;
   top: 40px;

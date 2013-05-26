@@ -1,0 +1,11 @@
+.row-fluid
+  .span12
+    = form_tag(posts_path, remote: true) do
+      = hidden_field_tag 'post[user_id]', value=@user.id
+      = hidden_field_tag 'post[receiver_id]', value=@user.id
+      = hidden_field_tag 'post[creator_id]', value=current_user.id
+      = text_area_tag 'post[message]', '', rows: 2, class: 'span12 area_link_preview', placeholder: t('posts.posts.textarea_message'), :'data-url' => links_path
+      = render partial: 'links/preview_url'
+      .row-fluid
+        .pull-right
+          = submit_tag t('posts.posts.send'), class: 'btn btn-info btn-small pull-right'

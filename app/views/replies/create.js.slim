@@ -1,0 +1,4 @@
+| $('#post_message').val('');
+| $("#reply_section_#{@post.id}").prepend("#{ j(render partial: 'posts/reply', locals: { reply: @reply }) }");
+| $(".comment##{@post.id}").popover('hide');
+| $(".comment##{@post.id} span.label-info").html("#{@post.replies.size}");

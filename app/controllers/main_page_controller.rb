@@ -1,11 +1,13 @@
 class MainPageController < ApplicationController
+  SHOW_POSTS_COUNT = 10
 
   def index
   end
 
   def show
     @user = User.find(params[:id])
-    @posters = @user.posters.all
+    @posts = @user.posts.all.reverse
+    @posts = Kaminari.paginate_array(@posts).page(params[:page] || 1).per(SHOW_POSTS_COUNT)
   end
 
   def user_connections

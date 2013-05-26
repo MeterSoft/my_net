@@ -11,20 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522110243) do
+ActiveRecord::Schema.define(:version => 20130525171746) do
 
   create_table "audios", :force => true do |t|
     t.integer  "user_id"
     t.string   "url"
     t.string   "artist"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "comments", :force => true do |t|
-    t.integer  "poster_id"
-    t.string   "comment"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -70,11 +63,14 @@ ActiveRecord::Schema.define(:version => 20130522110243) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "posters", :force => true do |t|
+  create_table "posts", :force => true do |t|
+    t.integer  "creator_id"
+    t.string   "message"
+    t.integer  "parent_id"
+    t.integer  "receiver_id"
     t.integer  "user_id"
-    t.text     "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "receipts", :force => true do |t|
@@ -177,6 +173,22 @@ ActiveRecord::Schema.define(:version => 20130522110243) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], :name => "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+  add_index "votes", ["votable_id", "votable_type"], :name => "index_votes_on_votable_id_and_votable_type"
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], :name => "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+  add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
 
   add_foreign_key "notifications", "conversations", :name => "notifications_on_conversation_id"
 

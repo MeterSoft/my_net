@@ -11,6 +11,7 @@ end
 
 module Net
   class Application < Rails::Application
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/modules #{config.root}/app/presenters #{config.root}/lib/middlewares)
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

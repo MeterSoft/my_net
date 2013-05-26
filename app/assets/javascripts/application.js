@@ -13,8 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require jquery-fileupload
+//= require paloma
 //= require_tree .
+//= require bootstrap.min
+//= require jquery.infinitescroll.min
+//= require d3.v3
+//= require jquery.Jcrop.min
+//= require jquery.nicescroll.min
+//= require bootstrap-modal
+//= require bootstrap-modalmanager
 
 $(document).ready(function() {
     var count_msg = 0;
@@ -48,4 +55,19 @@ $(document).ready(function() {
             }
         });
     }
+
+    $('.infinity-scroll').infinitescroll({
+        loading: { msgText: '', finishedMsg: '' },
+        navSelector : '#page_nav',
+        nextSelector : '#page_nav a',
+        itemSelector : '.infinity-scroll .infinity-item'
+    });
+
+    $(document).ajaxSend(function(event, request, settings){
+        if ((settings.url.match(/page/ig) == null) && (settings.url.match(/messages_counts/ig) == null)) {
+            $('#loader').show();
+        }
+    }).ajaxStop(function(){
+        $('#loader').hide();
+    });
 });

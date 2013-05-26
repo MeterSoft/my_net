@@ -1,0 +1,6 @@
+= form_for [post, post.replies.new], remote: true, html: { id: nil } do |f|
+  = text_area_tag 'post[message]', '', rows: 2, class: 'span12 area_link_preview hide-post', placeholder: t('posts.posts.textarea_message'), :'data-url' => links_path
+  = render partial: 'links/preview_url'
+  .btn-group.pull-right
+    = f.submit t('posts.posts.reply'), class: 'btn btn-info'
+    = link_to t('posts.posts.close'), ApplicationHelper::JS_NOOP, onclick: "$('.comment##{post.id}').popover('hide');", class: 'btn'
