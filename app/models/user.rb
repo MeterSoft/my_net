@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :omniauthable, :confirmable
+         :recoverable, :rememberable, :trackable, :omniauthable
   has_attached_file :avatar,
                     :storage => :dropbox,
                     :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
