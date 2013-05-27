@@ -9,3 +9,4 @@ en:
       address: 'Address'
       phone: 'Phone'
       phone_secondary: 'Phone Secondary'
+      submit: 'Save'
