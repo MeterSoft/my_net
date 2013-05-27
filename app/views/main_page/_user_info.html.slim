@@ -25,26 +25,39 @@
                 = t('.login')
                 = @user.time.strftime('%e.%m.%y  %T')
           li
-            - if @user.setting.birthday && !@user.birthday.blank?
-              | #{t('settings.edit.birthday')}: #{@user.birthday}
+          span.label
+              - if @user.setting.birthday && @user.birthday
+                | #{t('settings.edit.birthday')}: #{@user.birthday}
           li
-            - if @user.setting.zip_code && !@user.zip_code.blank?
-              | #{t('settings.edit.zip_code')}: #{@user.zip_code}
+          span.label
+              - if @user.setting.zip_code && !@user.zip_code.blank?
+                | #{t('settings.edit.zip_code')}: #{@user.zip_code}
           li
-            /- if @user.setting.country
-              | "#{t('settings.edit.country')}: #{Carmen::Country.coded(@user.country).name}"
+          span.label
+              - if @user.setting.country && @user.country
+                | #{t('settings.edit.country')}: #{Carmen::Country.coded(@user.country).name}
           li
-            - if @user.setting.city && !@user.city.blank?
-              | #{t('settings.edit.city')}: #{@user.city}
+          span.label
+              - if @user.setting.city && !@user.city.blank?
+                | #{t('settings.edit.city')}: #{@user.city}
           li
-            - if @user.setting.address && !@user.address.blank?
-              | #{t('settings.edit.address')}: #{@user.address}
+          span.label
+              - if @user.setting.address && !@user.address.blank?
+                | #{t('settings.edit.address')}: #{@user.address}
           li
-            /- if @user.setting.phone
-              | #{t('settings.edit.phone')}: +#{Country.find_country_by_alpha2(@user.country).country_code}#{@user.phone}
+          span.label
+              - if @user.setting.phone && @user.phone
+                | #{t('settings.edit.phone')}: 
+                - if @user.country
+                  | +#{Country.find_country_by_alpha2(@user.country).country_code}
+                | #{@user.phone}
           li
-            /- if @user.setting.phone_secondary
-              | #{t('settings.edit.phone_secondary')}: +#{Country.find_country_by_alpha2(@user.country).country_code}#{@user.phone_secondary}
+            span.label 
+              - if @user.setting.phone_secondary && @user.phone_secondary
+                | #{t('settings.edit.phone_secondary')}: 
+                - if @user.country
+                  | +#{Country.find_country_by_alpha2(@user.country).country_code}
+                | #{@user.phone_secondary}
     .span3
       - if !@user.its_i?(current_user.id)
         a href="#" class="btn btn-block btn-info" onClick="$('#send_message_popup').modal('show')" #{t('main_page.show.send_message')}

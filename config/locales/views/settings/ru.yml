@@ -9,3 +9,4 @@ ru:
       address: 'Адресс'
       phone: 'Телефон'
       phone_secondary: 'Дополнительный телефон'
+      submit: 'Сохранить'
