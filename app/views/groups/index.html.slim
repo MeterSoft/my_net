@@ -1,0 +1,15 @@
+h1 Groups list
+
+= link_to 'CREATE NEW GROUP', new_group_path
+br
+
+- @groups.each do |group|
+	= group.group_name
+	| :
+	= group.group_description
+	|  | 
+	= link_to 'SHOW', group_path(group)
+	|  | 
+	= link_to 'DESTROY', group, method: :delete, data: { confirm: 'Are you sure?' }
+	|  | 
+	br

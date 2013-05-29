@@ -3,3 +3,4 @@
 //= require ./_filters.js
 //= require ./main_page/_manifest.js
 //= require ./links/_manifest.js
+//= require ./groups/_manifest.js
