@@ -1,15 +1,14 @@
 h1 Groups list
 
-= link_to 'CREATE NEW GROUP', new_group_path
+= link_to 'CREATE NEW GROUP', new_group_path, class: 'btn btn-info'
+br 
 br
 
 - @groups.each do |group|
 	= group.group_name
 	| :
 	= group.group_description
-	|  | 
-	= link_to 'SHOW', group_path(group)
-	|  | 
-	= link_to 'DESTROY', group, method: :delete, data: { confirm: 'Are you sure?' }
-	|  | 
+	= link_to 'SHOW', group_path(group), class: 'btn btn-primary'
+	|   
+	= link_to 'DESTROY', group, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
 	br

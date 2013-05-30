@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529115813) do
+ActiveRecord::Schema.define(:version => 20130530111943) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -27,10 +27,18 @@ ActiveRecord::Schema.define(:version => 20130529115813) do
     t.string   "status"
   end
 
+  create_table "group_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.boolean  "activate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "groups", :force => true do |t|
     t.string   "group_name"
     t.text     "group_description"
-    t.integer  "user_id"
+    t.integer  "admin_id"
     t.boolean  "status"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
