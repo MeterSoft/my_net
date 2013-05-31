@@ -1,4 +1,21 @@
 Net::Application.routes.draw do
+  faye_server '/faye', timeout: 25 do
+    bind(:publish) do |client_id, channel, data|
+      user = User.find(data['user_id']) if data['user_id']
+      user.update_attributes(client_id: client_id, status: 'online') if user
+    end
+    bind(:disconnect) do |client_id|
+      user = User.find_by_client_id(client_id)
+      user.update_attributes(client_id: nil, status: 'offline') if user
+    end
+
+    debug_messages
+    map '/**' => RealtimeChatController
+    map default: :block
+  end
+
+  resources :chat
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root :to => "main_page#index"

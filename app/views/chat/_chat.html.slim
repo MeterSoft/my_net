@@ -1,0 +1,13 @@
+.row-fluid.well
+  ul#chat
+    - if @chat_messages
+      - @chat_messages.each do |chat_message|
+        li
+          = chat_message.created_at.strftime('%-d/%-m/%Y %k:%M:%S')
+          = ':'
+          = chat_message.message
+
+  hr
+
+  input type='text' name='message' id='chat_message'
+  button id='submit_message' Post

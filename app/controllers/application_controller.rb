@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :lenguage
   before_filter :authenticate_user!
-  before_filter :user_status
 
   layout :layout_by_resource
 
@@ -29,20 +28,6 @@ class ApplicationController < ActionController::Base
 
   def lenguage
     I18n.locale = current_user.lenguage if current_user
-  end
-
-  def user_status
-    if current_user
-      current_user.update_attributes(time: Time.now)
-      User.all.each do |u|
-        if u.time
-          if (Time.now - u.time < 30)
-            u.update_attributes(:status => "online")
-          else
-            u.update_attributes(:status => "offline")
-          end
-        end
-      end
-    end
+    current_user.update_attributes(:status => 'online') if current_user
   end
 end

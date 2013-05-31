@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require moment
+//= require faye
 //= require paloma
 //= require_tree .
 //= require bootstrap.min
@@ -23,12 +25,16 @@
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 
+//Create client
+client = new Faye.Client('/faye')
+window.client = client
+
 $(document).ready(function() {
     var count_msg = 0;
     var count_invite = 0;
 
-    update_date();
-    setInterval(update_date, 10000);
+//    update_date();
+//    setInterval(update_date, 10000);
 
     function update_date() {
         $.ajax({

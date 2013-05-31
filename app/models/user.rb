@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
                     }
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me,
+  attr_accessible :client_id, :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :thread_name, :avatar, :time, :status, :lenguage,
                   :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid, :ip_address, :latitude, :longitude,
                   :sex,:zip_code, :birthday, :country, :time_zone, :address, :city, :phone, :phone_secondary

@@ -30,6 +30,12 @@ gem 'bootstrap-kaminari-views'
 gem 'nokogiri'
 gem 'paperclip-dropbox', ">= 1"
 
+gem 'faye-rails', '1.0.8'
+gem 'thin'
+gem 'momentjs-rails'
+gem 'uglifier', '>= 1.0.3'
+
+
 group :development, :test do
   gem 'mysql2'
   gem 'rspec'

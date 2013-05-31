@@ -21,3 +21,8 @@ html
             .span12
               = yield
           = render partial: 'share/loader'
+
+javascript:
+  $(function() {
+    Status.update(#{current_user.id});
+  });
