@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   def index
-  	@groups = Group.all
+    @groups = Group.all
+    # @my_groups = Group.group_user.where(user_id: current_user[:id])
   end
 
   def new
@@ -8,6 +9,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:id])
   	@group = Group.find(params[:id])
   end
 
@@ -20,7 +22,10 @@ class GroupsController < ApplicationController
   	else
   		render 'new'
   	end
-  	
+  end
+
+  def edit
+    @group = Group.find(params[:id])
   end
 
   def destroy

@@ -1,0 +1,9 @@
+en:
+  groups:
+    index:
+      my_groups: "My Groups"
+      all_groups: "All Groups"
+      add: "Add"
+    new:
+
+    show:

@@ -4,3 +4,4 @@
 //= require ./main_page/_manifest.js
 //= require ./links/_manifest.js
 //= require ./groups/_manifest.js
+//= require ./friends/_manifest.js
