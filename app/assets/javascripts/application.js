@@ -64,7 +64,10 @@ $(document).ready(function() {
     });
 
     $(document).ajaxSend(function(event, request, settings){
-        if ((settings.url.match(/page/ig) == null) && (settings.url.match(/messages_counts/ig) == null)) {
+        if ((settings.url.match(/page/ig) == null)
+            && (settings.url.match(/messages_counts/ig) == null)
+            && (settings.url.match(/messages/ig) == null)
+            && (settings.url.match(/links/ig) == null)) {
             $('#loader').show();
         }
     }).ajaxStop(function(){

@@ -19,9 +19,9 @@
     blockquote
       div id='reply_section_#{post.id}'
         - if post.replies.any?
-          = render partial: 'posts/reply', collection: post.replies.last(Post::REPLY_VIEW_COUNT).reverse, as: :reply
-        - if post.replies.size > 4
-          .pagination-centered
-            = link_to '...', posts_path(id: post.id), remote: true, class: 'btn btn-mini'
+          = render partial: 'posts/reply', collection: post.replies.last(Post::REPLY_VIEW_COUNT), as: :reply
+      - if post.replies.size > 4
+        .pagination-centered
+          = link_to '...', posts_path(id: post.id), remote: true, class: 'btn btn-mini'
     .hide id="reply_popover_#{post.id}"
       = render partial: 'posts/reply_form', locals: { post: post }

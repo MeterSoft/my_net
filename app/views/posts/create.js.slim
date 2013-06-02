@@ -1,3 +1,4 @@
 | $('#post_message').val('');
+| $('#section_preview_link').addClass('hide');
 | $('#posts_section').prepend("#{ j(render partial: 'posts/post', locals: { post: @post }) }");
 | Post.popover();
