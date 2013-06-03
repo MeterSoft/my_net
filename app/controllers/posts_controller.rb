@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   layout false
 
   def index
-    @replies = @post.replies.reverse
+    @replies = @post.replies
   end
 
   def create
