@@ -1,0 +1,9 @@
+ru:
+  groups:
+    index:
+      my_groups: Мои группы
+      all_groups: Все группы
+      add: "Add"
+    new:
+
+    show:

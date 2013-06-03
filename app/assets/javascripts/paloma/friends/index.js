@@ -14,14 +14,15 @@
   //
   // Example:
   // _l.localMethod(); 
-  var _l = _L['groups'];
+  var _l = _L['friends'];
 
 
-  Paloma.callbacks['groups']['index'] = function(params){
+  Paloma.callbacks['friends']['index'] = function(params){
     // Do something here.
     $('body').on('click', '#myTab a', function (e) {
       e.preventDefault();
       $(this).tab('show');
     });
+    
   };
 })();

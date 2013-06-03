@@ -1,14 +1,24 @@
-h1 Groups list
-
-= link_to 'CREATE NEW GROUP', new_group_path, class: 'btn btn-info'
-br 
-br
-
-- @groups.each do |group|
-	= group.group_name
-	| :
-	= group.group_description
-	= link_to 'SHOW', group_path(group), class: 'btn btn-primary'
-	|   
-	= link_to 'DESTROY', group, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
-	br
+.well
+  ul.nav.nav-tabs#myTab
+    li.active
+      a href="#mygroups" #{t('.my_groups')}
+    li
+      a href="#allgroups"
+        span #{t('.all_groups')}
+        | &nbsp;
+        span #{@i_count}
+  .tab-content
+    .tab-pane.active#mygroups
+      .row-fluid
+        = link_to 'CREATE NEW GROUP', new_group_path, class: 'btn btn-info'
+      | My Admins Group
+      .row-fluid
+        = render partial: 'index_group', collection: @my_admins_groups, as: :group
+      | My All Groups
+      .row-fluid
+        = render partial: 'index_group', collection: @my_groups, as: :group
+    .tab-pane#allgroups
+      .row-fluid
+        = link_to 'CREATE NEW GROUP', new_group_path, class: 'btn btn-info'
+      .row-fluid
+        = render partial: 'index_group', collection: @groups, as: :group
