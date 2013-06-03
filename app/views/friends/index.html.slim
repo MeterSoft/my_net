@@ -61,10 +61,3 @@
                 = form_tag(friends_path) do
                   = hidden_field_tag :user_confirmed_id, value=fi.id
                   = submit_tag t('.add'), :class => "btn btn-mini btn-small"
-javascript:
-  $(function() {
-    $('#myTab a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    })
-  });

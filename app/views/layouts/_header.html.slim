@@ -19,6 +19,8 @@
                 span
                   = t('layouts.application.friends')
                 span id="invite_count"
+            li
+              = link_to t('layouts.application.groups'), groups_path
             li= form_tag("/users_searches", method: "get", class: "navbar-search") do
               = text_field_tag("user_name", "", :placeholder => "#{t('.search_people')}", :class => "search-query")
         ul.nav.pull-right
