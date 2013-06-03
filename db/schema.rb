@@ -11,16 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130525171746) do
-
-  create_table "audios", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "url"
-    t.string   "artist"
-    t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130530111943) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -34,6 +25,23 @@ ActiveRecord::Schema.define(:version => 20130525171746) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "status"
+  end
+
+  create_table "group_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.boolean  "activate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "group_name"
+    t.text     "group_description"
+    t.integer  "admin_id"
+    t.boolean  "status"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "notifications", :force => true do |t|
@@ -53,15 +61,6 @@ ActiveRecord::Schema.define(:version => 20130525171746) do
   end
 
   add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
-
-  create_table "photos", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "url"
-    t.string   "url_small"
-    t.string   "url_big"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "posts", :force => true do |t|
     t.integer  "creator_id"
@@ -161,18 +160,6 @@ ActiveRecord::Schema.define(:version => 20130525171746) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "videos", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "url"
-    t.string   "description"
-    t.string   "title"
-    t.string   "image"
-    t.string   "image_medium"
-    t.datetime "date"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
 
   create_table "votes", :force => true do |t|
     t.integer  "votable_id"

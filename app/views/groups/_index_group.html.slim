@@ -1,0 +1,13 @@
+.row-fluid
+  .span12
+    = group.group_name
+.row-fluid
+  .span7
+    = group.group_description
+  .span5
+    .pull-right.btn-group
+      = link_to 'ADD USER', group, class: 'btn btn-success btn-mini'
+      = link_to 'SHOW', group_path(group), class: 'btn btn-primary btn-mini'
+      - if group.admin_id == current_user[:id]
+        = link_to 'EDIT', edit_group_path(group), class: 'btn btn-mini'
+        = link_to 'DESTROY', group, class: 'btn btn-danger btn-mini', method: :delete, data: { confirm: 'Are you     sure?' }

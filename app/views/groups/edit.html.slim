@@ -1,0 +1,6 @@
+h1 edit
+= form_for @group do |f|
+  = f.label :group_description
+  = f.text_area :group_description, rows: 8, class: 'span8'
+  br
+  = f.submit 'Submit group'

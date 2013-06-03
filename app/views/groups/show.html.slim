@@ -1,0 +1,12 @@
+h1 Show page
+
+h3 GROUP NAME: 
+= @group.group_name
+h3 GROUP DESCRIPTION:
+= @group.group_description
+br
+= link_to 'LIST', groups_path, class: 'btn btn-inverse'
+| &nbsp;
+= link_to 'ADD USER', groups_path, class: 'btn btn-success'
+
+

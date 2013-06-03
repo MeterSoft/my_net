@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
   has_many :created_posts, :foreign_key => "creator_id", :class_name => "Post"
   has_many :received_posts, :foreign_key => "receiver_id", :class_name => "Post"
   has_many :posts
+  has_many :groups, through: :group_user
+  has_many :group_user, :dependent => :delete_all
   has_one  :setting
 
   acts_as_messageable

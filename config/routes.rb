@@ -1,4 +1,6 @@
 Net::Application.routes.draw do
+  get "groups/index"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root :to => "main_page#index"
@@ -24,6 +26,8 @@ Net::Application.routes.draw do
   resources :uploads
 
   resources :languages
+
+  resources :groups
 
   resources :posts do
     member do
