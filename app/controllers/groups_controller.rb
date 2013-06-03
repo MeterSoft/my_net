@@ -1,4 +1,8 @@
 class GroupsController < ApplicationController
+  before_filter :find_group, :only => [:show, :edit, :update, :destroy]
+  before_filter :check_permissions, only: [:edit, :update]
+
+
   def index
     @groups = Group.all
     @my_admins_groups = Group.where(admin_id: current_user[:id])
@@ -10,8 +14,6 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
-  	@group = Group.find(params[:id])
   end
 
   def create
@@ -26,13 +28,28 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group.update_attributes(params[:group])
+    if @group.save
+      redirect_to group_path(@group)
+    end
   end
 
   def destroy
-  	@group = Group.find(params[:id])
   	if @group.destroy
   		redirect_to groups_path
   	end
   end
+
+  private
+  def find_group
+    @group = Group.find(params[:id])
+  end
+
+  def check_permissions
+    redirect_to groups_path if @group.admin_id != current_user[:id]
+  end
+
 end
