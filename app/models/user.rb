@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable, , :confirmable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :omniauthable
+         :recoverable, :rememberable, :trackable, :omniauthable, :validatable
   has_attached_file :avatar,
                     :storage => :dropbox,
                     :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
@@ -74,8 +74,10 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.find_by_provider_and_uid(auth.provider, auth.uid.to_s)
+    user.skip_confirmation! if user
     unless user
       user = User.find_by_email(auth.info.email)
+      user.skip_confirmation! if user
       unless user
         user = User.create(first_name: auth.extra.raw_info.first_name,
                            last_name: auth.extra.raw_info.last_name,
@@ -85,6 +87,7 @@ class User < ActiveRecord::Base
                            password: Devise.friendly_token[0,20],
                            avatar: open(auth.info.image)
         )
+        user.skip_confirmation! if user
       end
     end
     user
@@ -92,8 +95,10 @@ class User < ActiveRecord::Base
 
   def self.find_for_vkontakte_oauth(auth, signed_in_resource=nil)
     user = User.find_by_provider_and_uid(auth.provider, auth.uid.to_s)
+    user.skip_confirmation! if user
     unless user
       user = User.find_by_email(auth.info.email)
+      user.skip_confirmation! if user
       unless user
         user = User.create(first_name: auth.extra.raw_info.first_name,
                            last_name: auth.extra.raw_info.last_name,
@@ -104,7 +109,7 @@ class User < ActiveRecord::Base
                            password: Devise.friendly_token[0,20],
                            avatar: open(auth.extra.raw_info.photo_big)
         )
-
+        user.skip_confirmation! if user
         #vk = VkontakteApi::Client.new(auth.credentials.token)
         #
         #photos =  vk.photos.getAll
@@ -138,6 +143,10 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  def skip_confirmation!
+    self.confirmed_at = Time.now
   end
 
   private
