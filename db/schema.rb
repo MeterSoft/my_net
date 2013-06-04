@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(:version => 20130530111943) do
   create_table "group_users", :force => true do |t|
     t.integer  "user_id"
     t.integer  "group_id"
-    t.boolean  "activate"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -39,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20130530111943) do
     t.string   "group_name"
     t.text     "group_description"
     t.integer  "admin_id"
-    t.boolean  "status"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
