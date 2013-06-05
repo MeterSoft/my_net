@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require paloma
+//= require private_pub
 //= require_tree .
 //= require bootstrap.min
 //= require jquery.infinitescroll.min
@@ -23,12 +24,13 @@
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 
+
 $(document).ready(function() {
     var count_msg = 0;
     var count_invite = 0;
 
-    update_date();
-    setInterval(update_date, 10000);
+//    update_date();
+//    setInterval(update_date, 10000);
 
     function update_date() {
         $.ajax({

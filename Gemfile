@@ -29,6 +29,8 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'nokogiri'
 gem 'paperclip-dropbox', ">= 1"
+gem 'private_pub'
+gem 'thin'
 
 group :development, :test do
   gem 'mysql2'
