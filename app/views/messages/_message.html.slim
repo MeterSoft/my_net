@@ -1,0 +1,14 @@
+li
+  .row-fluid
+    .span12
+      .pull-left
+        = message.sender.full_name
+      .pull-right
+        .time
+          = message.created_at.strftime('%e.%m.%y  %T')
+  .row-fluid
+    .pull-left
+      = image_tag(message.sender.avatar.url(:small))
+    .span11
+      = message.body
+  hr
