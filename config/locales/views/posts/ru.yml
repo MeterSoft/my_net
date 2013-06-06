@@ -1,6 +1,8 @@
 ru:
   posts:
     posts:
+      title_popup: 'Удалить пост'
+      message_popup: 'Вы уверены?'
       what_do_you_want_me_to_say: "Что ты можеш обо мне сказать?"
       send: "Создать пост"
       comment: "Коментарий"

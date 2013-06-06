@@ -3,7 +3,24 @@ en:
     index:
       my_groups: "My Groups"
       all_groups: "All Groups"
-      add: "Add"
+      new_group: 'CREATE NEW GROUP'
+      leave: 'leave group'
+      join: 'join to group'
+      show: 'show group'
+      edit: 'edit group'
+      delete: 'delete group'
     new:
-
+      title: 'Create New Group'
+      group_name: 'New Group Name'
+      group_description: 'New Group Description'
+      add_group: 'Add Group'
     show:
+      title: 'About Group'
+      group_name: 'Group Name'
+      group_description: 'Group Description'
+      list: 'Show All Groups'
+      join: 'join to group'
+    edit:
+      title: 'Edit Group'
+      description: 'Edit Group Description'
+      save: 'Save Edited'

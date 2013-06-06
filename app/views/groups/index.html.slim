@@ -1,24 +1,23 @@
-.well
-  ul.nav.nav-tabs#myTab
-    li.active
-      a href="#mygroups" #{t('.my_groups')}
-    li
-      a href="#allgroups"
-        span #{t('.all_groups')}
-        | &nbsp;
-        span #{@i_count}
-  .tab-content
-    .tab-pane.active#mygroups
-      .row-fluid
-        = link_to 'CREATE NEW GROUP', new_group_path, class: 'btn btn-info'
-      | My Admins Group
-      .row-fluid
-        = render partial: 'index_group', collection: @my_admins_groups, as: :group
-      | My All Groups
-      .row-fluid
-        = render partial: 'index_group', collection: @my_groups, as: :group
-    .tab-pane#allgroups
-      .row-fluid
-        = link_to 'CREATE NEW GROUP', new_group_path, class: 'btn btn-info'
-      .row-fluid
-        = render partial: 'index_group', collection: @groups, as: :group
+ul.nav.nav-tabs#myTab
+  li.active
+    a href="#mygroups" #{t('.my_groups')}
+  li
+    a href="#allgroups"
+      span #{t('.all_groups')}
+      | &nbsp;
+      span #{@i_count}
+.tab-content
+  .tab-pane.active#mygroups
+    .row-fluid
+      .pull-right
+        = link_to t('.new_group'), new_group_path, class: 'btn btn-info'
+    .row-fluid
+      = render partial: 'index_group', collection: @created_groups, as: :group
+    .row-fluid
+      = render partial: 'index_group', collection: @member_of_groups, as: :group
+  .tab-pane#allgroups
+    .row-fluid
+      .pull-right
+        = link_to t('.new_group'), new_group_path, class: 'btn btn-info'
+    .row-fluid
+      = render partial: 'index_group', collection: @unconnected_groups, as: :group
