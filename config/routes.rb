@@ -27,7 +27,10 @@ Net::Application.routes.draw do
 
   resources :languages
 
-  resources :groups
+  resources :groups do
+      match 'join'   => :join
+      match 'leave'   => :leave
+  end
 
   resources :posts do
     member do

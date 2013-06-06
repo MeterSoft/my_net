@@ -151,6 +151,18 @@ class User < ActiveRecord::Base
     self.confirmed_at = Time.now
   end
 
+  def created_groups
+    groups.where(admin_id: id)
+  end
+
+  def member_of_groups
+    groups.where('admin_id != ?', id)
+  end
+
+  def unconnected_groups
+    Group.all - created_groups - member_of_groups
+  end
+
   private
 
   def reprocess_avatar

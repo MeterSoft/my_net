@@ -1,12 +1,15 @@
-h1 Show page
-
-h3 GROUP NAME: 
+h1
+  = t('.title')
+h3 
+  = t('.group_name')
 = @group.group_name
-h3 GROUP DESCRIPTION:
+h3
+  = t('.group_description')
 = @group.group_description
 br
-= link_to 'LIST', groups_path, class: 'btn btn-inverse'
+= link_to t('.list'), groups_path, class: 'btn btn-inverse'
 | &nbsp;
-= link_to 'ADD USER', groups_path, class: 'btn btn-success'
-
-
+- if @group.include_user?(current_user)
+  = link_to 'Leave', group_leave_path(@group), class: 'btn btn-success' ,data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.leave') if @group.admin_id != current_user.id
+- else
+  = link_to 'Join', group_join_path(@group), class: 'btn btn-success', 'title' => t('groups.index.join')

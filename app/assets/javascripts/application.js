@@ -76,3 +76,7 @@ $(document).ready(function() {
         $('#loader').hide();
     });
 });
+
+$(function(){
+  $('.tooltip_message').tooltip();
+});
