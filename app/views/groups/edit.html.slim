@@ -1,6 +1,8 @@
-h1 edit
+h1
+  = t('groups.edit.title')
 = form_for @group do |f|
-  = f.label :group_description
+  = f.label t('groups.edit.description')
   = f.text_area :group_description, rows: 8, class: 'span8'
   br
-  = f.submit 'Submit group'
+  = f.submit t('groups.edit.save')
+  

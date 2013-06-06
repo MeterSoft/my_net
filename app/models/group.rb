@@ -3,4 +3,12 @@ class Group < ActiveRecord::Base
 
   has_many :users, through: :group_user
   has_many :group_user, :dependent => :delete_all
+
+  def members
+	users
+  end
+
+  def include_user?(user)
+  	users.include?(user)  	
+  end
 end

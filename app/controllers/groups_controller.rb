@@ -4,9 +4,9 @@ class GroupsController < ApplicationController
 
 
   def index
-    @groups = Group.all
-    @my_admins_groups = Group.where(admin_id: current_user[:id])
-    @my_groups = current_user.groups
+    @unconnected_groups = current_user.unconnected_groups
+    @created_groups = current_user.created_groups
+    @member_of_groups = current_user.member_of_groups
   end
 
   def new
