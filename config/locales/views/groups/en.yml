@@ -20,6 +20,8 @@ en:
       group_description: 'Group Description'
       list: 'Show All Groups'
       join: 'join to group'
+      group_member: 'Group members'
+      groups_list: 'Group list'
     edit:
       title: 'Edit Group'
       description: 'Edit Group Description'
