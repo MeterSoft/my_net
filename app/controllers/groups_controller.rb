@@ -14,6 +14,8 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @created_groups = current_user.created_groups
+    @member_of_groups = current_user.member_of_groups
   end
 
   def create

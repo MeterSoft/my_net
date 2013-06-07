@@ -1,15 +1,19 @@
-h1
-  = t('.title')
-h3 
-  = t('.group_name')
-= @group.group_name
-h3
-  = t('.group_description')
-= @group.group_description
-br
-= link_to t('.list'), groups_path, class: 'btn btn-inverse'
-| &nbsp;
-- if @group.include_user?(current_user)
-  = link_to 'Leave', group_leave_path(@group), class: 'btn btn-success' ,data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.leave') if @group.admin_id != current_user.id
-- else
-  = link_to 'Join', group_join_path(@group), class: 'btn btn-success', 'title' => t('groups.index.join')
+.row-fluid
+  h4.span8
+    = @group.group_name
+  .span4
+    .pull-right
+      - if @group.include_user?(current_user)
+        = link_to 'Leave', group_leave_path(@group), class: 'btn btn-info btn-small' ,data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.leave') if @group.admin_id != current_user.id
+      - else
+        = link_to 'Join', group_join_path(@group), class: 'btn btn-info btn-small', 'title' => t('groups.index.join')
+.row-fluid
+  .span12 
+    = @group.group_description
+    hr
+.row-fluid
+  .span3
+    = render partial: 'show_accordion'
+  .span9
+    | Hear will be Message
+
