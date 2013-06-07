@@ -1,4 +1,8 @@
 | $('#post_message').val('');
-| $("#reply_section_#{@post.id}").append("#{ j(render partial: 'posts/reply', locals: { reply: @reply }) }");
+- if @reply.parent.group_id
+  | $("#reply_section_#{@post.id}").append("#{ j(render partial: 'groups/reply', locals: { reply: @reply }) }");
+-else
+  | $("#reply_section_#{@post.id}").append("#{ j(render partial: 'posts/reply', locals: { reply: @reply }) }");
 | $(".comment##{@post.id}").popover('hide');
 | $(".comment##{@post.id} span.label-info").html("#{@post.replies.size}");
+| $("#section-flash").prepend("#{ escape_javascript(bootstrap_flash) }");

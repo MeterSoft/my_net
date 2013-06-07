@@ -6,7 +6,7 @@ class MainPageController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all.reverse
+    @posts = @user.posts.reverse
     @posts = Kaminari.paginate_array(@posts).page(params[:page] || 1).per(SHOW_POSTS_COUNT)
   end
 

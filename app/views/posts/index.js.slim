@@ -1,1 +1,5 @@
-| $("#reply_section_#{@post.id}").html("#{ j(render partial: 'posts/reply', collection: @replies, as: :reply) }");
+| $('#post_#{@post.id} .pagination-centered').remove();
+- if @post.group_id
+  | $("#reply_section_#{@post.id}").html("#{ j(render partial: 'groups/reply', collection: @replies, as: :reply) }");
+- else
+  | $("#reply_section_#{@post.id}").html("#{ j(render partial: 'posts/reply', collection: @replies, as: :reply) }");

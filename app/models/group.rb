@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
 
   has_many :users, through: :group_user
   has_many :group_user, :dependent => :delete_all
+  has_many :posts
 
   def members
 	users
