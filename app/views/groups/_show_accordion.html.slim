@@ -1,16 +1,16 @@
-div.accordion#accordion_group_nav
-  div.accordion-group
-    div.accordion-heading
+.accordion#accordion_group_nav
+  .accordion-group
+    .accordion-heading
       a.accordion-toggle data-toggle="collapse" data-parent="#accordion_group_nav" href="#users"
         | User list
-    div#users.accordion-body.collapse.in
-      div.accordion-inner
+    #users.accordion-body.collapse.in
+      .accordion-inner
         = render partial: 'users.html.slim', collection: @member_of_groups, as: :group
-  div.accordion-group
-    div.accordion-heading
+  .accordion-group
+    .accordion-heading
       a.accordion-toggle data-toggle="collapse" data-parent="#accordion_group_nav" href="#groups"
         | Groups list
-    div#groups.accordion-body.collapse
-      div.accordion-inner
+    #groups.accordion-body.collapse
+      .accordion-inner
         = render partial: 'groups.html.slim', collection: @created_groups, as: :group
-
+        = render partial: 'groups_admin.html.slim', collection: @member_of_groups, as: :group

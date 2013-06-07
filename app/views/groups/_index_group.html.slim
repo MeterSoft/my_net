@@ -6,16 +6,8 @@
       .span12
         = group.group_description
       .pull-right
-        - if group.include_user?(current_user)
-          = link_to '', group_leave_path(group), class: 'icon-2x icon-minus tooltip_message' ,data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.leave') if group.admin_id != current_user.id
-          '
-        - else
-          = link_to '', group_join_path(group), class: 'icon-2x icon-plus tooltip_message', 'title' => t('groups.index.join')
-          '
-        = link_to '', group_path(group), class: 'icon-2x icon-eye-open tooltip_message', 'title' => t('groups.index.show')
-        '
         - if group.admin_id == current_user[:id]
           = link_to '', edit_group_path(group), class: 'icon-2x icon-pencil tooltip_message', 'title' => t('groups.index.edit')
-          '
-          = link_to '', group, method: 'delete', class: 'icon-2x icon-trash tooltip_message', data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.delete')
+        '
+        = link_to '', group_path(group), class: 'icon-2x icon-eye-open tooltip_message', 'title' => t('groups.index.show')
     hr
