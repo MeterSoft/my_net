@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  SHOW_POSTS_COUNT = 10
+
   before_filter :find_group, :only => [:show, :edit, :update, :destroy]
   before_filter :check_permissions, only: [:edit, :update]
 
@@ -16,6 +18,7 @@ class GroupsController < ApplicationController
   def show
     @created_groups = current_user.created_groups
     @member_of_groups = current_user.member_of_groups
+    @posts = Kaminari.paginate_array(@group.posts.reverse).page(params[:page] || 1).per(SHOW_POSTS_COUNT)
   end
 
   def create

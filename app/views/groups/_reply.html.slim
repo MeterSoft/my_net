@@ -1,0 +1,21 @@
+.row-fluid id="post_#{reply.id}"
+  .span12
+    .media-body
+      h5.media-heading.row-fluid
+        span.pull-left
+          = reply.creator.full_name
+        span.pull-right
+          small= reply.created_at.strftime('%e.%m.%y  %T')
+      .row-fluid
+        .span1
+          = image_tag(reply.creator.avatar.url(:small))
+        .span11
+          p= auto_detected_link(reply.message)
+      .pull-right
+        = link_to like_post_path(reply.id), remote: true, method: 'PUT', class: "like_#{reply.id}" do
+          i.icon-thumbs-up
+          span.label.label-info= reply.likes.size
+        - if (reply.receiver == current_user) || (@user == current_user) || (reply.creator == current_user)
+          = link_to ApplicationHelper::JS_NOOP, 'data-url' => post_path(reply.id), method: 'delete', class: 'delete-post' do
+            i.icon-trash
+    hr

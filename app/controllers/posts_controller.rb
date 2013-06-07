@@ -9,9 +9,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     if @post.save
-      flash[:notice] = t(".posters.create.post_was_create")
+      flash.now[:notice] = t(".posts.create.post_was_create")
     else
-      flash[:error] = t(".posters.create.post_was_error")
+      flash.now[:error] = t(".posts.create.post_was_error")
     end
   end
 

@@ -1,4 +1,8 @@
 | $('#post_message').val('');
 | $('#section_preview_link').addClass('hide');
-| $('#posts_section').prepend("#{ j(render partial: 'posts/post', locals: { post: @post }) }");
+- if @post.group_id
+  | $('#posts_section').prepend("#{ j(render partial: 'groups/post', locals: { post: @post }) }");
+- else
+  | $('#posts_section').prepend("#{ j(render partial: 'posts/post', locals: { post: @post }) }");
 | Post.popover();
+| $("#section-flash").prepend("#{ escape_javascript(bootstrap_flash) }");

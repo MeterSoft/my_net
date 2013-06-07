@@ -1,0 +1,5 @@
+ru:
+  posts:
+    create:
+      post_was_create: 'Пост удачно создан'
+      post_was_error: 'Ошибка создания поста'

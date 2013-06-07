@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   REPLY_VIEW_COUNT = 4
-  attr_accessible :message, :parent_id, :receiver_id, :creator_id, :user_id
+  attr_accessible :message, :parent_id, :receiver_id, :creator_id, :user_id, :group_id
   acts_as_votable
 
   validates :message, presence: true
@@ -10,4 +10,5 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :replies, class_name: 'Post', inverse_of: :parent, :dependent => :delete_all, :foreign_key => 'parent_id'
   belongs_to :parent, class_name: 'Post', inverse_of: :replies, :foreign_key => 'parent_id'
+  belongs_to :group
 end

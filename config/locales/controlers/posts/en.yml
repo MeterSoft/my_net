@@ -1,0 +1,5 @@
+en:
+  posts:
+    create:
+      post_was_create: 'Post was created'
+      post_was_error: 'Post not created'

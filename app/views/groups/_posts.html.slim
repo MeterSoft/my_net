@@ -1,0 +1,7 @@
+.row-fluid
+  .span12
+    #posts_section.infinity-scroll
+      -if @posts.any?
+        = render partial: 'groups/post', collection: @posts, as: :post
+        nav#page_nav
+          = link_to '', group_path(@group, page: 2)
