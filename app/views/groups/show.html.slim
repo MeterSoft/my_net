@@ -17,7 +17,7 @@
     hr
 .row-fluid
   .span3
-    = render partial: 'show_accordion'
+    = render partial: 'show_accordion', locals: {group: @group}
   .span9
     = render partial: 'groups/group_posts'
 
