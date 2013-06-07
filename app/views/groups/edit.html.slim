@@ -5,4 +5,5 @@ h1
   = f.text_area :group_description, rows: 8, class: 'span8'
   br
   = f.submit t('groups.edit.save')
+  = link_to 'DELETE', @group, method: 'delete', class: 'btn btn-small btn-danger', data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.delete')
   
