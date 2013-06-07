@@ -2,14 +2,14 @@
   .accordion-group
     .accordion-heading
       a.accordion-toggle data-toggle="collapse" data-parent="#accordion_group_nav" href="#users"
-        | User list
+        = t('groups.show.group_member')
     #users.accordion-body.collapse.in
       .accordion-inner
         = render partial: 'users.html.slim', collection: @member_of_groups, as: :group
   .accordion-group
     .accordion-heading
       a.accordion-toggle data-toggle="collapse" data-parent="#accordion_group_nav" href="#groups"
-        | Groups list
+        = t('groups.show.groups_list')
     #groups.accordion-body.collapse
       .accordion-inner
         = render partial: 'groups.html.slim', collection: @created_groups, as: :group
