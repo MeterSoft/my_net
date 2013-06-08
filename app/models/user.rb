@@ -163,6 +163,10 @@ class User < ActiveRecord::Base
     Group.all - created_groups - member_of_groups
   end
 
+  def admin?(group)
+    group.admin_id == id
+  end
+
   private
 
   def reprocess_avatar

@@ -16,9 +16,9 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @created_groups = current_user.created_groups
-    @member_of_groups = current_user.member_of_groups
+    @groups = current_user.created_groups | current_user.member_of_groups
     @posts = Kaminari.paginate_array(@group.posts.reverse).page(params[:page] || 1).per(SHOW_POSTS_COUNT)
+    @members = @group.users
   end
 
   def create

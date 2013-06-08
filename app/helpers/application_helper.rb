@@ -11,6 +11,6 @@ module ApplicationHelper
     description.match(REGEXP_URL) do |url|
       description.sub!(url[URL_POSITION], "<a href='#{convert_link(url[URL_POSITION])}' rel='nofollow' target='_blank'>#{url[URL_POSITION]}</a>")
     end
-    description.html_safe
+    description.gsub(/\r\n/, "<br>").html_safe
   end
 end

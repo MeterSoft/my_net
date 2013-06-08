@@ -1,7 +1,6 @@
-- group.users.each do |user|
-	.row-fluid
-		.span3
-			= image_tag(user.avatar.url(:small))
-		.span9
-			= link_to user.full_name, main_page_path(user.id)
-	hr
+.row-fluid
+    .span3
+        = image_tag(user.avatar.url(:small))
+    .span9
+        = link_to user.full_name, main_page_path(user.id)
+hr

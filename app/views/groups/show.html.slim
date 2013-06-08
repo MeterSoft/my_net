@@ -8,9 +8,9 @@
     .pull-right
       .btn-group.btn-group-vertical
         - if @group.include_user?(current_user)
-          = link_to 'Leave', group_leave_path(@group), class: 'btn btn-info btn-small' ,data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.leave') if @group.admin_id != current_user.id
+          = link_to t('groups.show.leave'), group_leave_path(@group), class: 'btn btn-info btn-small' ,data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.leave') if @group.admin_id != current_user.id
         - else
-          = link_to 'Join', group_join_path(@group), class: 'btn btn-info btn-small', 'title' => t('groups.index.join')
+          = link_to t('groups.show.join'), group_join_path(@group), class: 'btn btn-info btn-small', 'title' => t('groups.index.join')
 .row-fluid
   .span12 
     = @group.group_description

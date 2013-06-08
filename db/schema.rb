@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(:version => 20130607075402) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "comments", :force => true do |t|
-    t.integer  "poster_id"
-    t.string   "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
     t.datetime "created_at",                 :null => false
@@ -81,13 +74,6 @@ ActiveRecord::Schema.define(:version => 20130607075402) do
     t.string   "url"
     t.string   "url_small"
     t.string   "url_big"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "posters", :force => true do |t|
-    t.integer  "user_id"
-    t.text     "message"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -186,8 +172,6 @@ ActiveRecord::Schema.define(:version => 20130607075402) do
     t.string   "address"
     t.integer  "phone"
     t.integer  "phone_secondary"
-    t.string   "client_id"
-    t.string   "string"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
