@@ -15,7 +15,7 @@ ul.scrolling.well
             = image_tag(m.messages.last.sender.avatar.url(:small))
           .span6
             span
-              = m.messages.last.body
+              = auto_detected_link(m.messages.last.body)
             br
             span.time
               = m.messages.last.created_at.strftime('%e.%m.%y  %T')

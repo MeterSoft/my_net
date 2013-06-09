@@ -13,4 +13,4 @@
         br
         = text_area_tag "body" ,"", :class => "span12 conversation_area", id: "show_area"
         .pull-right
-          = submit_tag t('.send'), class: "btn btn-small btn-primary conversation_button"
+          = link_to t('posts.posts.send'), ApplicationHelper::JS_NOOP, class: "btn btn-small btn-primary conversation_button"

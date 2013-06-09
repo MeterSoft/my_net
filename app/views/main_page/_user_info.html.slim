@@ -22,35 +22,35 @@
           li
             .login
               - if !@user.its_i?(current_user.id) && @user.status == 'offline'
-                = t('.login')
-                = @user.time.strftime('%e.%m.%y  %T')
+                span.label
+                  | #{t('.login')} #{@user.time.strftime('%e.%m.%y  %T')}
           li
           span.label
-              - if @user.setting.birthday && @user.birthday
-                | #{t('settings.edit.birthday')}: #{@user.birthday}
+            - if @user.setting.birthday && @user.birthday
+              | #{t('settings.edit.birthday')}: #{@user.birthday}
           li
           span.label
-              - if @user.setting.zip_code && !@user.zip_code.blank?
-                | #{t('settings.edit.zip_code')}: #{@user.zip_code}
+            - if @user.setting.zip_code && !@user.zip_code.blank?
+              | #{t('settings.edit.zip_code')}: #{@user.zip_code}
           li
           span.label
-              - if @user.setting.country && @user.country
-                | #{t('settings.edit.country')}: #{Carmen::Country.coded(@user.country).name}
+            - if @user.setting.country && @user.country
+              | #{t('settings.edit.country')}: #{Carmen::Country.coded(@user.country).name}
           li
           span.label
-              - if @user.setting.city && !@user.city.blank?
-                | #{t('settings.edit.city')}: #{@user.city}
+            - if @user.setting.city && !@user.city.blank?
+              | #{t('settings.edit.city')}: #{@user.city}
           li
           span.label
-              - if @user.setting.address && !@user.address.blank?
-                | #{t('settings.edit.address')}: #{@user.address}
+            - if @user.setting.address && !@user.address.blank?
+              | #{t('settings.edit.address')}: #{@user.address}
           li
           span.label
-              - if @user.setting.phone && @user.phone
-                | #{t('settings.edit.phone')}: 
-                - if @user.country
-                  | +#{Country.find_country_by_alpha2(@user.country).country_code}
-                | #{@user.phone}
+            - if @user.setting.phone && @user.phone
+              | #{t('settings.edit.phone')}:
+              - if @user.country
+                | +#{Country.find_country_by_alpha2(@user.country).country_code}
+              | #{@user.phone}
           li
             span.label 
               - if @user.setting.phone_secondary && @user.phone_secondary

@@ -8,6 +8,11 @@
               = link_to root_path, class: 'tooltip_message', title: t('layouts.application.home') do
                 i.icon-home.icon-1_5x
             li
+              = link_to ApplicationHelper::JS_NOOP, class: 'tooltip_message', id: 'search-icon', title: t('layouts.header.search_people') do
+                i.icon-user.icon-1_5x
+              .hide#header-search-popover
+                = render partial: 'layouts/search'
+            li
               = link_to t('layouts.application.my_page'), main_page_path(current_user.id)
             li
               a href="#{messages_path}"
@@ -22,11 +27,6 @@
                 span id="invite_count"
             li
               = link_to t('layouts.application.groups'), groups_path
-            li
-              = link_to ApplicationHelper::JS_NOOP, class: 'tooltip_message', id: 'search-icon', title: t('layouts.header.search_people') do
-                i.icon-user.icon-1_5x
-              .hide#header-search-popover
-                = render partial: 'layouts/search'
         ul.nav.pull-right
           li.dropdown
             = link_to '#', { 'class' => 'dropdown-toggle', 'data-toggle' => 'dropdown' } do
