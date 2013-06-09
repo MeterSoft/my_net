@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   SHOW_POSTS_COUNT = 10
 
-  before_filter :find_group, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_group, :only => [:show, :edit, :update, :destroy, :search_users]
   before_filter :check_permissions, only: [:edit, :update]
 
 
@@ -66,7 +66,27 @@ class GroupsController < ApplicationController
     end
   end
 
+  def join_user
+    @groupuser = GroupUser.create(group_id: params[:group_id], user_id: params[:user_id])
+    redirect_to :back
+  end
+
+  def leave_user
+    @groupuser = GroupUser.where(group_id: params[:group_id], user_id: params[:user_id]).first
+    @groupuser.destroy
+    redirect_to :back
+  end
+
+  def search_users
+    search = params[:search].split(' ')
+    @users = User.where('lower(first_name) IN(lower(?)) OR lower(last_name) IN(lower(?))', search, search).where('id != ?', current_user.id)
+    respond_to do |format|
+      format.js { render layout: false }
+    end
+  end
+
   private
+
   def find_group
     @group = Group.find(params[:id])
   end

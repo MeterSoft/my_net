@@ -30,6 +30,11 @@ Net::Application.routes.draw do
   resources :groups do
       match 'join'   => :join
       match 'leave'   => :leave
+      match 'join_user'   => :join_user
+      match 'leave_user'   => :leave_user
+      member do
+        get :search_users
+      end
   end
 
   resources :posts do

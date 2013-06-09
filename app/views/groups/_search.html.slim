@@ -1,0 +1,8 @@
+.row-fluid
+  .span12
+    = text_field_tag('search', '', class: 'span12', id: 'group_user_search')
+.row-fluid
+  .span12
+    #group-search-loader.pagination-centered.hide
+      = image_tag('ajax-loader.gif')
+    #group-result-section-search-users

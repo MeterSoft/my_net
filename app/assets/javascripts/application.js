@@ -70,7 +70,8 @@ $(document).ready(function() {
             && (settings.url.match(/messages_counts/ig) == null)
             && (settings.url.match(/messages/ig) == null)
             && (settings.url.match(/links/ig) == null)
-            && (settings.url.match(/users_searches/ig) == null)) {
+            && (settings.url.match(/users_searches/ig) == null)
+            && (settings.url.match(/search/ig) == null)) {
             $('#loader').show();
         }
     }).ajaxStop(function(){

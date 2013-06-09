@@ -25,7 +25,7 @@
             li
               = link_to ApplicationHelper::JS_NOOP, class: 'tooltip_message', id: 'search-icon', title: t('layouts.header.search_people') do
                 i.icon-user.icon-1_5x
-              .hide id="header-search-popover"
+              .hide#header-search-popover
                 = render partial: 'layouts/search'
         ul.nav.pull-right
           li.dropdown

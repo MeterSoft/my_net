@@ -3,7 +3,7 @@ class UsersSearchesController < ApplicationController
 
   def index
     search = params[:search].split(' ')
-    @users = User.where('lower(first_name) IN(lower(?)) OR lower(last_name) IN(lower(?))', search, search)
+    @users = User.where('lower(first_name) IN(lower(?)) OR lower(last_name) IN(lower(?))', search, search).where('id != ?', current_user.id)
     respond_to do |format|
       format.js
     end

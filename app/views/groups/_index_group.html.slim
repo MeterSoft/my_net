@@ -3,8 +3,12 @@
     .media-body
       h3.media-heading
         = group.group_name
+        - if group.private?
+          .pull-right
+            i.icon-lock.tooltip_message title="#{t('groups.edit.private')}"
       .span12
         = group.group_description
       .pull-right
-        = link_to '', group_path(group), class: 'icon-2x icon-eye-open tooltip_message', 'title' => t('groups.index.show')
+        = link_to group_path(group), class: 'tooltip_message', 'title' => t('groups.index.show') do
+          i.icon-2x.icon-eye-open
     hr

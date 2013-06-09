@@ -1,8 +1,12 @@
 h1
   = t('groups.edit.title')
 = form_for @group do |f|
-  = f.label t('groups.edit.description')
-  = f.text_area :group_description, rows: 8, class: 'span8'
+  .row-fluid
+    = f.label t('groups.edit.description')
+  .row-fluid
+    = f.text_area :group_description, rows: 8, class: 'span8'
+  .row-fluid
+    = f.select :group_type, ([[t('groups.edit.select'), nil], [t('groups.edit.public'), Group::PUBLIC], [t('groups.edit.private'), Group::PRIVATE]])
   br
   = f.submit t('groups.edit.save')
   = link_to 'DELETE', @group, method: 'delete', class: 'btn btn-small btn-danger', data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.delete')
