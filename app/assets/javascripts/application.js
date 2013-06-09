@@ -29,8 +29,8 @@ $(document).ready(function() {
     var count_msg = 0;
     var count_invite = 0;
 
-//    update_date();
-//    setInterval(update_date, 10000);
+    update_date();
+    setInterval(update_date, 10000);
 
     function update_date() {
         $.ajax({
