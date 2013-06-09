@@ -69,14 +69,15 @@ $(document).ready(function() {
         if ((settings.url.match(/page/ig) == null)
             && (settings.url.match(/messages_counts/ig) == null)
             && (settings.url.match(/messages/ig) == null)
-            && (settings.url.match(/links/ig) == null)) {
+            && (settings.url.match(/links/ig) == null)
+            && (settings.url.match(/users_searches/ig) == null)) {
             $('#loader').show();
         }
     }).ajaxStop(function(){
         $('#loader').hide();
     });
-});
 
-$(function(){
-  $('.tooltip_message').tooltip();
+    $('.tooltip_message').tooltip({placement: 'bottom'});
+
+    HeaderSearch.start();
 });
