@@ -1,6 +1,7 @@
-- publish_to "/messages/conversation_#{@conversation.id}" do
-  | $(".messages_container").append("#{ j render partial: 'message', locals: { message: @message } }");
+| $("#send_message_popup").modal('hide');
+- if @chat
+  - publish_to "/messages/conversation_#{@conversation.id}" do
+    | $(".messages_container").append("#{ j render partial: 'message', locals: { message: @message } }");
 | $('.conversation_area').val('');
 | $('#show-scrolling')[0].scrollTop = $('#show-scrolling')[0].scrollHeight;
 | $("#section-flash").prepend("#{ escape_javascript(bootstrap_flash) }");
-| $("#send_message_popup").modal('hide');

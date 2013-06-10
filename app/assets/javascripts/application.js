@@ -29,8 +29,8 @@ $(document).ready(function() {
     var count_msg = 0;
     var count_invite = 0;
 
-//    update_date();
-//    setInterval(update_date, 10000);
+    update_date();
+    setInterval(update_date, 10000);
 
     function update_date() {
         $.ajax({
@@ -69,14 +69,16 @@ $(document).ready(function() {
         if ((settings.url.match(/page/ig) == null)
             && (settings.url.match(/messages_counts/ig) == null)
             && (settings.url.match(/messages/ig) == null)
-            && (settings.url.match(/links/ig) == null)) {
+            && (settings.url.match(/links/ig) == null)
+            && (settings.url.match(/users_searches/ig) == null)
+            && (settings.url.match(/search/ig) == null)) {
             $('#loader').show();
         }
     }).ajaxStop(function(){
         $('#loader').hide();
     });
-});
 
-$(function(){
-  $('.tooltip_message').tooltip();
+    $('.tooltip_message').tooltip({placement: 'bottom'});
+
+    HeaderSearch.start();
 });

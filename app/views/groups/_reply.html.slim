@@ -15,7 +15,7 @@
         = link_to like_post_path(reply.id), remote: true, method: 'PUT', class: "like_#{reply.id}" do
           i.icon-thumbs-up
           span.label.label-info= reply.likes.size
-        - if (reply.receiver == current_user) || (@user == current_user) || (reply.creator == current_user)
+        - if (reply.creator == current_user) || (current_user.admin?(@group))
           = link_to ApplicationHelper::JS_NOOP, 'data-url' => post_path(reply.id), method: 'delete', class: 'delete-post' do
             i.icon-trash
     hr

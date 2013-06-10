@@ -22,13 +22,14 @@ class MessagesController < ApplicationController
       @user = User.find(params[:user_id])
       current_user.send_message(@user, params[:body], params[:subject])
     end
+    @chat = true if params[:conversation]
   end
 
   def show
     respond_to do |format|
       conversation = current_user.mailbox.conversations.find(params[:id])
       format.html{
-        @messages = conversation.messages.last(30)
+        @messages = conversation.messages.order(:id).last(30)
         @conversation = conversation.id
         current_user.mark_as_read(conversation)
         @user = companion(conversation)
@@ -47,7 +48,6 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-
     current_user.mailbox.inbox.find(params[:id]).destroy
     @id = params[:id]
     respond_to do |format|

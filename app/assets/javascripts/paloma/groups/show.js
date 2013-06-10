@@ -19,6 +19,7 @@
 
   Paloma.callbacks['groups']['show'] = function(params){
       Post.popover();
+      Search.start();
 
       $('body').on('click', 'a.delete-post', function() {
           var url = $(this).data('url');

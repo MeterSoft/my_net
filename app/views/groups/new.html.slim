@@ -5,5 +5,7 @@ h1
 	  = f.text_field :group_name, placeholder: t('.group_name'), class: 'span8'
 	.row-fluid
 	  = f.text_area :group_description, rows: 8, class: 'span8', placeholder: t('.group_description')
+	.row-fluid
+      = f.select :group_type, ([[t('groups.edit.select'), nil], [t('groups.edit.public'), Group::PUBLIC], [t('groups.edit.private'), Group::PRIVATE]])
 	  br
 	  = f.submit t('.add_group')

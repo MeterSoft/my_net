@@ -1,16 +1,25 @@
 .row-fluid
   h4.span8
     = @group.group_name
-  .pull-right
+  .pull-right.action
     - if @group.admin_id == current_user[:id]
-      = link_to '', edit_group_path(@group), class: 'icon-2x icon-pencil tooltip_message', 'title' => t('groups.index.edit')
+      = link_to edit_group_path(@group), class: 'tooltip_message', 'title' => t('groups.index.edit') do
+        i.icon-2x.icon-pencil
+      '
+      - if @group.private?
+        = link_to ApplicationHelper::JS_NOOP, class: 'tooltip_message', id: 'group-search-icon', 'title' => t('groups.show.add_users') do
+          i.icon-plus-sign.icon-2x
+        .hide#group-search-popover data-search-url="#{search_users_group_path(@group)}"
+          = render partial: 'groups/search'
   .span4
     .pull-right
-      .btn-group.btn-group-vertical
-        - if @group.include_user?(current_user)
-          = link_to 'Leave', group_leave_path(@group), class: 'btn btn-info btn-small' ,data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.leave') if @group.admin_id != current_user.id
-        - else
-          = link_to 'Join', group_join_path(@group), class: 'btn btn-info btn-small', 'title' => t('groups.index.join')
+      - if @group.include_user?(current_user)
+        = link_to t('groups.show.leave'), group_leave_path(@group), class: 'btn btn-info btn-small' ,data: { confirm: 'Are you sure?' }, 'title' => t('groups.index.leave') if @group.admin_id != current_user.id
+      - elsif @group.public?
+        = link_to t('groups.show.join'), group_join_path(@group), class: 'btn btn-info btn-small', 'title' => t('groups.index.join')
+      - else
+        = link_to ApplicationHelper::JS_NOOP, class: 'tooltip_message', title: t('groups.edit.private') do
+          i.icon-lock.icon-2x
 .row-fluid
   .span12 
     = @group.group_description
