@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
 
   acts_as_voter
 
+  scope :search, ->(search, id) { where("(CONCAT_WS(' ', lower(first_name), lower(last_name)) LIKE ?)
+                                      OR (CONCAT_WS(' ', lower(last_name), lower(first_name)) LIKE ?)",
+                                      "%#{search.downcase}%", "%#{search.downcase}%").where('id != ?', id) }
+
   validates_presence_of :first_name, :last_name
 
   geocoded_by :ip_address

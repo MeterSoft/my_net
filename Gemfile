@@ -31,6 +31,7 @@ gem 'nokogiri'
 gem 'paperclip-dropbox', ">= 1"
 gem 'private_pub'
 gem 'thin'
+#gem 'pg'
 
 group :development, :test do
   gem 'mysql2'
