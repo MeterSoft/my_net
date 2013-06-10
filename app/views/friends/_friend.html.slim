@@ -1,0 +1,22 @@
+li
+  a href="#{main_page_path(friend)}"
+    .row-fluid
+      .span1
+        = image_tag(friend.avatar.url(:small))
+      .span7
+        h4 = friend.full_name
+        - if friend.status == 'online'
+          p.online
+            = friend.status
+        - else
+          p.offline
+            = friend.status
+      .span4
+        .pull-right
+          - if current_user.friend?(friend)
+            = link_to t('users_searches.index.reject'),friend_path(friend) ,method: 'delete' , :class => "btn btn-mini", data: { confirm: 'Are you sure?' }
+          - else
+            = link_to t('users_searches.index.add_to_friend'), friends_path(user_id: friend), method: :post, class: 'btn btn-mini'
+            - if current_user.friend_invited?(friend)
+              = link_to t('users_searches.index.reject'),friend_path(friend) ,method: 'delete' , :class => "btn btn-mini", data: { confirm: 'Are you sure?' }
+  hr
