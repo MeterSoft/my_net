@@ -1,9 +1,9 @@
 .row-fluid
   .span2
-    = link_to image_tag(user.avatar.url(:small)), main_page_path(user.id)
+    = link_to image_tag(user.avatar.url(:small)), main_page_path(user)
   .span4
     p
-      = link_to user.full_name, main_page_path(user.id)
+      = link_to user.full_name, main_page_path(user)
     - if user.status == 'online'
       p.online
         = user.status
@@ -18,5 +18,4 @@
     - else
       = link_to group_join_user_path(@group, user_id: user) do
         i.icon-plus-sign
-
   hr

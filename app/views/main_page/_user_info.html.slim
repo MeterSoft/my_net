@@ -63,14 +63,12 @@
         a href="#" class="btn btn-block btn-info" onClick="$('#send_message_popup').modal('show')" #{t('main_page.show.send_message')}
         = render partial: 'main_page/send_message_popup'
       - if !@user.its_i?(current_user.id)
-        - if @user.friend?(current_user)
+        - if current_user.friend?(@user)
           p
             = t('main_page.show.already_your_friend')
         - else
-          - if @user.friend_invited?(current_user)
+          - if current_user.friend_invited?(@user)
             p
               = t('main_page.show.already_invited')
           - else
-            = form_tag(friends_path) do
-              = hidden_field_tag :user_id, value=@user.id
-              = submit_tag t('main_page.show.add_to_friend'), :class => "btn btn-block btn-info"
+            = link_to t('users_searches.index.add_to_friend'), friends_path(user_id: @user), method: :post, class: 'btn btn-info'

@@ -13,3 +13,21 @@ test:
   password:
   pool: 5
   timeout: 5000
+
+
+##ps
+#development:
+#  adapter: postgresql
+#  encoding: unicode
+#  database: my_net
+#  pool: 5
+#  username: meter
+#  password:
+#
+#test:
+#  adapter: postgresql
+#  encoding: unicode
+#  database: my_net_test
+#  pool: 5
+#  username: meter
+#  password:

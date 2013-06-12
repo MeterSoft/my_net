@@ -31,6 +31,7 @@ gem 'nokogiri'
 gem 'paperclip-dropbox', ">= 1"
 gem 'private_pub'
 gem 'thin'
+#gem 'pg'
 
 group :development, :test do
   gem 'mysql2'
@@ -82,8 +83,8 @@ gem "font-awesome-rails"
 # To use debugger
 # gem 'debugger'
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request'
-end
+# group :development do
+#   gem 'better_errors'
+#   gem 'binding_of_caller'
+#   gem 'meta_request'
+# end

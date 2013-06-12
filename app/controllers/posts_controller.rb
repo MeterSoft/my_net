@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
+
     if @post.save
       flash.now[:notice] = t(".posts.create.post_was_create")
     else

@@ -1,23 +1,25 @@
 .row-fluid
   .span2
     = link_to image_tag(user.avatar.url(:small)), main_page_path(user.id)
-  .span4
-    p
-      = link_to user.full_name, main_page_path(user.id)
+  .span7
+    p = link_to user.full_name, main_page_path(user.id)
     - if user.status == 'online'
       p.online
         = user.status
     - else
       p.offline
         = user.status
-
-  .span6
-    - if user.friend?(current_user)
-      p
-        = t('.already_your_friend')
-    - else
-      - unless user.friend_invited?(current_user)
-        = form_tag(friends_path) do
-          = hidden_field_tag :user_id, value=user.id
-          = submit_tag t('users_searches.index.add_to_friend'), :class => "btn btn-mini btn-primary"
+  .span3
+    .pull-right
+      - if current_user.friend?(user)
+        = link_to friend_path(user) ,method: 'delete', data: { confirm: 'Are you sure?' }, class: 'tooltip_message', title: t('users_searches.index.reject') do
+          i.i.icon-remove-sign
+          '
+      - elsif current_user.friend_invited?(user)
+        = link_to friend_path(user) ,method: 'delete', data: { confirm: 'Are you sure?' }, class: 'tooltip_message', title: t('users_searches.index.reject') do
+          i.icon-remove-sign
+      - else
+        = link_to friends_path(user_id: user), method: :post, class: 'tooltip_message', title: t('users_searches.index.add_to_friend') do
+          i.icon-plus-sign
+          '
   hr
