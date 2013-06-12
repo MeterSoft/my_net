@@ -4,6 +4,7 @@ ru:
       friends: "Друзья"
       invite: "Приглашения"
       add: "Добавить"
+      reject: 'Отклонить'
       all: "Все"
       online: "Онлайн"
       offline: "Оффлайн"

@@ -5,6 +5,7 @@ en:
       invite: "Invites"
       add: "Add"
       all: "All"
+      reject: 'Reject'
       online: "Online"
       offline: "Offline"
       sort: "Sort"
