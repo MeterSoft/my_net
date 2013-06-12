@@ -23,13 +23,16 @@ class User < ActiveRecord::Base
   #attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   #after_update :reprocess_avatar, :if => :cropping?
     
-  has_many :friends, :foreign_key => "user_id", :class_name => "Friend"
-  has_many :inverse_friends, :foreign_key => "user_friend_id", :class_name => "Friend"
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :foreign_key => "friend_id", :class_name => 'Friendship'
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
   has_many :uploads
   has_many :created_posts, :foreign_key => "creator_id", :class_name => "Post"
   has_many :received_posts, :foreign_key => "receiver_id", :class_name => "Post"
   has_many :posts
-  has_many :groups, through: :group_user
+  has_many :groups, :through => :group_user
   has_many :group_user, :dependent => :delete_all
   has_one  :setting
 
@@ -37,6 +40,7 @@ class User < ActiveRecord::Base
 
   acts_as_voter
 
+  # scope section
   scope :search, ->(search, id) { where("(CONCAT_WS(' ', lower(first_name), lower(last_name)) LIKE ?)
                                       OR (CONCAT_WS(' ', lower(last_name), lower(first_name)) LIKE ?)",
                                       "%#{search.downcase}%", "%#{search.downcase}%").where('id != ?', id) }
@@ -45,6 +49,41 @@ class User < ActiveRecord::Base
 
   geocoded_by :ip_address
   after_validation :geocode
+
+
+  # methods section
+
+  def all_friends
+    approved_friends + approved_inverse_friends
+  end
+
+  def approved_friends
+    friends.where(friendships: { status: 'approved' })
+  end
+
+  def approved_inverse_friends
+    inverse_friends.where(friendships: { status: 'approved' })
+  end
+
+  def pending_inverse_friends
+    inverse_friends.where(friendships: { status: 'pending' })
+  end
+
+  def friend?(user)
+    all_friends.include?(user)
+  end
+
+  def friend_invited?(user)
+    pending_inverse_friends.include?(user)
+  end
+
+
+  def friendship_with(user)
+    Friendship.where(user_id: id, friend_id: user.id).first ||
+    Friendship.where(user_id: user.id, friend_id: id).first
+  end
+
+  #-------------------
 
   def avatar_url
     self.avatar.url(:small)
@@ -56,16 +95,6 @@ class User < ActiveRecord::Base
 
   def its_i?(id)
     id == self.id
-  end
-
-  def friend?(current_user)
-    Friend.find_by_user_id_and_user_friend_id_and_status(self, current_user, 'confirmed') ||
-    Friend.find_by_user_id_and_user_friend_id_and_status(current_user, self, 'confirmed')
-  end
-
-  def friend_invited?(current_user)
-    Friend.find_by_user_id_and_user_friend_id_and_status(self, current_user, 'invite') ||
-    Friend.find_by_user_id_and_user_friend_id_and_status(current_user, self, 'invite')
   end
 
   #def cropping?
