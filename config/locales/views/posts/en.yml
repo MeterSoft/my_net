@@ -13,3 +13,5 @@ en:
       reply: "Reply"
       textarea_message: "Write your message here..."
       link: "Link:"
+      edit: "Edit post"
+      update: "Update"

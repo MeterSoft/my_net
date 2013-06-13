@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :find_post, only: [:index, :like, :destroy]
+  before_filter :find_post, only: [:index, :edit, :update, :like, :destroy]
   layout false
 
   def index
@@ -15,6 +15,13 @@ class PostsController < ApplicationController
       flash.now[:error] = t(".posts.create.post_was_error")
     end
   end
+
+  def edit
+  end
+
+  def update
+    @post.update_attributes(message: params[:post][:message])    
+  end    
 
   def like
     current_user.voted_up_on?(@post) ? current_user.dislikes(@post) : current_user.likes(@post)

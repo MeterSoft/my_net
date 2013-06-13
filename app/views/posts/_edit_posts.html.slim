@@ -1,0 +1,12 @@
+#edit_posts
+  .row-fluid
+    = t('posts.posts.edit')
+  .row-fluid
+    = form_for(@post, remote: true, html: {id: 'edit_form_post_submit'}) do |f|
+      = f.text_area :message, :class => "span12 area_link_preview", :id => "message_area", :rows => 2, :'data-url' => links_path
+      = render partial: 'links/preview_url'
+  .row-fluid
+    .pull-right
+      = link_to t('posts.posts.update'), ApplicationHelper::JS_NOOP, onclick: "$('#edit_form_post_submit').submit();", class: 'btn btn-mini btn-info'
+      '
+      = link_to t('posts.posts.close'), ApplicationHelper::JS_NOOP, onclick: "$('#edit_posts').remove();", class: 'btn btn-info btn-mini'

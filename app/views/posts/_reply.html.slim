@@ -4,12 +4,19 @@
       h5.media-heading
         span.pull-right
           small= reply.created_at.strftime('%e.%m.%y  %T')
-      p= auto_detected_link(reply.message)
+      p id="post_message_#{reply.id}"
+        = auto_detected_link(reply.message)
       .pull-right
+        - if reply.creator == current_user
+          = link_to edit_post_path(reply), remote: true, class: 'edit', id: reply.id, 'data-title'=> t('posts.posts.edit'), 'data-id' => reply.id do
+            i.icon-edit
+        '
         = link_to like_post_path(reply.id), remote: true, method: 'PUT', class: "like_#{reply.id}" do
           i.icon-thumbs-up
           span.label.label-info= reply.likes.size
+        '
         - if (reply.receiver == current_user) || (@user == current_user) || (reply.creator == current_user)
           = link_to ApplicationHelper::JS_NOOP, 'data-url' => post_path(reply.id), method: 'delete', class: 'delete-post' do
             i.icon-trash
+    div id="edit_section_post_#{reply.id}"
     hr
