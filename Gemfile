@@ -87,3 +87,5 @@ gem "font-awesome-rails"
 #   gem 'binding_of_caller'
 #   gem 'meta_request'
 # end
+gem 'turbolinks'
+gem 'jquery-turbolinks'
