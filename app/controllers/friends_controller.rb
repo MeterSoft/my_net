@@ -8,16 +8,15 @@ class FriendsController < ApplicationController
   end
 
   def create
-    @friendship = current_user.friendship_with(@user)
-    if @friendship
-      @friendship.update_attributes(:status => "approved")
-      redirect_to :back
-    else
-      @friend = Friendship.new(:user_id => current_user.id, :friend_id => params[:user_id], :status => 'pending')
-      if @friend.save
-        redirect_to :back
+    unless current_user.friend_invited?(@user)
+      @friendship = current_user.friendship_with(@user)
+      if @friendship
+        @friendship.update_attributes(:status => "approved")
+      else
+        @friend = Friendship.new(:user_id => current_user.id, :friend_id => params[:user_id], :status => 'pending')
       end
     end
+    redirect_to :back
   end
 
   def destroy
