@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :thread_name, :avatar, :time, :status, :lenguage,
-                  :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid, :ip_address, :latitude, :longitude,
+                  :crop_x, :crop_y, :crop_w, :crop_h, :provider, :uid,
                   :sex,:zip_code, :birthday, :country, :time_zone, :address, :city, :phone, :phone_secondary
 
   #attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
@@ -46,10 +46,6 @@ class User < ActiveRecord::Base
                                       "%#{search.downcase}%", "%#{search.downcase}%").where('id != ?', id) }
 
   validates_presence_of :first_name, :last_name
-
-  geocoded_by :ip_address
-  after_validation :geocode
-
 
   # methods section
 

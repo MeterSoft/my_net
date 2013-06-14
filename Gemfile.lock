@@ -113,7 +113,6 @@ GEM
       railties (>= 3.2, < 5.0)
     foreigner (1.4.0)
       activerecord (>= 3.0.0)
-    geocoder (1.1.6)
     hashie (1.2.0)
     highline (1.6.15)
     hike (1.2.1)
@@ -314,7 +313,6 @@ DEPENDENCIES
   factory_girl
   factory_girl_rails
   font-awesome-rails
-  geocoder
   jquery-fileupload-rails
   jquery-rails
   jquery_datepicker

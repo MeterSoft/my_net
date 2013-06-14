@@ -1,9 +1,5 @@
 .row-fluid
   .span12
-    .conversation_map
-      = render partial: "map/map"
-.row-fluid
-  .span12
     ul.scrolling#show-scrolling.messages_container
       = subscribe_to "/messages/conversation_#{@conversation}"
       = render partial: 'message', collection: @messages, as: :message
