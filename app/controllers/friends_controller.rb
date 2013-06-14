@@ -13,7 +13,7 @@ class FriendsController < ApplicationController
       if @friendship
         @friendship.update_attributes(:status => "approved")
       else
-        @friend = Friendship.new(:user_id => current_user.id, :friend_id => params[:user_id], :status => 'pending')
+        @friend = Friendship.create(:user_id => current_user.id, :friend_id => params[:user_id], :status => 'pending')
       end
     end
     redirect_to :back
