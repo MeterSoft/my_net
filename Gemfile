@@ -30,8 +30,8 @@ gem 'nokogiri'
 gem 'paperclip-dropbox', ">= 1"
 gem 'private_pub'
 gem 'thin'
-gem 'turbolinks'
-gem 'jquery-turbolinks'
+# gem 'turbolinks'
+# gem 'jquery-turbolinks'
 #gem 'pg'
 
 group :development, :test do
