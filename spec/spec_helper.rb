@@ -1,4 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'simplecov'
+require 'simplecov-rcov'
+SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+SimpleCov.start 'rails'
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -6,12 +10,15 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_girl_rails'
 require 'shoulda'
+require 'capybara/rspec'
+require 'capybara/rails'
+require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-#RSpec.configure do |config|
+RSpec.configure do |config|
 #  config.before :all do
 #    SunspotTest.stub
 #  end
@@ -21,6 +28,18 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 #    Sunspot.remove_all!
 #    Sunspot.commit
 #  end
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -30,6 +49,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   # config.mock_with :rr
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
@@ -48,3 +68,8 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   #     --seed 1234
   config.order = "random"
 end
+
+Capybara.register_driver :webkit do |app|
+  Capybara::Driver::Webkit.new(app, stdout: nil) # stdout: nil - disables extra console output
+end
+Capybara.javascript_driver = :webkit
