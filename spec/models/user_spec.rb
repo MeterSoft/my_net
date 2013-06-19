@@ -4,6 +4,18 @@ describe User do
   let(:current_user) { FactoryGirl.create(:user) }
   let(:user) { FactoryGirl.create(:user) }
 
+  context 'associations' do
+    it { should have_many(:friendships) }
+    it { should have_many(:friends) }
+    it { should have_many(:inverse_friendships) }
+    it { should have_many(:created_posts) }
+    it { should have_many(:received_posts) }
+    it { should have_many(:posts) }
+    it { should have_many(:groups) }
+    it { should have_many(:group_user) }
+    it { should have_one(:setting) }
+  end
+
   context '#full_name' do
     it "should have fullname" do
       FactoryGirl.build(:user, first_name: "Eugene", last_name: "Korpan").full_name.should == "Eugene Korpan"
@@ -19,29 +31,124 @@ describe User do
 
   context '#its_i?' do
     it "should verify by self" do
-      user.its_i?(current_user).should be_false
+      current_user.its_i?(user).should be_false
     end
   end
 
   context "#friend?" do
     it "should not friend" do
-      user.friend?(current_user).should be_false
+      current_user.friend?(user).should be_false
     end
 
     it "should be friend" do
-      FactoryGirl.create(:friend, user_id: current_user.id, user_friend_id: user.id, status: 'confirmed')
+      FactoryGirl.create(:friendship, user_id: current_user.id, friend_id: user.id, status: 'approved')
       user.friend?(current_user).should be_true
+      current_user.friend?(user).should be_true
     end
   end
 
   context "#friend_invited?" do
     it "should not invite" do
-      user.friend_invited?(current_user).should be_false
+      current_user.friend_invited?(user).should be_false
     end
 
     it "should be invite" do
-      FactoryGirl.create(:friend, user_id: current_user.id, user_friend_id: user.id, status: 'invite')
-      user.friend_invited?(current_user).should be_true
+      FactoryGirl.create(:friendship, user_id: current_user.id, friend_id: user.id, status: 'pending')
+      current_user.friend_invited?(user).should be_true
+    end
+  end
+
+  context 'scope search' do
+    let(:search_user) { FactoryGirl.create(:user, first_name: 'Vasya') }
+
+    it 'should find users' do
+      User.search('vasya', current_user.id).should eq([search_user])
+    end
+  end
+
+  context '#all_friends' do
+    let(:friend_user) { FactoryGirl.create(:user) }
+    
+    it 'should return all friends' do
+      FactoryGirl.create(:friendship, user_id: current_user.id, friend_id: user.id, status: 'approved')
+      FactoryGirl.create(:friendship, user_id: friend_user.id, friend_id: current_user.id, status: 'approved')
+      
+      current_user.all_friends.should eq([user, friend_user])
+    end
+  end
+
+  context '#approved_friends' do
+    let(:friend_user) { FactoryGirl.create(:user) }
+    
+    it 'should return approved friends' do
+      FactoryGirl.create(:friendship, user_id: current_user.id, friend_id: user.id, status: 'approved')
+      FactoryGirl.create(:friendship, user_id: current_user.id, friend_id: friend_user.id, status: 'pending')
+      
+      current_user.approved_friends.should eq([user])
+    end
+  end
+
+  context '#approved_inverse_friends' do
+    let(:friend_user) { FactoryGirl.create(:user) }
+    
+    it 'should return approved inverse friends' do
+      FactoryGirl.create(:friendship, user_id: user.id, friend_id: current_user.id, status: 'approved')
+      FactoryGirl.create(:friendship, user_id: current_user.id, friend_id: friend_user.id, status: 'approved')
+      
+      current_user.approved_inverse_friends.should eq([user])
+    end
+  end
+
+  context '#pending_friends' do
+    let(:friend_user) { FactoryGirl.create(:user) }
+    
+    it 'should return pending friends' do
+      FactoryGirl.create(:friendship, user_id: current_user.id, friend_id: user.id, status: 'pending')
+      FactoryGirl.create(:friendship, user_id: friend_user.id, friend_id: current_user.id, status: 'pending')
+      
+      current_user.pending_friends.should eq([user])
+    end
+  end
+
+  context '#pending_inverse_friends' do
+    let(:friend_user) { FactoryGirl.create(:user) }
+    
+    it 'should return pending inverse friends' do
+      FactoryGirl.create(:friendship, user_id: current_user.id, friend_id: user.id, status: 'pending')
+      FactoryGirl.create(:friendship, user_id: friend_user.id, friend_id: current_user.id, status: 'pending')
+      
+      current_user.pending_inverse_friends.should eq([friend_user])
+    end
+  end
+
+  context '#friendship_with' do
+    let(:friend_user) { FactoryGirl.create(:user) }
+    
+    it 'should return friendship' do
+      FactoryGirl.create(:friendship, user_id: current_user.id, friend_id: user.id, status: 'pending')
+      FactoryGirl.create(:friendship, user_id: friend_user.id, friend_id: current_user.id, status: 'pending')
+      
+      current_user.friendship_with(user).should eq(current_user.friendships.first)
+    end
+  end
+
+  context '#avatar_url' do    
+    it 'should return url user avatar' do      
+      current_user.avatar_url.should eq(current_user.avatar.url(:small))
+    end
+  end
+
+  context '#status' do
+    let(:status_user) { FactoryGirl.create(:user) }
+
+    it 'should return online status' do
+      current_user.update_attributes(time: Time.now)      
+      current_user.status.should eq('online')
+    end
+
+    it 'should return offline status' do
+      current_user.update_attributes(time: Time.now - 100)      
+      current_user.status.should eq('offline')
     end
   end
 end

@@ -8,6 +8,5 @@ FactoryGirl.define do
     thread_name 'test'
     email
     password 'password'
-    avatar 'logo.gif'
   end
 end

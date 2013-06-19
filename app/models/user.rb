@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
   #-------------------
 
   def avatar_url
-    self.avatar.url(:small)
+    avatar.url(:small)
   end
 
   def full_name
