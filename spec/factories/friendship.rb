@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :friend do
+  factory :friendship do
     association :user, factory: :user
   end
 end

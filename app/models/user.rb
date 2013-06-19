@@ -199,6 +199,10 @@ class User < ActiveRecord::Base
     group.admin_id == id
   end
 
+  def status
+    @status = (Time.now - time < 30) ? 'online' : 'offline'
+  end
+
   private
 
   def reprocess_avatar
