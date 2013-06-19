@@ -12,7 +12,7 @@ class Group < ActiveRecord::Base
   has_many :posts
 
   def members
-	users
+	  users
   end
 
   def include_user?(user)
