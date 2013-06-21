@@ -11,7 +11,7 @@ describe User do
     it { should have_many(:created_posts) }
     it { should have_many(:received_posts) }
     it { should have_many(:posts) }
-    it { should have_many(:groups) }
+    it { should have_many(:groups).through(:group_user) }
     it { should have_many(:group_user) }
     it { should have_one(:setting) }
   end
@@ -151,4 +151,47 @@ describe User do
       current_user.status.should eq('offline')
     end
   end
+
+  context 'created_groups' do
+    let(:group) { FactoryGirl.create(:group, admin_id: user.id) }
+    let!(:group_users) { FactoryGirl.create(:group_user, user_id: user.id, group_id: group.id) }
+    it 'should return true' do
+      # user.groups << group
+      user.created_groups.empty?.should be_false
+    end
+
+    it 'should return false' do
+      current_user.created_groups.empty?.should be_true
+    end
+  end
+
+  context 'member_of_groups' do
+    let(:group) { FactoryGirl.create(:group, admin_id: user.id) }
+    let!(:group_users) { FactoryGirl.create(:group_user, user_id: current_user.id, group_id: group.id) }
+    it 'current_user should be member of group' do
+      current_user.member_of_groups.should_not be_empty
+    end
+
+    it 'user should_not be member of group' do
+      user.member_of_groups.should be_empty
+    end
+  end
+
+  context 'unconnected_groups' do
+    let(:group) { FactoryGirl.create(:group, admin_id: user.id) }
+    let!(:group_users) { FactoryGirl.create(:group_user, user_id: user.id, group_id: group.id) }
+    it 'should be unconnected to groups' do
+      current_user.unconnected_groups.first.should_not eq(current_user.member_of_groups)
+    end
+
+    it 'should_not be admin of group' do
+      current_user.unconnected_groups.first.admin_id.should_not eq(current_user.id) 
+    end
+
+    it 'should_not be in group_user table' do
+      group_users.user_id.should_not eq(current_user.id)
+    end
+
+  end
+
 end
