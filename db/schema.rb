@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(:version => 20130612083033) do
     t.string   "group_name"
     t.text     "group_description"
     t.integer  "admin_id"
+    t.string   "group_type"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-    t.string   "group_type"
   end
 
   create_table "notifications", :force => true do |t|
@@ -63,13 +63,13 @@ ActiveRecord::Schema.define(:version => 20130612083033) do
 
   create_table "posts", :force => true do |t|
     t.integer  "creator_id"
-    t.string   "message"
+    t.text     "message"
     t.integer  "parent_id"
     t.integer  "receiver_id"
     t.integer  "user_id"
+    t.integer  "group_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "group_id"
   end
 
   create_table "receipts", :force => true do |t|
@@ -133,10 +133,6 @@ ActiveRecord::Schema.define(:version => 20130612083033) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "thread_name"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
     t.datetime "time"
     t.string   "lenguage",                              :default => "ru"
     t.string   "provider"
@@ -150,6 +146,10 @@ ActiveRecord::Schema.define(:version => 20130612083033) do
     t.string   "address"
     t.integer  "phone"
     t.integer  "phone_secondary"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
