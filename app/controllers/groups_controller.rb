@@ -93,5 +93,4 @@ class GroupsController < ApplicationController
   def check_permissions
     redirect_to groups_path if @group.admin_id != current_user[:id]
   end
-
 end
