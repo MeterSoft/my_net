@@ -15,7 +15,6 @@ describe UserProfileController do
       before { put :update, id: user.id, user: valid_params_avatar }
       it { assigns(:user).should_not be_nil }
       it { assigns(:user).should be_valid }
-      it { should render_template(:crop) }
     end
 
     context "should not avatar" do
