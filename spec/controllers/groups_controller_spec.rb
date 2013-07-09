@@ -16,37 +16,35 @@ describe GroupsController do
 
   
   context "#index" do
+    before(:each) { get :index }
+
     it "responds http success" do
-      get :index
       expect(response).to be_success
       expect(response.status).to eq(200)
     end
 
     it "renders the index template" do
-      get :index
       expect(response).to render_template("index")
     end
 
     it "loads all of the groups what current_user created" do
-      get :index
       expect(assigns(:created_groups)).to eq([group_admin])
     end
 
     it 'load user unconnected_groups' do
-      get :index
       expect(assigns(:unconnected_groups)).to eq([group])
     end
   end
 
   context "#new" do
+    before(:each) { get :new }
+
     it "responds http success" do
-      get :new
       expect(response).to be_success
       expect(response.status).to eq(200)
     end
 
     it "renders the index template" do
-      get :new
       expect(response).to render_template("new")
     end
   end
@@ -62,6 +60,7 @@ describe GroupsController do
       get :show, id: group.id
       expect(response).to render_template("show")
     end
+
     it "get @groups" do
       get :show, id: group.id
       expect(assigns(:groups)).to eq([group_admin])
@@ -83,10 +82,47 @@ describe GroupsController do
       post :create
       expect(group_build.save).to be_true
     end
+  end
 
-    it "description" do
-      # wait
+  context "#edit" do
+    before(:each) { get :edit, id: group_admin }
+
+    it "responds http success" do
+      expect(response).to be_success
+      expect(response.status).to eq(200)
+    end
+
+    it "renders the edit template" do
+      expect(response).to render_template("edit")
+    end
+
+    it "attributes must be present" do
+      expect(assigns(@group)).to be_true
     end
   end
 
+  context "#update" do
+    let(:group_attr) { FactoryGirl.attributes_for(:group, group_name: 'update') }
+    before(:each) { put :update, id: group_admin.id, group: group_attr }
+    
+    it "save new group attributes" do
+      should redirect_to(group_path(group_admin))
+    end
+
+    it "check updated attributes" do
+      group_admin.reload
+      expect(group_admin.group_name).to eq('update') 
+    end
+  end
+
+  context "#destroy" do
+    it "deletes group" do
+      expect { delete :destroy, id: group_admin }.to change(Group,:count).by(-1)
+    end
+
+    it "expect redirect after delete" do
+      delete :destroy, id: group_admin
+      response.should redirect_to(groups_path)
+    end
+  end
 end
