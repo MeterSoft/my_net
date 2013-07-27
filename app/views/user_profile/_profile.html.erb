@@ -27,14 +27,6 @@
   </div>
   <div>
     <%= f.telephone_field :phone_secondary, :placeholder => t('settings.edit.phone_secondary') %>
-  </div>
-      <%= image_tag @user.avatar.url(:medium) %>
-      <span class="btn btn-success fileinput-button">
-          <i class="icon-plus icon-white"></i>
-          <span><%= t('user_profile.profile.avatar') %></span>
-          <%= f.file_field :avatar %>
-      </span>
-  </div>
   <br>
   <div>
     <%= f.submit t('user_profile.profile.save'), class: "btn" %>

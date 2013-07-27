@@ -2,7 +2,7 @@ li
   a href="#{main_page_path(friend)}"
     .row-fluid
       .span1
-        = image_tag(friend.avatar.url(:small))
+        = image_tag('small/default_large.png')
       .span7
         h4 = friend.full_name
         - if friend.status == 'online'

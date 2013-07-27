@@ -1,10 +1,10 @@
-ul.scrolling.well
+ul.scrolling
   - @messages.each do |m|
     li.messages id="conversation_#{m.id}"
       a.message href="#{message_path(m.id)}"
         .row-fluid
           .span1
-            = image_tag(m.originator.avatar.url(:small))
+            = image_tag('small/default_large.png')
           .span2
             span
               = m.originator.full_name

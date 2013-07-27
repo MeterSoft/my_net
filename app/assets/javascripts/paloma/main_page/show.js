@@ -34,7 +34,7 @@
       });
 
       $('body').on('input', '.area_link_preview', function(){
-          Link.detected(this);
+          // Link.detected(this);
       });
   };
 })();

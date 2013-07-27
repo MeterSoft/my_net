@@ -8,7 +8,7 @@
           small= post.created_at.strftime('%e.%m.%y  %T')
       .row-fluid
         .span1
-          = image_tag(post.creator.avatar.url(:small))
+          = image_tag('small/default_large.png')
         .span11
           p id="post_message_#{post.id}"
             = auto_detected_link(post.message)

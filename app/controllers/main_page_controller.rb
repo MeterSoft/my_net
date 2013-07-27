@@ -13,7 +13,7 @@ class MainPageController < ApplicationController
   def user_connections
     users = []
     User.all.each do |user|
-      users << { name: user.full_name, avatar: user.avatar.url(:small), url: main_page_path(user) }
+      users << { name: user.full_name, avatar: '/assets/small/default_large.png', url: main_page_path(user) }
     end
 
     connections = []

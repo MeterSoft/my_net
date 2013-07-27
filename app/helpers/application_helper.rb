@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def auto_detected_link(description)
-    description.gsub!(/\r\n/, "<br>")
+    description.gsub!(/\r\n/, " <br> ")
     description.gsub!(REGEXP_URL) do |url|  
       "<a href='#{convert_link(url)}' rel='nofollow' target='_blank'>#{url}</a>"
     end  

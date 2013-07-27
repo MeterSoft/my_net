@@ -8,7 +8,7 @@ li
           = message.created_at.strftime('%e.%m.%y  %T')
   .row-fluid
     .pull-left.avatar
-      = image_tag(message.sender.avatar.url(:small))
+      = image_tag('small/default_large.png')
     .span11
       = auto_detected_link(message.body)
   hr

@@ -1,11 +1,10 @@
 .row-fluid
   .span12
-    h1=t('main_page.index.connections')
     #user_connections
 javascript:
   $(document).ready(function(){
     var width = 960,
-        height = 700
+        height = 400
 
     var svg = d3.select("#user_connections").append("svg")
         .attr("width", width)

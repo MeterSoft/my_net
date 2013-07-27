@@ -23,8 +23,6 @@
 //= require jquery.nicescroll.min
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
-//= require turbolinks
-//= require jquery.turbolinks
 
 
 $(document).ready(function() {
