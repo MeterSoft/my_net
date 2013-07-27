@@ -42,8 +42,8 @@ group :development, :test do
   gem 'factory_girl_rails', require: false
   gem 'shoulda'
   gem 'database_cleaner'
-  gem 'capybara', '1.1.2'
-  gem 'capybara-webkit'
+  # gem 'capybara', '1.1.2'
+  # gem 'capybara-webkit'
   gem 'simplecov'
   gem 'simplecov-rcov'
 end
