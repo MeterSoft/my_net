@@ -1,0 +1,23 @@
+li.messages.infinity-item id="conversation_#{message.id}"
+  a.message href="#{message_path(message.id)}"
+    .row-fluid
+      .span1
+        = image_tag('small/default_large.png')
+      .span2
+        span
+          = message.originator.full_name
+        br
+        span.time
+          = message.created_at.strftime('%e.%m.%y  %T')
+      .span1
+        = image_tag('small/default_large.png')
+      .span6
+        span
+          = auto_detected_link(message.messages.last.body)
+        br
+        span.time
+          = message.messages.last.created_at.strftime('%e.%m.%y  %T')
+      .span1
+        = image_tag "message-icon-new.png" if message.receipts.is_unread.count != 0
+      .span1
+        = link_to '&times;'.html_safe , message_path(message) , :class => "close", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true

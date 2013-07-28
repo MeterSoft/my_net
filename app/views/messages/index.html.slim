@@ -1,25 +1,4 @@
-ul.scrolling
-  - @messages.each do |m|
-    li.messages id="conversation_#{m.id}"
-      a.message href="#{message_path(m.id)}"
-        .row-fluid
-          .span1
-            = image_tag('small/default_large.png')
-          .span2
-            span
-              = m.originator.full_name
-            br
-            span.time
-              = m.created_at.strftime('%e.%m.%y  %T')
-          .span1
-            = image_tag('small/default_large.png')
-          .span6
-            span
-              = auto_detected_link(m.messages.last.body)
-            br
-            span.time
-              = m.messages.last.created_at.strftime('%e.%m.%y  %T')
-          .span1
-            = image_tag "message-icon-new.png" if m.receipts.is_unread.count != 0
-          .span1
-            = link_to '&times;'.html_safe , message_path(m) , :class => "close", method: :delete, data: {confirm: 'Are you sure?'}, :remote => true
+ul.infinity-scroll.conversation
+  = render partial: 'conversation', collection: @messages, as: :message
+nav#page_nav
+  = link_to '', messages_path(@messages, page: 2)

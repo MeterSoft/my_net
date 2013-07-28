@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
 
   def index
     @messages = current_user.mailbox.conversations
+    @messages = Kaminari.paginate_array(@messages).page(params[:page] || 1).per(20)
   end
 
   def new
