@@ -11,7 +11,7 @@
           = link_to edit_post_path(post), remote: true, class: 'edit', id: post.id, 'data-title'=> t('posts.posts.edit'), 'data-id' => post.id do
             i.icon-edit
         '
-        = link_to ApplicationHelper::JS_NOOP, remote: true, method: 'PUT', class: 'comment', id: post.id, 'data-title'=> t('posts.posts.comment'), 'data-id' => post.id do
+        = link_to ApplicationHelper::JS_NOOP, remote: true, method: 'PUT', class: 'comment', id: "comment_#{post.id}", 'data-title'=> t('posts.posts.comment'), 'data-id' => post.id do
           i.icon-share-alt
           span.label.label-info= post.replies.size
         '

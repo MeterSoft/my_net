@@ -3,7 +3,7 @@ class AddProfileColumToUser < ActiveRecord::Migration
     add_column :users, :first_name, :string
     add_column :users, :last_name, :string
     add_column :users, :thread_name, :string
-    add_column :users, :time, :datetime
+    add_column :users, :time, :datetime, :default => Time.now
     add_column :users, :lenguage, :string, :default => "ru"
     add_column :users, :provider, :string
     add_column :users, :uid, :string

@@ -3,4 +3,4 @@
   = render partial: 'links/preview_url'
   .btn-group.pull-right
     = f.submit t('posts.posts.reply'), class: 'btn btn-info'
-    = link_to t('posts.posts.close'), ApplicationHelper::JS_NOOP, onclick: "$('.comment##{post.id}').popover('hide');", class: 'btn'
+    = link_to t('posts.posts.close'), ApplicationHelper::JS_NOOP, onclick: "$('#comment_#{post.id}').popover('hide');", class: 'btn'

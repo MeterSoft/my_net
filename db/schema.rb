@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(:version => 20130612083033) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",    :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
+    t.string   "email",                                 :default => "",                    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",                    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -128,12 +128,12 @@ ActiveRecord::Schema.define(:version => 20130612083033) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authentication_token"
-    t.datetime "created_at",                                               :null => false
-    t.datetime "updated_at",                                               :null => false
+    t.datetime "created_at",                                                               :null => false
+    t.datetime "updated_at",                                                               :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "thread_name"
-    t.datetime "time"
+    t.datetime "time",                                  :default => '2013-07-28 11:57:49'
     t.string   "lenguage",                              :default => "ru"
     t.string   "provider"
     t.string   "uid"

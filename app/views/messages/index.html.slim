@@ -12,7 +12,7 @@ ul.scrolling
             span.time
               = m.created_at.strftime('%e.%m.%y  %T')
           .span1
-            = image_tag(m.messages.last.sender.avatar.url(:small))
+            = image_tag('small/default_large.png')
           .span6
             span
               = auto_detected_link(m.messages.last.body)
