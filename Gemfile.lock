@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/ludicast/yaml_db.git
+  revision: 768eafdac8ffce647b8201ff4e7e9d78c641dc56
+  specs:
+    yaml_db (0.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -362,3 +368,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   vkontakte_api
   whenever
+  yaml_db!

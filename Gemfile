@@ -33,6 +33,7 @@ gem 'thin'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 #gem 'pg'
+gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git'
 
 group :development, :test do
   gem 'mysql2'
